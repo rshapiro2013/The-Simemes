@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Simemes.TreasureSystem
+{
+    public interface ITreasure
+    {
+        // 寶物的權重
+        int Weight { get; }
+        
+        // 產生寶物的時間戳記
+        long CreationTime { get; }
+    }
+}
