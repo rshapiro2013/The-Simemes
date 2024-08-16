@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Utilities;
+using Simemes.Treasures;
 
 namespace Simemes.AirDrop
 {
@@ -11,6 +12,8 @@ namespace Simemes.AirDrop
         private long _dropInterval;
 
         private long _lastCheckTime;
+
+        private readonly Queue<ITreasure> _treasures = new Queue<ITreasure>();
 
         // ÀË¬dªÅ§ë
         public void CheckAirDrop()
@@ -28,6 +31,14 @@ namespace Simemes.AirDrop
                 for (int i = 0; i < times; ++i)
                     SpawnRandomItem();
             }
+        }
+
+        public ITreasure GetFirstItem()
+        {
+            if (_treasures.Count == 0)
+                return null;
+
+            return _treasures.Peek();
         }
 
         private void SpawnRandomItem()

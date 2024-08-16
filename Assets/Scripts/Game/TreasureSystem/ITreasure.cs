@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Simemes.TreasureSystem
+namespace Simemes.Treasures
 {
     public interface ITreasure
     {
