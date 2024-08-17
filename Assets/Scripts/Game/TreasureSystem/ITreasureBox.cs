@@ -14,11 +14,17 @@ namespace Simemes.Treasures
         // 打開箱子的所需時間
         int CoolDown { get; }
 
+        long StartTime { get; }
         ITreasure Item { get; }
 
         bool IsEmpty { get; }
 
         // 加入寶物
-        void Add(ITreasure treasure);
+        void Add(ITreasure treasure, long addTime);
+
+        // 獲得寶物
+        void Obtain();
+
+        Sprite GetSprite();
     }
 }

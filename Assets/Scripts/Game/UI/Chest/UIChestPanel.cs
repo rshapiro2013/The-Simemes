@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using Core.UI;
 using Simemes.Treasures;
 using Simemes.AirDrop;
+using Simemes.Landscape;
 
 namespace Simemes.UI
 {
@@ -61,7 +62,10 @@ namespace Simemes.UI
                 return;
 
             if (_selectedSlot != null)
-                _selectedSlot.SetBox(treasureBoxConfig);
+            {
+                var treasureBox = new TreasureBox(treasureBoxConfig);
+                _selectedSlot.SetBox(treasureBox);
+            }
         }
 
         private void RefreshSlots()
@@ -76,7 +80,12 @@ namespace Simemes.UI
         private void AddTreasureIntoChest(UIChestSlot slot)
         {
             var item = AirDropSystem.instance.GetFirstItem();
-            slot.SetTreasure(item);
+
+            if (item == null)
+                return;
+
+            AirDropSystem.instance.RemoveFirstItem();
+            LobbyLandscape.instance.PickItem(item, slot.transform.position, (treasure) => slot.SetTreasure(treasure as ITreasure));
         }
 
         private void ShowChestInfo(UIChestSlot slot)

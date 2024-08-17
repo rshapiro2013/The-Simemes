@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Simemes.Treasures
 {
     [CreateAssetMenu(fileName ="TreasureBox", menuName ="Simemes/Treasure/TreasureBox")]
-    public class TreasureBoxConfig : ScriptableObject, ITreasureBox
+    public class TreasureBoxConfig : ScriptableObject
     {
         [SerializeField]
         protected int _id;
@@ -16,19 +16,22 @@ namespace Simemes.Treasures
         [SerializeField]
         protected int _coolDown;
 
+        [SerializeField]
+        protected Sprite _image_Opened;
 
-        protected ITreasure _item;
+        [SerializeField]
+        protected Sprite _image_Closed;
 
         public int ID => _id;
         public int Capacity => _capacity;
         public int CoolDown => _coolDown;
 
-        public ITreasure Item => _item;
-        public bool IsEmpty => _item == null;
-        
-        public void Add(ITreasure item)
+        public Sprite GetSprite(bool isEmpty)
         {
-            _item = item;
+            if (!isEmpty)
+                return _image_Closed;
+            else
+                return _image_Opened;
         }
     }
 }

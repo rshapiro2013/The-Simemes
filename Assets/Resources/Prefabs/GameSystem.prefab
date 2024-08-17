@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4535310868971328979}
   - component: {fileID: 256378017403038805}
   - component: {fileID: 3514208114554171275}
+  - component: {fileID: 4367467062886839105}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treasureBoxConfigs:
   - {fileID: 11400000, guid: 0a6b3e971a04b8c47bf74890b43059a7, type: 2}
+  _treasureItems:
+  - {fileID: 11400000, guid: 126a62b782b5ecb43af0ae6990283c0e, type: 2}
 --- !u!114 &3514208114554171275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,4 +62,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a107386a71c8f47b45059bba6a011d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dropInterval: 300
+  _airDropConfig: {fileID: 11400000, guid: ad5c410dab15e52489bc85239dc9f418, type: 2}
+  _dropInterval: 10
+--- !u!114 &4367467062886839105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731942077212223513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d05bca0c9146c44a4589427b90a6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolables: []

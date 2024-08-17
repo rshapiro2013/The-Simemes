@@ -43,9 +43,9 @@ namespace Simemes.UI
 
         public void SetTreasure(ITreasure treasure)
         {
-            Content.Add(treasure);
+            Content.Add(treasure, AirDrop.AirDropSystem.Now);
 
-            _timer.StartTimer(Content.CoolDown);
+            _timer.StartTimer(Content.CoolDown, ObtainTreasure);
             UpdateState();
         }
 
@@ -60,11 +60,21 @@ namespace Simemes.UI
         private void UpdateState()
         {
             _treasureBoxImage.enabled = Content != null;
+            if (Content != null)
+                _treasureBoxImage.sprite = Content.GetSprite();
+
             _obj_Lock.SetActive(Locked);
             _obj_Add.SetActive(!Locked && Content == null);
 
             _timer.gameObject.SetActive(Content != null && !Content.IsEmpty);
         }
 
+        private void ObtainTreasure()
+        {
+            Content.Obtain();
+            Content = null;
+
+            UpdateState();
+        }
     }
 }

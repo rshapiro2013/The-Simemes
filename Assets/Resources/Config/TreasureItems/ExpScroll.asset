@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658bb90f9bd99e249ad552813d7d5675, type: 3}
+  m_Name: ExpScroll
+  m_EditorClassIdentifier: 
+  _id: 1
+  _weight: 1
+  _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _image: {fileID: 21300000, guid: f51633723c2944009aebc40c63d699d4, type: 3}
+  _exp: 100
