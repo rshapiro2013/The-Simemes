@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 using Core.Utilities;
 
@@ -12,6 +13,9 @@ namespace Simemes.Landscape
     {
         [SerializeField]
         protected RectTransform _itemRoot;
+
+        [SerializeField]
+        protected RectTransform _movingParent;
 
         protected readonly Dictionary<ILandscapeItem, GameObject> _items = new Dictionary<ILandscapeItem, GameObject>();
 
@@ -61,9 +65,14 @@ namespace Simemes.Landscape
             if (!_items.TryGetValue(item, out var instance))
                 return;
 
-            _items.Remove(item);
-            Poolable.TryPool(instance);
-            onReach?.Invoke(item);
+            instance.transform.SetParent(_movingParent, true);
+
+            instance.transform.DOMove(destination, 0.5f).OnComplete(() =>
+            {
+                _items.Remove(item);
+                Poolable.TryPool(instance);
+                onReach?.Invoke(item);
+            });
         }
     }
 }
