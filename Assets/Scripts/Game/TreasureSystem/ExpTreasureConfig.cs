@@ -15,7 +15,8 @@ namespace Simemes.Treasures
         {
             base.Obtain();
 
-            Debug.Log("Add EXP: " + _exp);
+            // ¿Ú±o∏g≈Á≠»
+            GameManager.instance.AddExp(_exp);
         }
 
     }
