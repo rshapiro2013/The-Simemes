@@ -54,13 +54,13 @@ namespace Simemes.UI
 
         private void Start()
         {
-            _collectBtn.SetActive(PoopSystem.instance.PropCount > 0);
+            _collectBtn.SetActive(PoopSystem.instance.PoopCount > 0);
             Spawn();
         }
 
         public void Spawn()
         {
-            RandomSpawn(PoopSystem.instance.PropCount);
+            RandomSpawn(PoopSystem.instance.PoopCount);
         }
 
         public void RandomSpawnOne()
@@ -112,7 +112,7 @@ namespace Simemes.UI
 
         private void CollectBase(List<GameObject> spawnedObjects)
         {
-            GameManager.instance.AddCoin(PoopSystem.instance.PropCount);
+            GameManager.instance.AddCoin(PoopSystem.instance.PoopCount);
             PoopSystem.instance.Collect();
 
             foreach (GameObject obj in spawnedObjects)
@@ -133,12 +133,15 @@ namespace Simemes.UI
 
             List<GameObject> spawnedObjects = new List<GameObject>(_spawnedObjects);
             Vector3[] pos = new Vector3[spawnedObjects.Count];
+            Vector3[] scale = new Vector3[spawnedObjects.Count];
             for (int i = 0; i < spawnedObjects.Count; ++i)
             {
                 pos[i] = ((RectTransform)spawnedObjects[i].transform).position;
+                scale[i] = ((RectTransform)spawnedObjects[i].transform).localScale;
             }
 
             Vector3 target = _collectTarget.position;
+            Vector3 targetScale = Vector3.one *0.2f;
             while (_isPlaying)
             {
                 timer += Time.deltaTime;
@@ -150,7 +153,9 @@ namespace Simemes.UI
                 for (int i = 0; i < spawnedObjects.Count; ++i)
                 {
                     RectTransform rectTransform = spawnedObjects[i].transform as RectTransform;
-                    rectTransform.position = Vector3.Lerp(pos[i], target, _collectCurve.Evaluate(time));
+                    float evaluateTime = _collectCurve.Evaluate(time);
+                    rectTransform.position = Vector3.Lerp(pos[i], target, evaluateTime);
+                    rectTransform.localScale = Vector3.Lerp(scale[i], targetScale, evaluateTime);
                 }
                 yield return new WaitForEndOfFrame();
             }

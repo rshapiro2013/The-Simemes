@@ -9,12 +9,12 @@ namespace Simemes.Poop
     {
         public System.Action OnSpawnPoop;
 
-        [SerializeField] private int _limitCount = 50;
-        [SerializeField] private int _props;
-        [SerializeField] private float _testSpawnTime = 5;
+        [SerializeField] private int _limitCount = 20;
+        [SerializeField] private int _poops = 15;
+        [SerializeField] private float _testSpawnTime = 10;
 
 
-        public int PropCount => _props;
+        public int PoopCount => _poops;
 
         protected override void Awake()
         {
@@ -29,17 +29,17 @@ namespace Simemes.Poop
             {
                 //CheckAirDrop();
                 yield return new WaitForSeconds(_testSpawnTime);
-                if (_props < _limitCount)
+                if (_poops < _limitCount)
                 {
                     OnSpawnPoop?.Invoke();
-                    _props += 1;
+                    _poops += 1;
                 }
             }
         }
 
         public void Collect()
         {
-            _props = 0;
+            _poops = 0;
         }
     }
 }
