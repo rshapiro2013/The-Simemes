@@ -24,6 +24,10 @@ namespace Simemes.UI
 
         [SerializeField]
         private GameObject _obj_Timer;
+
+        [SerializeField]
+        private GameObject _obj_Buff;
+
         public ITreasureBox Content { get; private set; }
 
         public bool Locked { get; private set; }
@@ -56,7 +60,8 @@ namespace Simemes.UI
         public void Seal()
         {
             Content.Seal();
-            _timer.StartTimer(Content.CoolDown, ObtainTreasure);
+            _timer.UpdateTime(Content.RemainTime);
+
             UpdateState();
         }
 
@@ -64,6 +69,12 @@ namespace Simemes.UI
         public void SetLock(bool locked)
         {
             Locked = locked;
+            UpdateState();
+        }
+
+        public void AddBuff(ITreasureBuff buff)
+        {
+            Content.AddBuff(buff);
             UpdateState();
         }
 
@@ -78,6 +89,8 @@ namespace Simemes.UI
             _obj_Add.SetActive(!Locked && Content == null);
 
             _obj_Timer.SetActive(Content != null && Content.IsSealed);
+
+            _obj_Buff.SetActive(Content != null && Content.HasBuff);
         }
 
         private void ObtainTreasure()
@@ -86,6 +99,19 @@ namespace Simemes.UI
             Content = null;
 
             UpdateState();
+        }
+
+        private void Update()
+        {
+            if(Content != null)
+            {
+                bool timesUp = !Content.Update();
+
+                _timer.UpdateTime(Content.RemainTime);
+
+                if (timesUp)
+                    ObtainTreasure();
+            }
         }
     }
 }

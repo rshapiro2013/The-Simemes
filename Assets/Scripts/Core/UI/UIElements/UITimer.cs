@@ -19,30 +19,9 @@ namespace Core.UI
             _timerText = GetComponent<TextMeshProUGUI>();
         }
 
-        private void Update()
-        {
-            if (_seconds <= 0)
-                return;
-
-            _seconds -= Time.deltaTime;
-            if (_seconds <= 0)
-                StopTimer();
-            else
-                UpdateTime();
-        }
-        public void StartTimer(int seconds, System.Action onStop = null)
+        public void UpdateTime(float seconds)
         {
             _seconds = seconds;
-            _onStop = onStop;
-
-            UpdateTime();
-        }
-
-        public void StopTimer()
-        {
-            _seconds = 0;
-            _onStop?.Invoke();
-
             UpdateTime();
         }
 

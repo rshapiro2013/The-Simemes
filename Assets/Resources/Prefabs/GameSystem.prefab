@@ -54,6 +54,9 @@ MonoBehaviour:
   _treasureItems:
   - {fileID: 11400000, guid: 126a62b782b5ecb43af0ae6990283c0e, type: 2}
   - {fileID: 11400000, guid: 00dbf99ae64573944adc4265b4129b3b, type: 2}
+  _treasureBuffs:
+  - {fileID: 11400000, guid: a1fc96fdae592cc478bfcfdd1757d708, type: 2}
+  - {fileID: 11400000, guid: 50b51941143d9c14abef088980295c16, type: 2}
 --- !u!114 &3514208114554171275
 MonoBehaviour:
   m_ObjectHideFlags: 0

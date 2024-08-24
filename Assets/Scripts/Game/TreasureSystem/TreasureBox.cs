@@ -8,6 +8,9 @@ namespace Simemes.Treasures
     {
         protected TreasureBoxConfig _config;
         protected List<ITreasure> _items;
+        protected ITreasureBuff _buff;
+
+        protected float _remainTime;
         protected long _startTime;
         protected bool _isSealed;
 
@@ -17,16 +20,21 @@ namespace Simemes.Treasures
         public int Capacity => _config.Capacity;
         public int CoolDown => _config.CoolDown;
         public long StartTime => _startTime;
+        public float RemainTime { get => _remainTime; set => _remainTime = value; }
 
         public List<ITreasure> Items => _items;
+        public ITreasureBuff Buff => _buff;
+
         public bool IsEmpty => _items == null || _items.Count == 0;
         public bool IsFull => _itemWeight >= _config.Capacity;
         public bool IsSealed => _isSealed;
+        public bool HasBuff => _buff != null;
 
         public TreasureBox(TreasureBoxConfig config)
         {
             _config = config;
             _items = new List<ITreasure>();
+            _remainTime = config.CoolDown;
         }
 
         public void Add(ITreasure item, long addTime)
@@ -46,6 +54,8 @@ namespace Simemes.Treasures
 
         public void Obtain()
         {
+            _buff?.TriggerObtain(this);
+
             if (_items.Count == 0)
                 return;
 
@@ -63,6 +73,24 @@ namespace Simemes.Treasures
         public Sprite GetSprite()
         {
             return _config.GetSprite(IsSealed);
+        }
+
+        public void AddBuff(ITreasureBuff buff)
+        {
+            _buff = buff;
+            _buff.Init(this);
+        }
+
+        public bool Update()
+        {
+            if (!IsSealed)
+                return true;
+
+            _remainTime -= Time.deltaTime;
+            if (_remainTime <= 0)
+                return false;
+
+            return true;
         }
     }
 }
