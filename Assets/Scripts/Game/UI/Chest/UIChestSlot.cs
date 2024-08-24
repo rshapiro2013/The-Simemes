@@ -22,6 +22,8 @@ namespace Simemes.UI
         [SerializeField]
         private GameObject _obj_Add;
 
+        [SerializeField]
+        private GameObject _obj_Timer;
         public ITreasureBox Content { get; private set; }
 
         public bool Locked { get; private set; }
@@ -66,7 +68,7 @@ namespace Simemes.UI
             _obj_Lock.SetActive(Locked);
             _obj_Add.SetActive(!Locked && Content == null);
 
-            _timer.gameObject.SetActive(Content != null && !Content.IsEmpty);
+            _obj_Timer.SetActive(Content != null && !Content.IsEmpty);
         }
 
         private void ObtainTreasure()
