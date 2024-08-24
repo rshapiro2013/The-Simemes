@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3514208114554171275}
   - component: {fileID: 4367467062886839105}
   - component: {fileID: 8856518924138461181}
+  - component: {fileID: 6557091350640056732}
   - component: {fileID: 2535624563592997021}
   m_Layer: 0
   m_Name: GameSystem
@@ -28,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6731942077212223513}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &256378017403038805
 MonoBehaviour:
@@ -52,6 +53,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a6b3e971a04b8c47bf74890b43059a7, type: 2}
   _treasureItems:
   - {fileID: 11400000, guid: 126a62b782b5ecb43af0ae6990283c0e, type: 2}
+  - {fileID: 11400000, guid: 00dbf99ae64573944adc4265b4129b3b, type: 2}
 --- !u!114 &3514208114554171275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,8 +94,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _limitCount: 20
-  _props: 15
+  _poops: 15
   _testSpawnTime: 10
+--- !u!114 &6557091350640056732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731942077212223513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba46f9a1f0781d46ae04f433e49b496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 4900000, guid: 262e612a27dffd84abd453df8049e2ce, type: 3}
 --- !u!114 &2535624563592997021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,4 +121,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb815dfb5c5b3ab42ae625114357edb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: 1234567

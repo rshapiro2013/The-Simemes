@@ -43,10 +43,19 @@ namespace Simemes.UI
             UpdateState();
         }
 
-        public void SetTreasure(ITreasure treasure)
+        public bool SetTreasure(ITreasure treasure)
         {
-            Content.Add(treasure, AirDrop.AirDropSystem.Now);
+            if (!Content.TryAdd(treasure))
+                return false;
 
+            Content.Add(treasure, AirDrop.AirDropSystem.Now);
+            return true;
+        }
+
+        // 關上寶箱開始倒數
+        public void Seal()
+        {
+            Content.Seal();
             _timer.StartTimer(Content.CoolDown, ObtainTreasure);
             UpdateState();
         }
@@ -68,7 +77,7 @@ namespace Simemes.UI
             _obj_Lock.SetActive(Locked);
             _obj_Add.SetActive(!Locked && Content == null);
 
-            _obj_Timer.SetActive(Content != null && !Content.IsEmpty);
+            _obj_Timer.SetActive(Content != null && Content.IsSealed);
         }
 
         private void ObtainTreasure()

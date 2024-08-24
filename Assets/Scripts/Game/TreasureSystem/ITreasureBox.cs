@@ -15,12 +15,20 @@ namespace Simemes.Treasures
         int CoolDown { get; }
 
         long StartTime { get; }
-        ITreasure Item { get; }
+        List<ITreasure> Items { get; }
 
         bool IsEmpty { get; }
+        bool IsFull { get; }
+        bool IsSealed { get; }
 
         // 加入寶物
         void Add(ITreasure treasure, long addTime);
+
+        // 檢查是否能加入寶物
+        bool TryAdd(ITreasure treasure);
+
+        //關上寶箱
+        void Seal();
 
         // 獲得寶物
         void Obtain();

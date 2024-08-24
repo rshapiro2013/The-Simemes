@@ -1,0 +1,182 @@
+{
+  "1001": {
+    "Id": "1001",
+    "Tier": "1",
+    "Title": "Farmer",
+    "ExpRequire": "0",
+    "PoopPool": "3001",
+    "ChestSlot": "3",
+    "Background": "background_1"
+  },
+  "1002": {
+    "Id": "1002",
+    "Tier": "2",
+    "Title": "Worker",
+    "ExpRequire": "10",
+    "PoopPool": "3002",
+    "ChestSlot": "3",
+    "Background": "background_2"
+  },
+  "1003": {
+    "Id": "1003",
+    "Tier": "3",
+    "Title": "Clerk",
+    "ExpRequire": "20",
+    "PoopPool": "3003",
+    "ChestSlot": "4",
+    "Background": "background_3"
+  },
+  "1004": {
+    "Id": "1004",
+    "Tier": "4",
+    "Title": "Technician",
+    "ExpRequire": "40",
+    "PoopPool": "3004",
+    "ChestSlot": "4",
+    "Background": "background_4"
+  },
+  "1005": {
+    "Id": "1005",
+    "Tier": "5",
+    "Title": "Teacher",
+    "ExpRequire": "80",
+    "PoopPool": "3005",
+    "ChestSlot": "5",
+    "Background": "background_5"
+  },
+  "1006": {
+    "Id": "1006",
+    "Tier": "6",
+    "Title": "Police Officer",
+    "ExpRequire": "160",
+    "PoopPool": "3006",
+    "ChestSlot": "5",
+    "Background": "background_6"
+  },
+  "1007": {
+    "Id": "1007",
+    "Tier": "7",
+    "Title": "Sales Manager",
+    "ExpRequire": "320",
+    "PoopPool": "3007",
+    "ChestSlot": "6",
+    "Background": "background_7"
+  },
+  "1008": {
+    "Id": "1008",
+    "Tier": "8",
+    "Title": "Department Supervisor",
+    "ExpRequire": "640",
+    "PoopPool": "3008",
+    "ChestSlot": "6",
+    "Background": "background_8"
+  },
+  "1009": {
+    "Id": "1009",
+    "Tier": "9",
+    "Title": "Factory Manager",
+    "ExpRequire": "1280",
+    "PoopPool": "3009",
+    "ChestSlot": "7",
+    "Background": "background_9"
+  },
+  "1010": {
+    "Id": "1010",
+    "Tier": "10",
+    "Title": "Bank Manager",
+    "ExpRequire": "2560",
+    "PoopPool": "3010",
+    "ChestSlot": "7",
+    "Background": "background_10"
+  },
+  "1011": {
+    "Id": "1011",
+    "Tier": "11",
+    "Title": "Local Councilor",
+    "ExpRequire": "5120",
+    "PoopPool": "3011",
+    "ChestSlot": "8",
+    "Background": "background_11"
+  },
+  "1012": {
+    "Id": "1012",
+    "Tier": "12",
+    "Title": "Mayor",
+    "ExpRequire": "10240",
+    "PoopPool": "3012",
+    "ChestSlot": "8",
+    "Background": "background_12"
+  },
+  "1013": {
+    "Id": "1013",
+    "Tier": "13",
+    "Title": "Member of Parliament",
+    "ExpRequire": "20480",
+    "PoopPool": "3013",
+    "ChestSlot": "9",
+    "Background": "background_13"
+  },
+  "1014": {
+    "Id": "1014",
+    "Tier": "14",
+    "Title": "Governor",
+    "ExpRequire": "40960",
+    "PoopPool": "3014",
+    "ChestSlot": "9",
+    "Background": "background_14"
+  },
+  "1015": {
+    "Id": "1015",
+    "Tier": "15",
+    "Title": "Cabinet Member/Minister",
+    "ExpRequire": "81920",
+    "PoopPool": "3015",
+    "ChestSlot": "10",
+    "Background": "background_15"
+  },
+  "1016": {
+    "Id": "1016",
+    "Tier": "16",
+    "Title": "Deputy Prime Minister/Vice President",
+    "ExpRequire": "163840",
+    "PoopPool": "3016",
+    "ChestSlot": "10",
+    "Background": "background_16"
+  },
+  "1017": {
+    "Id": "1017",
+    "Tier": "17",
+    "Title": "Prime Minister",
+    "ExpRequire": "327680",
+    "PoopPool": "3017",
+    "ChestSlot": "11",
+    "Background": "background_17"
+  },
+  "1018": {
+    "Id": "1018",
+    "Tier": "18",
+    "Title": "Presidential Assistant",
+    "ExpRequire": "655360",
+    "PoopPool": "3018",
+    "ChestSlot": "11",
+    "Background": "background_18"
+  },
+  "1019": {
+    "Id": "1019",
+    "Tier": "19",
+    "Title": "Vice President",
+    "ExpRequire": "1310720",
+    "PoopPool": "3019",
+    "ChestSlot": "12",
+    "Background": "background_19"
+  },
+  "1020": {
+    "Id": "1020",
+    "Tier": "20",
+    "Title": "President",
+    "ExpRequire": "2621440",
+    "PoopPool": "3020",
+    "ChestSlot": "12",
+    "Background": "background_20"
+  }
+}

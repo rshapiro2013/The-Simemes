@@ -20,8 +20,10 @@ namespace Simemes.UI
         {
             if (GameManager.instance)
             {
-                GameManager.instance.OnSetCoin += SetCoin;
-                GameManager.instance.OnCoinChange += OnCoinChange;
+                var playerProfile = GameManager.instance.PlayerProfile;
+
+                playerProfile.OnSetCoin += SetCoin;
+                playerProfile.OnCoinChange += OnCoinChange;
             }
         }
 
@@ -29,8 +31,10 @@ namespace Simemes.UI
         {
             if (GameManager.instance)
             {
-                GameManager.instance.OnSetCoin -= SetCoin;
-                GameManager.instance.OnCoinChange -= OnCoinChange;
+                var playerProfile = GameManager.instance.PlayerProfile;
+
+                playerProfile.OnSetCoin -= SetCoin;
+                playerProfile.OnCoinChange -= OnCoinChange;
             }
         }
 
@@ -57,8 +61,8 @@ namespace Simemes.UI
 
         private IEnumerator PlayAddCoin(int value)
         {
-            _currentCoin = GameManager.instance.Coin;
-            _targetCoin = GameManager.instance.Coin + value;
+            _currentCoin = GameManager.instance.PlayerProfile.Coin;
+            _targetCoin = GameManager.instance.PlayerProfile.Coin + value;
 
             if (_isPlaying)
                 yield break;

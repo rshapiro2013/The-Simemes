@@ -50,6 +50,13 @@ namespace Simemes.UI
                 ShowChestInfo(slot);
         }
 
+        public void Hold(UIChestSlot slot)
+        {
+            // 箱子不是空的就可以關上倒數
+            if (slot.Content != null)
+                slot.Seal();
+        }
+
         public void AddChest()
         {
             AddChest(0);

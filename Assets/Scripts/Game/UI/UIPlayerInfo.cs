@@ -5,15 +5,29 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 using TMPro;
-
+using Simemes.Profile;
 
 namespace Simemes.UI
 {
     public class UIPlayerInfo : MonoBehaviour
     {
-        [SerializeField] private float _speed = 1;
-        [SerializeField] private Slider _expBar;
-        [SerializeField] private TextMeshProUGUI _level;
+        [SerializeField] 
+        private float _speed = 1;
+
+        [SerializeField] 
+        private Slider _expBar;
+
+        [SerializeField] 
+        private TextMeshProUGUI _expText;
+
+        [SerializeField] 
+        private TextMeshProUGUI _level;
+
+        [SerializeField]
+        private TextMeshProUGUI _name;
+
+        [SerializeField]
+        private TextMeshProUGUI _title;
 
         private float _current = 0;
         private float _target = 0;
@@ -24,18 +38,30 @@ namespace Simemes.UI
         {
             if (GameManager.instance)
             {
-                GameManager.instance.OnSetExp += SetExp;
-                GameManager.instance.OnExpChange += OnExpChange;
-                GameManager.instance.OnSetLevel += SetLevel;
+                var playerProfile = GameManager.instance.PlayerProfile;
+
+                playerProfile.OnSetExp += SetExp;
+                playerProfile.OnExpChange += OnExpChange;
+                playerProfile.OnSetLevel += SetLevel;
+                playerProfile.OnUpdateTierData += UpdateTierData;
             }
+        }
+
+        private void Start()
+        {
+            UpdatePlayerInfo(GameManager.instance.PlayerProfile);
         }
 
         private void OnDestroy()
         {
             if (GameManager.instance)
             {
-                GameManager.instance.OnSetExp -= SetExp;
-                GameManager.instance.OnExpChange -= OnExpChange;
+                var playerProfile = GameManager.instance.PlayerProfile;
+
+                playerProfile.OnSetExp -= SetExp;
+                playerProfile.OnExpChange -= OnExpChange;
+                playerProfile.OnSetLevel -= SetLevel;
+                playerProfile.OnUpdateTierData -= UpdateTierData;
             }
         }
 
@@ -47,6 +73,12 @@ namespace Simemes.UI
         private void UpdateLevel(int level)
         {
             _level.text = level.ToString();
+            _title.text = GameManager.instance.PlayerProfile.TierData.Title;
+        }
+
+        private void UpdateExp(int exp, int maxExp)
+        {
+            _expText.text = $"{exp}/{maxExp}";
         }
 
         private void SetLevel(int level)
@@ -92,6 +124,20 @@ namespace Simemes.UI
                 _current = _target;
 
             UpdateExpBar(_current);
+        }
+
+        private void UpdatePlayerInfo(PlayerProfile profile)
+        {
+            _name.text = profile.UserName;
+            _title.text = profile.TierData.Title;
+
+            UpdateLevel(profile.Level);
+            UpdateExp(profile.Exp, profile.MaxExp);
+        }
+
+        private void UpdateTierData(Tier.TierData tierData)
+        {
+            _title.text = tierData.Title;
         }
     }
 }

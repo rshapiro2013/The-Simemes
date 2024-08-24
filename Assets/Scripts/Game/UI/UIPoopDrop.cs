@@ -112,7 +112,7 @@ namespace Simemes.UI
 
         private void CollectBase(List<GameObject> spawnedObjects)
         {
-            GameManager.instance.AddCoin(PoopSystem.instance.PoopCount);
+            GameManager.instance.PlayerProfile.AddCoin(PoopSystem.instance.PoopCount);
             PoopSystem.instance.Collect();
 
             foreach (GameObject obj in spawnedObjects)

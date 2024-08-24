@@ -16,7 +16,7 @@ namespace Simemes.Treasures
             base.Obtain();
 
             // ¿Ú±o∏g≈Á≠»
-            GameManager.instance.AddExp(_exp);
+            GameManager.instance.PlayerProfile.AddExp(_exp);
         }
 
     }

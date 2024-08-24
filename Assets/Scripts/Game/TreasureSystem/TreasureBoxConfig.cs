@@ -26,9 +26,9 @@ namespace Simemes.Treasures
         public int Capacity => _capacity;
         public int CoolDown => _coolDown;
 
-        public Sprite GetSprite(bool isEmpty)
+        public Sprite GetSprite(bool isSealed)
         {
-            if (!isEmpty)
+            if (isSealed)
                 return _image_Closed;
             else
                 return _image_Opened;
