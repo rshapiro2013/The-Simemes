@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Simemes.Tier;
+using Newtonsoft.Json;
 
 namespace Simemes.Profile
 {
@@ -18,24 +19,26 @@ namespace Simemes.Profile
 
         public int Coin;
 
+        [JsonIgnore]
         public TierData TierData { get; private set; }
 
         public event System.Action<int> OnUpdateExp;
         public event System.Action<int> OnUpdateLevel;
         public event System.Action<TierData> OnUpdateTierData;
 
+        [JsonIgnore]
         public System.Action<int> OnCoinChange;
+        [JsonIgnore]
         public System.Action<int> OnSetCoin;
-
+        [JsonIgnore]
         public System.Action<float> OnExpChange;
-        public System.Action<int> OnSetExp;
-
+        [JsonIgnore]
+        public System.Action<float> OnSetExp;
+        [JsonIgnore]
         public System.Action<int> OnSetLevel;
 
         public void Init()
         {
-            Character = "yellow pepe farmer";
-
             SetCoin(Coin);
             SetExp(Exp);
             SetLevel(Level);
@@ -44,19 +47,19 @@ namespace Simemes.Profile
         public void SetCoin(int coin)
         {
             OnSetCoin?.Invoke(coin);
-            Coin = coin;
+            UpdateCoin(coin);
         }
 
         public void AddCoin(int coin)
         {
             OnCoinChange?.Invoke(coin);
-            Coin += coin;
+            UpdateCoin(Coin + coin);
         }
 
         public void SetExp(int exp)
         {
-            OnSetExp?.Invoke(exp);
-            Exp = exp;
+            OnSetExp?.Invoke((float)exp / MaxExp);
+            UpdateExp(Exp);
         }
 
         public void AddExp(int exp)
@@ -71,6 +74,8 @@ namespace Simemes.Profile
                 Exp -= MaxExp;
                 LevelUp();
             }
+
+            UpdateExp(Exp);
 
             int levelAdd = Level - levelBefore;
             float expRatio = levelAdd + ((float)Exp / MaxExp - expRatioBefore);
@@ -89,6 +94,20 @@ namespace Simemes.Profile
             UpdateLevel(Level + 1);
         }
 
+        private void UpdateCoin(int coin)
+        {
+            Coin = coin;
+
+            RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
+        }
+
+        private void UpdateExp(int exp)
+        {
+            Exp = exp;
+
+            RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
+        }
+
         private void UpdateLevel(int level)
         {
             Level = level;
@@ -103,6 +122,8 @@ namespace Simemes.Profile
                 MaxExp = 0;
 
             OnUpdateTierData?.Invoke(TierData);
+
+            RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
         }
     }
 }

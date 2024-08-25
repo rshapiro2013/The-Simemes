@@ -37,7 +37,7 @@ namespace Simemes.Treasures
         void Seal();
 
         void AddBuff(ITreasureBuff buff);
-
+        void RemoveBuff(ITreasureBuff buff);
         // §ó·s
         bool Update();
 

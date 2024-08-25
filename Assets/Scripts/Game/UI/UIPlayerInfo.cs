@@ -87,7 +87,7 @@ namespace Simemes.UI
             UpdateLevel(_currentLevel);
         }
 
-        private void SetExp(int value)
+        private void SetExp(float value)
         {
             _current = value;
             _target = value;

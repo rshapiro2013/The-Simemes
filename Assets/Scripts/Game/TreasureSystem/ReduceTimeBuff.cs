@@ -12,6 +12,8 @@ namespace Simemes.Treasures
             base.Init(treasureBox);
 
             treasureBox.RemainTime /= 2;
+
+            treasureBox.RemoveBuff(this);
         }
     }
 }

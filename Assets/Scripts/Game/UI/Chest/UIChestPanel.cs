@@ -80,6 +80,8 @@ namespace Simemes.UI
                 return;
 
             slot.AddBuff(TreasureSystem.instance.GetBuff(_buffIdx));
+
+            DisableEnchantMode();
         }
 
         // 開啟附魔模式，要設定附魔的buffIdx

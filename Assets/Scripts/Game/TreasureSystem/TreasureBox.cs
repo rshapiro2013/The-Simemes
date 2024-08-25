@@ -81,6 +81,12 @@ namespace Simemes.Treasures
             _buff.Init(this);
         }
 
+        public void RemoveBuff(ITreasureBuff buff)
+        {
+            if (_buff == buff)
+                _buff = null;
+        }
+
         public bool Update()
         {
             if (!IsSealed)
