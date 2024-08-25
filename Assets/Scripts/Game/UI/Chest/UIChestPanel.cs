@@ -32,6 +32,8 @@ namespace Simemes.UI
         private int _buffIdx;
         private bool _enchantMode;
 
+        public List<UIChestSlot> Slots => _slots; 
+
         protected override void Awake()
         {
             base.Awake();
@@ -116,6 +118,22 @@ namespace Simemes.UI
                 var treasureBox = new TreasureBox(treasureBoxConfig);
                 _selectedSlot.SetBox(treasureBox);
             }
+        }
+
+        public bool TryGetEmptySlot(out UIChestSlot slot)
+        {
+            for (int i = 0; i < _slots.Count; ++i)
+            {
+                UIChestSlot s = _slots[i];
+                if (!s.Locked && s.Content == null)
+                {
+                    slot = s;
+                    return true;
+                }
+            }
+
+            slot = null;
+            return false;
         }
 
         private void RefreshSlots()

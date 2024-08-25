@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Simemes.Poop;
 using Simemes.Landscape;
 
@@ -30,7 +31,7 @@ namespace Simemes.UI
 
         [SerializeField] private GameObject _dropPrefab;
 
-        [SerializeField] private GameObject _collectBtn;
+        //[SerializeField] private GameObject _collectBtn;
 
         [SerializeField] private AnimationCurve _collectCurve;
         [SerializeField] private float _collectTime;
@@ -54,7 +55,7 @@ namespace Simemes.UI
 
         private void Start()
         {
-            _collectBtn.SetActive(PoopSystem.instance.PoopCount > 0);
+            //_collectBtn.SetActive(PoopSystem.instance.PoopCount > 0);
             Spawn();
         }
 
@@ -65,7 +66,7 @@ namespace Simemes.UI
 
         public void RandomSpawnOne()
         {
-            _collectBtn.SetActive(true);
+            //_collectBtn.SetActive(true);
             RandomSpawn(1);
         }
 
@@ -89,6 +90,8 @@ namespace Simemes.UI
             rectTransform.position = randomPosition;
             rectTransform.parent = transform;
             _spawnedObjects.Add(newObject);
+
+            newObject.GetComponent<Button>().onClick.AddListener(Collect);
             newObject.SetActive(true);
 
             return newObject;
@@ -106,7 +109,7 @@ namespace Simemes.UI
 
         public void Collect()
         {
-            _collectBtn.SetActive(false);
+            //_collectBtn.SetActive(false);
             StartCoroutine(PlayCollect());
         }
 
