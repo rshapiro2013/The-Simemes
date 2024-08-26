@@ -73,41 +73,7 @@ namespace Simemes.UI
 
         private void OnEnable()
         {
-            // for local Test ======================================================
-            int nameIndex = Random.Range(0, _names.Length);
-            string name = _names[nameIndex];
-            string title = _titles[nameIndex];
-            int spriteID = nameIndex < _images.Length ? nameIndex : _images.Length - 1;
-            Sprite sprite = _images[spriteID];
-
-            _chestCount = Random.Range(1, _slots.Count);
-
-            
-            for (int i = 0; i < _slots.Count; ++i)
-            {
-                bool enable = i < _chestCount;
-                UIChestSlot slot = _slots[i];
-                slot.gameObject.SetActive(enable);
-                if(enable)
-                {
-                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(0);
-                    if (treasureBoxConfig == null)
-                        return;
-
-                    var treasureBox = new TreasureBox(treasureBoxConfig);
-                    treasureBox.RemainTime = Random.Range(1000, 86400);
-
-                    slot.SetBox(treasureBox);
-
-                    if (Random.Range(0, 100) < 50)
-                        slot.AddBuff(TreasureSystem.instance.GetBuff(1));
-
-                    slot.Seal();
-                }
-            }
-            // ===============================================================
-
-            Set(name, title, sprite);
+            LoadInfo();
         }
 
         private void Set(string name, string title, Sprite sprite)
@@ -145,15 +111,55 @@ namespace Simemes.UI
                         empty.Seal();
                     }
                 }
-                _popupText.text = hasBuff ? "偷取失敗\n觸發防護罩" : success ? "成功偷取" : "偷取失敗";
+                _popupText.text = hasBuff ? "Trigger guard!\n<color=red>Steal failed...</color>" : success ? "Steal succeeded!" : "<color=red>Steal failed...</color>"; ;// "偷取失敗\n觸發防護罩" : success ? "成功偷取" : "偷取失敗";
             }
             else
             {
-                _popupText.text = "你的寶箱已滿";
+                _popupText.text = "Your chest is full";//"你的寶箱已滿";
             }
 
 
             _popupFrame.SetActive(true);
+        }
+
+        private void LoadChestData()
+        {
+            _chestCount = Random.Range(1, _slots.Count);
+            for (int i = 0; i < _slots.Count; ++i)
+            {
+                bool enable = i < _chestCount;
+                UIChestSlot slot = _slots[i];
+                slot.gameObject.SetActive(enable);
+                if (enable)
+                {
+                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(0);
+                    if (treasureBoxConfig == null)
+                        return;
+
+                    var treasureBox = new TreasureBox(treasureBoxConfig);
+                    treasureBox.RemainTime = Random.Range(1000, 86400);
+
+                    slot.SetBox(treasureBox);
+
+                    if (Random.Range(0, 100) < 50)
+                        slot.AddBuff(TreasureSystem.instance.GetBuff(1));
+
+                    slot.Seal();
+                }
+            }
+        }
+
+        public void LoadInfo()
+        {
+            // for local Test ======================================================
+            int nameIndex = Random.Range(0, _names.Length);
+            string name = _names[nameIndex];
+            string title = _titles[nameIndex];
+            Sprite sprite = _images[nameIndex < _images.Length ? nameIndex : _images.Length - 1];
+            LoadChestData();
+            // ===============================================================
+
+            Set(name, title, sprite);
         }
     }
 }
