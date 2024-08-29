@@ -67,13 +67,31 @@ namespace Simemes.UI
             "Vice President",
             "President"
         };
+
+        public class TreasureData
+        {
+            public float RemainTime;
+            public bool HasBuff;
+        }
+
+        public class PlayerData
+        {
+            public int Sprite;
+            public int Name;
+            public int Titles;
+            public System.DateTime LastUpdate;
+            public List<TreasureData> Treasures = new List<TreasureData>();
+        }
+
+        private List<PlayerData> _playerRecord = new List<PlayerData>();
         // ===============================================================
 
         private int _chestCount;
+        private int _playerDataIndex = 0;
 
         private void OnEnable()
         {
-            LoadInfo();
+            LoadNewInfo();
         }
 
         private void Set(string name, string title, Sprite sprite)
@@ -91,7 +109,8 @@ namespace Simemes.UI
                 bool success;
                 bool hasBuff;
 
-                UIChestSlot slot = _slots[Random.Range(0, _chestCount)];
+                int index = Random.Range(0, _chestCount);
+                UIChestSlot slot = _slots[index];
                 hasBuff = slot.Content.HasBuff;
                 success = hasBuff ? false : Random.Range(0, 100) < 75;
 
@@ -103,6 +122,11 @@ namespace Simemes.UI
                 if (success)
                 {
                     slot.gameObject.SetActive(false);
+
+                    // remove treasure data
+                    PlayerData playerData = _playerRecord[_playerDataIndex];
+                    playerData.Treasures.RemoveAt(index);
+
                     if (_chestPanel != null)
                     {
                         _chestPanel.AddChest(_chestPanel.Slots.IndexOf(empty));
@@ -120,6 +144,24 @@ namespace Simemes.UI
 
 
             _popupFrame.SetActive(true);
+        }
+
+        public void LoadNextInfo()
+        {
+            if (_playerDataIndex < _playerRecord.Count - 1)
+                LoadInfoBase(++_playerDataIndex);
+            else
+                LoadNewInfo();
+        }
+
+        public void LoadPreviousInfo()
+        {
+            int playerDataIndex = _playerDataIndex - 1;
+            if (playerDataIndex > -1)
+            {
+                _playerDataIndex = playerDataIndex;
+                LoadInfoBase(_playerDataIndex);
+            }
         }
 
         private void LoadChestData()
@@ -149,16 +191,67 @@ namespace Simemes.UI
             }
         }
 
-        public void LoadInfo()
+        private void LoadChestData(PlayerData playerData)
+        {
+            System.DateTime now = System.DateTime.Now;
+            _chestCount = playerData.Treasures.Count;
+            for (int i = 0; i < _slots.Count; ++i)
+            {
+                bool enable = i < _chestCount;
+                UIChestSlot slot = _slots[i];
+                slot.gameObject.SetActive(enable);
+                if (enable)
+                {
+                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(0);
+                    if (treasureBoxConfig == null)
+                        return;
+
+                    TreasureData treasureData = playerData.Treasures[i];
+                    var treasureBox = new TreasureBox(treasureBoxConfig);
+                    treasureBox.RemainTime = (float)(treasureData.RemainTime - (now - playerData.LastUpdate).TotalSeconds);
+
+                    slot.SetBox(treasureBox);
+
+                    if (treasureData.HasBuff)
+                        slot.AddBuff(TreasureSystem.instance.GetBuff(1));
+
+                    slot.Seal();
+                }
+            }
+        }
+
+        private void LoadNewInfo()
         {
             // for local Test ======================================================
             int nameIndex = Random.Range(0, _names.Length);
             string name = _names[nameIndex];
             string title = _titles[nameIndex];
-            Sprite sprite = _images[nameIndex < _images.Length ? nameIndex : _images.Length - 1];
+            int spriteIndex = nameIndex < _images.Length ? nameIndex : _images.Length - 1;
+            Sprite sprite = _images[spriteIndex];
             LoadChestData();
+
+            // log player data
+            PlayerData playerData = new PlayerData() { Name = nameIndex, Titles = nameIndex, Sprite = spriteIndex, LastUpdate = System.DateTime.Now };
+            for (int i = 0; i < _chestCount; ++i)
+            {
+                UIChestSlot slot = _slots[i];
+                playerData.Treasures.Add(new TreasureData() { RemainTime = slot.Content.RemainTime, HasBuff = slot.Content.HasBuff });
+            }
+            _playerRecord.Add(playerData);
+            _playerDataIndex = _playerRecord.Count - 1;
+
             // ===============================================================
 
+            Set(name, title, sprite);
+        }
+
+        private void LoadInfoBase(int index)
+        {
+            PlayerData playerData = _playerRecord[index];
+            string name = _names[playerData.Name];
+            string title = _titles[playerData.Titles];
+            Sprite sprite = _images[playerData.Sprite];
+            LoadChestData(playerData);
             Set(name, title, sprite);
         }
     }
