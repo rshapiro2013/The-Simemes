@@ -17,21 +17,15 @@ namespace Simemes.Treasures
         protected int _coolDown;
 
         [SerializeField]
-        protected Sprite _image_Opened;
-
-        [SerializeField]
-        protected Sprite _image_Closed;
+        protected Sprite[] _images;
 
         public int ID => _id;
         public int Capacity => _capacity;
         public int CoolDown => _coolDown;
 
-        public Sprite GetSprite(bool isSealed)
+        public Sprite GetSprite(TreasureBoxState state)
         {
-            if (isSealed)
-                return _image_Closed;
-            else
-                return _image_Opened;
+            return _images[(int)state];
         }
     }
 }

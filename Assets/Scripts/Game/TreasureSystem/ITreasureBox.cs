@@ -27,6 +27,9 @@ namespace Simemes.Treasures
         bool IsFull { get; }
         bool IsSealed { get; }
         bool HasBuff { get; }
+
+        TreasureBoxState State { get; }
+
         // ¥[¤JÄ_ª«
         void Add(ITreasure treasure, long addTime);
 

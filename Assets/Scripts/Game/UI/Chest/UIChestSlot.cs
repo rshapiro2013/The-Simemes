@@ -53,6 +53,7 @@ namespace Simemes.UI
                 return false;
 
             Content.Add(treasure, AirDrop.AirDropSystem.Now);
+            UpdateState();
             return true;
         }
 

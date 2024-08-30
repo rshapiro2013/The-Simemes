@@ -15,5 +15,8 @@ MonoBehaviour:
   _id: 0
   _capacity: 1
   _coolDown: 60
-  _image_Opened: {fileID: 21300000, guid: a8cff61ad9a2846d89cd4944676b44d1, type: 3}
-  _image_Closed: {fileID: 21300000, guid: 209e0eb770bd94bc4ac1cf106de18eb7, type: 3}
+  _images:
+  - {fileID: 21300000, guid: ed4ddfe3a22230f418dad01ba04c3d59, type: 3}
+  - {fileID: 21300000, guid: 172e75614f7f9fe46869c0a65f56b7c3, type: 3}
+  - {fileID: 21300000, guid: ea0008870b366624b825f5fe7da62029, type: 3}
+  - {fileID: 21300000, guid: 7872bcd9a528e2547a10a3c97d363fe7, type: 3}

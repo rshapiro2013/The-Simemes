@@ -30,11 +30,14 @@ namespace Simemes.Treasures
         public bool IsSealed => _isSealed;
         public bool HasBuff => _buff != null;
 
+        public TreasureBoxState State { get; set; }
+
         public TreasureBox(TreasureBoxConfig config)
         {
             _config = config;
             _items = new List<ITreasure>();
             _remainTime = config.CoolDown;
+            State = TreasureBoxState.Opened;
         }
 
         public void Add(ITreasure item, long addTime)
@@ -42,6 +45,11 @@ namespace Simemes.Treasures
             _items.Add(item);
             _startTime = addTime;
             _itemWeight += item.Weight;
+
+            if (IsFull)
+                State = TreasureBoxState.Full;
+            else
+                State = TreasureBoxState.Half;
         }
 
         public bool TryAdd(ITreasure item)
@@ -68,11 +76,12 @@ namespace Simemes.Treasures
         public void Seal()
         {
             _isSealed = true;
+            State = TreasureBoxState.Closed;
         }
 
         public Sprite GetSprite()
         {
-            return _config.GetSprite(IsSealed);
+            return _config.GetSprite(State);
         }
 
         public void AddBuff(ITreasureBuff buff)

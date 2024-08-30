@@ -20,15 +20,15 @@ public class UICharacter : MonoBehaviour
         foreach (var sprite in _characters)
             _characterData[sprite.name] = sprite;
 
-        GameManager.instance.PlayerProfile.OnUpdateTierData += UpdateBackground;
+        GameManager.instance.PlayerProfile.OnUpdateTierData += UpdateCharacter;
     }
 
     private void OnDestroy()
     {
-        GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateBackground;
+        GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateCharacter;
     }
 
-    private void UpdateBackground(Simemes.Tier.TierData tierData)
+    private void UpdateCharacter(Simemes.Tier.TierData tierData)
     {
         string character = GameManager.instance.PlayerProfile.Character;
 
@@ -36,5 +36,6 @@ public class UICharacter : MonoBehaviour
 
         _characterData.TryGetValue(characterLevelSprite, out var sprite);
         _characterImage.sprite = sprite;
+        _characterImage.SetNativeSize();
     }
 }
