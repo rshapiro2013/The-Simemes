@@ -28,6 +28,9 @@ namespace Simemes.UI
         [SerializeField]
         private GameObject _obj_Buff;
 
+        [SerializeField]
+        private UIHoldButton _holdButton;
+
         public ITreasureBox Content { get; private set; }
 
         public bool Locked { get; private set; }
@@ -92,6 +95,8 @@ namespace Simemes.UI
             _obj_Timer.SetActive(Content != null && Content.IsSealed);
 
             _obj_Buff.SetActive(Content != null && Content.HasBuff);
+
+            _holdButton.ShowProgressBar(Content != null && Content.State != TreasureBoxState.Closed);
         }
 
         private void ObtainTreasure()

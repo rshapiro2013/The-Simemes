@@ -11,6 +11,12 @@ public class UIHoldButton : MonoBehaviour, IPointerClickHandler, IPointerUpHandl
     protected float _holdThreshold;
 
     [SerializeField]
+    protected Slider _progress;
+
+    [SerializeField]
+    protected float _visibleProgressTime = 0.2f;
+
+    [SerializeField]
     protected UnityEvent _onClick;
 
     [SerializeField]
@@ -21,6 +27,13 @@ public class UIHoldButton : MonoBehaviour, IPointerClickHandler, IPointerUpHandl
     protected bool _holding;
     protected float _holdTimer;
 
+    protected bool _showProgress;
+
+    protected virtual void Awake()
+    {
+        ShowProgressBar(false);
+    }
+
     public void OnPointerClick(PointerEventData evt)
     {
         if (!_holdEventTriggered)
@@ -30,6 +43,9 @@ public class UIHoldButton : MonoBehaviour, IPointerClickHandler, IPointerUpHandl
     public void OnPointerUp(PointerEventData evt)
     {
         _holding = false;
+
+        ShowProgressBar(_showProgress);
+
     }
 
     public void OnPointerDown(PointerEventData evt)
@@ -37,6 +53,17 @@ public class UIHoldButton : MonoBehaviour, IPointerClickHandler, IPointerUpHandl
         _holding = true;
         _holdTimer = _holdThreshold;
         _holdEventTriggered = false;
+
+        ShowProgressBar(_showProgress);
+    }
+
+    public void ShowProgressBar(bool enabled)
+    {
+        if (_progress == null)
+            return;
+
+        _showProgress = enabled;
+        _progress.gameObject.SetActive(_showProgress && _holding && _holdTimer < _holdThreshold - _visibleProgressTime);
     }
 
     protected void Update()
@@ -45,11 +72,18 @@ public class UIHoldButton : MonoBehaviour, IPointerClickHandler, IPointerUpHandl
             return;
 
         _holdTimer -= Time.deltaTime;
-        if(_holdTimer <= 0)
+
+        if (_progress != null)
+            _progress.value = (_holdThreshold - _holdTimer) / _holdThreshold;
+
+        if (_holdTimer <= 0)
         {
             _holding = false;
+
             TriggerHoldEvent();
         }
+
+        ShowProgressBar(_showProgress);
     }
 
     protected void TriggerHoldEvent()

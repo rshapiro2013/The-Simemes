@@ -61,11 +61,11 @@ namespace Simemes.UI
             // 沒有箱子
             if (slot.Content == null)
                 _onViewChestList.Invoke();
-            // 箱子沒有滿
-            else if (!slot.Content.IsFull)
+            // 箱子沒有滿也還沒關
+            else if (!slot.Content.IsFull && !slot.Content.IsSealed)
                 AddTreasureIntoChest(slot);
             // 箱子滿了
-            else
+            else if(slot.Content.IsSealed)
                 ShowChestInfo(slot);
         }
 
