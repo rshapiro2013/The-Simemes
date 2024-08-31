@@ -57,6 +57,11 @@ namespace Simemes.Profile
             UpdateCoin(Coin + coin);
         }
 
+        public bool CheckCoin(int cost)
+        {
+            return Coin >= cost;
+        }
+
         public void SetExp(int exp)
         {
             OnSetExp?.Invoke(exp, MaxExp);

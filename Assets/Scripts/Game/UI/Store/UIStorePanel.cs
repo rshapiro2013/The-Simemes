@@ -4,19 +4,29 @@ using UnityEngine;
 using UnityEngine.Events;
 using Core.UI;
 
+using Simemes.Shop;
+
 namespace Simemes.UI
 {
     public class UIStorePanel : UIPanel
     {
-        [Header("Events")]
         [SerializeField]
-        private UnityEvent _onPurchaseItem;
+        private List<UIShopItemSlot> _slots;
 
-        public void PurchaseItem()
+        public void PurchaseItem(UIShopItemSlot itemSlot)
         {
-            _onPurchaseItem.Invoke();
+            bool success = ShopMgr.instance.Purchase(itemSlot.Data);
 
-            EnablePanel(false);
+            if (success)
+                EnablePanel(false);
+        }
+
+        protected override void OnShowPanel()
+        {
+            base.OnShowPanel();
+
+            foreach (var slot in _slots)
+                slot.Init();
         }
     }
 }

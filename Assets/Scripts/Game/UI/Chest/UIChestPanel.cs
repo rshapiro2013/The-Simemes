@@ -32,6 +32,8 @@ namespace Simemes.UI
         private int _buffIdx;
         private bool _enchantMode;
 
+        private System.Action _onEnchant;
+
         public List<UIChestSlot> Slots => _slots; 
 
         protected override void Awake()
@@ -83,12 +85,16 @@ namespace Simemes.UI
 
             slot.AddBuff(TreasureSystem.instance.GetBuff(_buffIdx));
 
+            _onEnchant?.Invoke();
+
             DisableEnchantMode();
         }
 
         // 開啟附魔模式，要設定附魔的buffIdx
-        public void EnableEnchantMode(int buffIdx)
+        public void EnableEnchantMode(int buffIdx, System.Action onEnchant = null)
         {
+            _onEnchant = onEnchant;
+
             _enchantMode = true;
             _buffIdx = buffIdx;
 
@@ -107,11 +113,11 @@ namespace Simemes.UI
             AddChest(0);
         }
 
-        public void AddChest(int treasureBoxID)
+        public bool AddChest(int treasureBoxID)
         {
             var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(treasureBoxID);
             if (treasureBoxConfig == null)
-                return;
+                return false;
 
             if(_selectedSlot == null)
             {
@@ -130,7 +136,11 @@ namespace Simemes.UI
                 var treasureBox = new TreasureBox(treasureBoxConfig);
                 _selectedSlot.SetBox(treasureBox);
                 _selectedSlot = null;
+
+                return true;
             }
+
+            return false;
         }
 
         public bool TryGetEmptySlot(out UIChestSlot slot)

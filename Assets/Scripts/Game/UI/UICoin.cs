@@ -71,9 +71,18 @@ namespace Simemes.UI
 
             while (_isPlaying)
             {
-                SetCoin(++_currentCoin);
-                if(_currentCoin >= _targetCoin)
-                    break;
+                if (_targetCoin >= _currentCoin)
+                {
+                    SetCoin(++_currentCoin);
+                    if (_currentCoin >= _targetCoin)
+                        break;
+                }
+                else
+                {
+                    SetCoin(--_currentCoin);
+                    if (_currentCoin <= _targetCoin)
+                        break;
+                }
                 yield return new WaitForSeconds(_updateInterval);
             }
 
