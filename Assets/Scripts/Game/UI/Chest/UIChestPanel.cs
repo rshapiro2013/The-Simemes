@@ -113,10 +113,23 @@ namespace Simemes.UI
             if (treasureBoxConfig == null)
                 return;
 
+            if(_selectedSlot == null)
+            {
+                foreach(var slot in _slots)
+                {
+                    if(slot.Content == null && !slot.Locked)
+                    {
+                        _selectedSlot = slot;
+                        break;
+                    }
+                }
+            }
+
             if (_selectedSlot != null)
             {
                 var treasureBox = new TreasureBox(treasureBoxConfig);
                 _selectedSlot.SetBox(treasureBox);
+                _selectedSlot = null;
             }
         }
 
