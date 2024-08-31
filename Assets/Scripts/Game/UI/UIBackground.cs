@@ -31,6 +31,9 @@ public class UIBackground : MonoBehaviour
     private void UpdateBackground(Simemes.Tier.TierData tierData)
     {
         _backgroundData.TryGetValue(tierData.Background, out var sprite);
+        if (sprite == null)
+            sprite = _backgrounds[_backgrounds.Count - 1];
+
         _backgroundImage.sprite = sprite;
     }
 }

@@ -35,6 +35,10 @@ public class UICharacter : MonoBehaviour
         string characterLevelSprite = $"{character} {tierData.Tier}";
 
         _characterData.TryGetValue(characterLevelSprite, out var sprite);
+
+        if (sprite == null)
+            sprite = _characters[_characters.Count - 1];
+
         _characterImage.sprite = sprite;
         _characterImage.SetNativeSize();
     }

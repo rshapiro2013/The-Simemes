@@ -9,7 +9,8 @@ public class RequestSystem : MonoSingleton<RequestSystem>
     public void RequestData<T>(string requestName, T data)
     {
         string serializedData = PlayerPrefs.GetString(requestName, string.Empty);
-        JsonConvert.PopulateObject(serializedData, data);
+        if (!string.IsNullOrEmpty(serializedData))
+            JsonConvert.PopulateObject(serializedData, data);
     }
 
     public void UploadData<T>(string requestName, T data)

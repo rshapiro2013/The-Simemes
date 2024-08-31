@@ -31,17 +31,18 @@ namespace Simemes.Profile
         [JsonIgnore]
         public System.Action<int> OnSetCoin;
         [JsonIgnore]
-        public System.Action<float> OnExpChange;
+        public System.Action<int, int> OnExpChange;
         [JsonIgnore]
-        public System.Action<float> OnSetExp;
+        public System.Action<int, int> OnSetExp;
         [JsonIgnore]
         public System.Action<int> OnSetLevel;
 
         public void Init()
         {
             SetCoin(Coin);
-            SetExp(Exp);
             SetLevel(Level);
+            SetExp(Exp);
+
         }
 
         public void SetCoin(int coin)
@@ -58,7 +59,7 @@ namespace Simemes.Profile
 
         public void SetExp(int exp)
         {
-            OnSetExp?.Invoke((float)exp / MaxExp);
+            OnSetExp?.Invoke(exp, MaxExp);
             UpdateExp(Exp);
         }
 
@@ -71,16 +72,13 @@ namespace Simemes.Profile
 
             while (Exp >= MaxExp)
             {
+                OnExpChange?.Invoke(MaxExp, MaxExp);
                 Exp -= MaxExp;
                 LevelUp();
             }
 
+            OnExpChange(Exp, MaxExp);
             UpdateExp(Exp);
-
-            int levelAdd = Level - levelBefore;
-            float expRatio = levelAdd + ((float)Exp / MaxExp - expRatioBefore);
-
-            OnExpChange?.Invoke(expRatio);
         }
 
         public void SetLevel(int level)

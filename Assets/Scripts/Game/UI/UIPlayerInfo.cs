@@ -11,6 +11,12 @@ namespace Simemes.UI
 {
     public class UIPlayerInfo : MonoBehaviour
     {
+        public class ValueUpdate
+        {
+            public int TargetValue;
+            public int MaxValue;
+        }
+
         [SerializeField] 
         private float _speed = 1;
 
@@ -31,8 +37,11 @@ namespace Simemes.UI
 
         private float _current = 0;
         private float _target = 0;
+        private int _maxValue = 0;
 
         private int _currentLevel;
+
+        private readonly Queue<ValueUpdate> _valueUpdateQueue = new Queue<ValueUpdate>();
 
         private void Awake()
         {
@@ -67,7 +76,7 @@ namespace Simemes.UI
 
         private void UpdateExpBar(float value)
         {
-            _expBar.value = value;
+            _expBar.value = value / _maxValue;
         }
 
         private void UpdateLevel(int level)
@@ -87,12 +96,14 @@ namespace Simemes.UI
             UpdateLevel(_currentLevel);
         }
 
-        private void SetExp(float value)
+        private void SetExp(int current, int max)
         {
-            _current = value;
-            _target = value;
+            _current = current;
+            _target = current;
+            _maxValue = max;
 
             UpdateExpBar(_current);
+            UpdateExp(current, max);
         }
 
         public void OnExpChange(float value)
@@ -100,30 +111,47 @@ namespace Simemes.UI
             _target += value;
         }
 
+        public void OnExpChange(int targetValue, int maxValue)
+        {
+            var valueUpdate = new ValueUpdate() { TargetValue = targetValue, MaxValue = maxValue };
+
+            _valueUpdateQueue.Enqueue(valueUpdate);
+        }
+
         private void Update()
         {
-            // 目標數值與當前數值一致，沒有動畫
-            if (_current == _target)
+            // 到達當前動畫表演的目標數值，試著開始下段演出
+            if (_current >= _target)
+                NextValueUpdate();
+
+            // 沒有表演
+            if (_current >= _target)
                 return;
 
             // 目標數值改變，播放數值增加動畫
-            _current += _speed * Time.deltaTime;
+            _current += _maxValue * _speed * Time.deltaTime;
 
-            // 如果數值超過1(連續生好幾級)
-            if(_current >= 1.0f)
+            bool reachMax = _current >= _maxValue;
+            bool reachTarget = _current >= _target;
+
+            // 到達目標數值
+            if (reachTarget)
             {
-                _current -= 1.0f;
-                _target -= 1.0f;
+                _current = _target;
+                NextValueUpdate();
+            }
+
+            // 如果到達最大數值
+            if (reachMax)
+            {
+                _current = 0;
 
                 // 升級
                 SetLevel(_currentLevel + 1);
             }
 
-            // 到達目標數值
-            if (_current > _target)
-                _current = _target;
-
             UpdateExpBar(_current);
+            UpdateExp((int)_current, _maxValue);
         }
 
         private void UpdatePlayerInfo(PlayerProfile profile)
@@ -132,12 +160,22 @@ namespace Simemes.UI
             _title.text = profile.TierData.Title;
 
             UpdateLevel(profile.Level);
-            UpdateExp(profile.Exp, profile.MaxExp);
         }
 
         private void UpdateTierData(Tier.TierData tierData)
         {
             _title.text = tierData.Title;
+        }
+
+        private void NextValueUpdate()
+        {
+            if (_valueUpdateQueue.Count == 0)
+                return;
+
+            var valueUpdate = _valueUpdateQueue.Dequeue();
+            _target = valueUpdate.TargetValue;
+
+            _maxValue = valueUpdate.MaxValue;
         }
     }
 }
