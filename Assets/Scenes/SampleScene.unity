@@ -1078,6 +1078,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3514208114554171275, guid: d5a243f49ff969f4fa14b8a4f6fb9ce7, type: 3}
+      propertyPath: _dropInterval
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4535310868971328979, guid: d5a243f49ff969f4fa14b8a4f6fb9ce7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1125,6 +1129,18 @@ PrefabInstance:
     - target: {fileID: 6731942077212223513, guid: d5a243f49ff969f4fa14b8a4f6fb9ce7, type: 3}
       propertyPath: m_Name
       value: GameSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856518924138461181, guid: d5a243f49ff969f4fa14b8a4f6fb9ce7, type: 3}
+      propertyPath: _poops
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856518924138461181, guid: d5a243f49ff969f4fa14b8a4f6fb9ce7, type: 3}
+      propertyPath: _limitCount
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856518924138461181, guid: d5a243f49ff969f4fa14b8a4f6fb9ce7, type: 3}
+      propertyPath: _testSpawnTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1185,7 +1201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392112431823982706, guid: 295c3734832ae5e47a12cb1c822b293b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -402361.03
+      value: -455004.25
       objectReference: {fileID: 0}
     - target: {fileID: 2855754191337533170, guid: 295c3734832ae5e47a12cb1c822b293b, type: 3}
       propertyPath: m_Name
@@ -1301,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944139810342825563, guid: 295c3734832ae5e47a12cb1c822b293b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45.01064
+      value: -51.622623
       objectReference: {fileID: 0}
     - target: {fileID: 7155077607212345406, guid: 295c3734832ae5e47a12cb1c822b293b, type: 3}
       propertyPath: m_AnchorMax.y
