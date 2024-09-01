@@ -11,7 +11,7 @@
   "1002": {
     "Id": "1002",
     "Tier": "2",
-    "Title": "Worker",
+    "Title": "McDonald\u2019s Intern",
     "ExpRequire": "10",
     "PoopPool": "3002",
     "ChestSlot": "3",
@@ -20,7 +20,7 @@
   "1003": {
     "Id": "1003",
     "Tier": "3",
-    "Title": "Clerk",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "20",
     "PoopPool": "3003",
     "ChestSlot": "4",
@@ -29,7 +29,7 @@
   "1004": {
     "Id": "1004",
     "Tier": "4",
-    "Title": "Technician",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "40",
     "PoopPool": "3004",
     "ChestSlot": "4",
@@ -38,7 +38,7 @@
   "1005": {
     "Id": "1005",
     "Tier": "5",
-    "Title": "Teacher",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "80",
     "PoopPool": "3005",
     "ChestSlot": "5",
@@ -47,7 +47,7 @@
   "1006": {
     "Id": "1006",
     "Tier": "6",
-    "Title": "Police Officer",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "160",
     "PoopPool": "3006",
     "ChestSlot": "5",
@@ -56,7 +56,7 @@
   "1007": {
     "Id": "1007",
     "Tier": "7",
-    "Title": "Sales Manager",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "320",
     "PoopPool": "3007",
     "ChestSlot": "6",
@@ -65,7 +65,7 @@
   "1008": {
     "Id": "1008",
     "Tier": "8",
-    "Title": "Department Supervisor",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "640",
     "PoopPool": "3008",
     "ChestSlot": "6",
@@ -74,7 +74,7 @@
   "1009": {
     "Id": "1009",
     "Tier": "9",
-    "Title": "Factory Manager",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "1280",
     "PoopPool": "3009",
     "ChestSlot": "7",
@@ -83,7 +83,7 @@
   "1010": {
     "Id": "1010",
     "Tier": "10",
-    "Title": "Bank Manager",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "2560",
     "PoopPool": "3010",
     "ChestSlot": "7",
@@ -92,7 +92,7 @@
   "1011": {
     "Id": "1011",
     "Tier": "11",
-    "Title": "Local Councilor",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "5120",
     "PoopPool": "3011",
     "ChestSlot": "8",
@@ -101,7 +101,7 @@
   "1012": {
     "Id": "1012",
     "Tier": "12",
-    "Title": "Mayor",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "10240",
     "PoopPool": "3012",
     "ChestSlot": "8",
@@ -110,7 +110,7 @@
   "1013": {
     "Id": "1013",
     "Tier": "13",
-    "Title": "Member of Parliament",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "20480",
     "PoopPool": "3013",
     "ChestSlot": "9",
@@ -119,7 +119,7 @@
   "1014": {
     "Id": "1014",
     "Tier": "14",
-    "Title": "Governor",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "40960",
     "PoopPool": "3014",
     "ChestSlot": "9",
@@ -128,7 +128,7 @@
   "1015": {
     "Id": "1015",
     "Tier": "15",
-    "Title": "Cabinet Member/Minister",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "81920",
     "PoopPool": "3015",
     "ChestSlot": "10",
@@ -137,7 +137,7 @@
   "1016": {
     "Id": "1016",
     "Tier": "16",
-    "Title": "Deputy Prime Minister/Vice President",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "163840",
     "PoopPool": "3016",
     "ChestSlot": "10",
@@ -146,7 +146,7 @@
   "1017": {
     "Id": "1017",
     "Tier": "17",
-    "Title": "Prime Minister",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "327680",
     "PoopPool": "3017",
     "ChestSlot": "11",
@@ -155,7 +155,7 @@
   "1018": {
     "Id": "1018",
     "Tier": "18",
-    "Title": "Presidential Assistant",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "655360",
     "PoopPool": "3018",
     "ChestSlot": "11",
@@ -164,7 +164,7 @@
   "1019": {
     "Id": "1019",
     "Tier": "19",
-    "Title": "Vice President",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "1310720",
     "PoopPool": "3019",
     "ChestSlot": "12",
@@ -173,7 +173,7 @@
   "1020": {
     "Id": "1020",
     "Tier": "20",
-    "Title": "President",
+    "Title": "FUDeral Reserve Chairman",
     "ExpRequire": "2621440",
     "PoopPool": "3020",
     "ChestSlot": "12",
