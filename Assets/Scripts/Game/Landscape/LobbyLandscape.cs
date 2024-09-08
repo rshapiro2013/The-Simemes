@@ -61,7 +61,14 @@ namespace Simemes.Landscape
             var min = _itemRoot.rect.min;
             var max = _itemRoot.rect.max;
 
-            (instance.transform as RectTransform).anchoredPosition = new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
+            Vector2 worldMin = _itemRoot.TransformPoint(_itemRoot.rect.min);
+            Vector2 worldMax = _itemRoot.TransformPoint(_itemRoot.rect.max);
+
+            float randomX = Random.Range(worldMin.x, worldMax.x);
+            float randomY = Random.Range(worldMin.y, worldMax.y);
+            Vector2 randomPosition = new Vector2(randomX, randomY);
+
+            instance.transform.position = randomPosition;
         }
 
         /// <summary>

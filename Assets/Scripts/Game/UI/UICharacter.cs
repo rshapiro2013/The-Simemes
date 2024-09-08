@@ -25,7 +25,8 @@ public class UICharacter : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateCharacter;
+        if (GameManager.instance != null)
+            GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateCharacter;
     }
 
     private void UpdateCharacter(Simemes.Tier.TierData tierData)

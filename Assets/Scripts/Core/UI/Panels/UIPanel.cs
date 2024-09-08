@@ -7,6 +7,9 @@ namespace Core.UI
     public class UIPanel : MonoBehaviour
     {
         [SerializeField]
+        protected string _panelID;
+
+        [SerializeField]
         protected Canvas _canvas;
 
         [SerializeField]
@@ -25,7 +28,16 @@ namespace Core.UI
 
         protected virtual void Awake()
         {
+            if (!string.IsNullOrEmpty(_panelID))
+                UIPanelManager.instance.Register(_panelID, this);
+
             EnablePanel(_defaultEnabled, true);
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if (!string.IsNullOrEmpty(_panelID))
+                UIPanelManager.instance?.Unregister(_panelID);
         }
 
         protected virtual void Reset()
@@ -66,7 +78,7 @@ namespace Core.UI
         protected void EnableCanvas(bool enabled)
         {
             foreach (var canvas in _childCanvases)
-                canvas.enabled = false;
+                canvas.enabled = enabled;
 
             if (_canvas != null)
                 _canvas.enabled = enabled;

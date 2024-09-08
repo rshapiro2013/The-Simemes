@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 658bb90f9bd99e249ad552813d7d5675, type: 3}
-  m_Name: ExpGem
+  m_Name: Exp3
   m_EditorClassIdentifier: 
-  _id: 2
+  _id: 3
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
-  _image: {fileID: 21300000, guid: 7c46c7a386d8f43229fd2e86d8732de9, type: 3}
-  _exp: 50
+  _image: {fileID: 21300000, guid: 43220b709cb8eaf4887d3c508a93c978, type: 3}
+  _exp: 100

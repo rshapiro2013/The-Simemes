@@ -90,6 +90,15 @@ namespace Simemes.Profile
         {
             UpdateLevel(level);
             OnSetLevel?.Invoke(level);
+            OnUpdateTierData?.Invoke(TierData);
+        }
+
+        public void TriggerLevelUpEvent(int level)
+        {
+            OnUpdateLevel?.Invoke(level);
+
+            var tierData = TierSystem.instance.GetTierData(level);
+            OnUpdateTierData?.Invoke(tierData);
         }
 
         private void LevelUp()
@@ -123,8 +132,6 @@ namespace Simemes.Profile
                 MaxExp = nextTierData.ExpRequire;
             else
                 MaxExp = 0;
-
-            OnUpdateTierData?.Invoke(TierData);
 
             RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
         }

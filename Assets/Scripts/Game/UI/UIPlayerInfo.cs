@@ -41,6 +41,8 @@ namespace Simemes.UI
 
         private int _currentLevel;
 
+        private bool _paused;
+
         private readonly Queue<ValueUpdate> _valueUpdateQueue = new Queue<ValueUpdate>();
 
         private void Awake()
@@ -118,8 +120,17 @@ namespace Simemes.UI
             _valueUpdateQueue.Enqueue(valueUpdate);
         }
 
+        public void Pause(bool paused)
+        {
+            _paused = paused;
+        }
+
         private void Update()
         {
+            // 暫停動畫表演
+            if (_paused)
+                return;
+
             // 到達當前動畫表演的目標數值，試著開始下段演出
             if (_current >= _target)
                 NextValueUpdate();
@@ -148,6 +159,7 @@ namespace Simemes.UI
 
                 // 升級
                 SetLevel(_currentLevel + 1);
+                GameManager.instance.PlayerProfile.TriggerLevelUpEvent(_currentLevel);
             }
 
             UpdateExpBar(_current);

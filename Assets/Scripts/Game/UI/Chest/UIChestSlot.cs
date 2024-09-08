@@ -117,9 +117,11 @@ namespace Simemes.UI
 
         private void UpdateCapacity()
         {
-            _obj_Capacity.SetActive(Content != null);
+            bool showCapacity = Content != null && !Content.IsSealed;
 
-            if (Content == null)
+            _obj_Capacity.SetActive(showCapacity);
+
+            if (!showCapacity)
                 return;
 
             int capacity = Content.Capacity;
