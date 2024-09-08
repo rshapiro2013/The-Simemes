@@ -17,6 +17,9 @@ namespace Simemes.UI
         private UITimer _timer;
 
         [SerializeField]
+        private List<UISpriteAnim> _capacitySlots;
+
+        [SerializeField]
         private GameObject _obj_Lock;
 
         [SerializeField]
@@ -27,6 +30,9 @@ namespace Simemes.UI
 
         [SerializeField]
         private GameObject _obj_Buff;
+
+        [SerializeField]
+        private GameObject _obj_Capacity;
 
         [SerializeField]
         private UIHoldButton _holdButton;
@@ -97,6 +103,8 @@ namespace Simemes.UI
             _obj_Buff.SetActive(Content != null && Content.HasBuff);
 
             _holdButton.ShowProgressBar(Content != null && Content.State != TreasureBoxState.Closed);
+
+            UpdateCapacity();
         }
 
         private void ObtainTreasure()
@@ -105,6 +113,25 @@ namespace Simemes.UI
             Content = null;
 
             UpdateState();
+        }
+
+        private void UpdateCapacity()
+        {
+            _obj_Capacity.SetActive(Content != null);
+
+            if (Content == null)
+                return;
+
+            int capacity = Content.Capacity;
+            for (int i = 0; i < capacity; ++i)
+            {
+                _capacitySlots[i].gameObject.SetActive(true);
+                _capacitySlots[i].SetSprite(i < Content.ItemWeight ? 1 : 0);
+            }
+
+            for (int i = capacity; i < _capacitySlots.Count; ++i)
+                _capacitySlots[i].gameObject.SetActive(false);
+
         }
 
         private void Update()

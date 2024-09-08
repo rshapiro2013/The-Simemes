@@ -30,6 +30,8 @@ namespace Simemes.Treasures
         public bool IsSealed => _isSealed;
         public bool HasBuff => _buff != null;
 
+        public int ItemWeight => _itemWeight;
+
         public TreasureBoxState State { get; set; }
 
         public TreasureBox(TreasureBoxConfig config)

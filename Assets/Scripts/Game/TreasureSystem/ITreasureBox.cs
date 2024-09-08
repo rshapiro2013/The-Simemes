@@ -27,6 +27,7 @@ namespace Simemes.Treasures
         bool IsFull { get; }
         bool IsSealed { get; }
         bool HasBuff { get; }
+        int ItemWeight { get; }
 
         TreasureBoxState State { get; }
 
