@@ -78,7 +78,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dropRange: {fileID: 600561153059203384}
   _dropPrefab: {fileID: 4296341956003235695, guid: f394f6a5a015bf8429352b89ec72b60a, type: 3}
-  _collectBtn: {fileID: 6413330705017018730}
   _collectCurve:
     serializedVersion: 2
     m_Curve:
@@ -103,7 +102,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _collectTime: 0.5
+  _collectTime: 0.625
   _collectTarget: {fileID: 0}
 --- !u!1 &787663369551768415
 GameObject:
