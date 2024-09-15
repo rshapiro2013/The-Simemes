@@ -4,7 +4,7 @@ using UnityEngine;
 using Core.UI;
 using Simemes.Tasks;
 
-namespace Simemes.UI.Notification
+namespace Simemes.UI.Rank
 {
     public class UIRankPanel : UIPanel
     {

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using Simemes.Tasks;
 
-namespace Simemes.UI.Rank
+namespace Simemes.UI.Frene
 {
-    public class UIRankSlot : MonoBehaviour
+    public class UIFreneSlot : MonoBehaviour
     {
         [SerializeField]
         private Image _icon;
@@ -19,16 +19,19 @@ namespace Simemes.UI.Rank
         private TextMeshProUGUI _count;
 
         [SerializeField]
+        private TextMeshProUGUI _title;
+
+        [SerializeField]
         private CanvasGroup _canvasGroup;
 
-        private RankData _rank;
+        private FreneData _data;
 
-        public RankData Rank => _rank;
+        public FreneData Frene => _data;
 
 
-        public void Set(RankData data)
+        public void Set(FreneData data)
         {
-            _rank = data;
+            _data = data;
 
             //_icon.sprite = data.Icon;
             _name.text = data.Name;

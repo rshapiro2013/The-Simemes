@@ -5,15 +5,17 @@ using UnityEngine.UI;
 using TMPro;
 using Simemes.Tasks;
 
-namespace Simemes.UI.Rank
+namespace Simemes.UI.Frene
 {
-    public class RankData
+    public class FreneData
     {
         public int ID;
 
         public string Name;
 
         public int Count;
+
+        public string Title;
 
         public int Icon;
     }
