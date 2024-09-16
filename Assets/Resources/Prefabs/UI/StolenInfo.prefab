@@ -1518,8 +1518,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9146387079385158132}
-        m_TargetAssemblyTypeName: Simemes.UI.StolenInfo, Assembly-CSharp
-        m_MethodName: LoadNextInfo
+        m_TargetAssemblyTypeName: Simemes.UI.UIStolenInfo, Assembly-CSharp
+        m_MethodName: Ban
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

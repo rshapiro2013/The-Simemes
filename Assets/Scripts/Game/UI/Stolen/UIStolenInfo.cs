@@ -38,7 +38,7 @@ namespace Simemes.UI
 
         // for local Test ======================================================
         [SerializeField] private Sprite[] _images;
-        private string[] _names = {
+        public static string[] Names = {
             "Calvina",
             "Kensey",
             "Martelli",
@@ -92,8 +92,14 @@ namespace Simemes.UI
         string _lastTitle;
         Sprite _lastSprite;
 
+        private int rewindCount = 1;
         private int _chestCount;
         private int _playerDataIndex = 0;
+
+        private void Awake()
+        {
+            rewindCount = SystemSetting.Config.RewindCount;
+        }
 
         private void OnEnable()
         {
@@ -155,21 +161,41 @@ namespace Simemes.UI
             //}
 
             //_popupFrame.SetActive(true);
+
+
+            _playerRecord.Remove(_playerData);
+            //_playerDataIndex--;
+            LoadNextInfo();
+        }
+
+        public void Ban()
+        {
+            _playerRecord.Add(_playerData);
+            _playerDataIndex = _playerRecord.Count;
+            LoadNextInfo();
         }
 
         public void LoadNextInfo()
         {
-            if (_playerDataIndex < _playerRecord.Count - 1)
-                LoadInfoBase(++_playerDataIndex);
-            else
-                LoadNewInfo();
+            //if (_playerDataIndex < _playerRecord.Count - 1)
+            //    LoadInfoBase(++_playerDataIndex);
+            //else
+            LoadNewInfo();
         }
 
         public void LoadPreviousInfo()
         {
+            if (rewindCount < 0)
+            {
+                _popupText.text = "No rewind count";
+                _popupFrame.SetActive(true);
+                return;
+            }
+
             int playerDataIndex = _playerDataIndex - 1;
             if (playerDataIndex > -1)
             {
+                --rewindCount;
                 _playerDataIndex = playerDataIndex;
                 LoadInfoBase(_playerDataIndex);
             }
@@ -234,8 +260,8 @@ namespace Simemes.UI
         private void LoadNewInfo()
         {
             // for local Test ======================================================
-            int nameIndex = Random.Range(0, _names.Length);
-            _lastName = _names[nameIndex];
+            int nameIndex = Random.Range(0, Names.Length);
+            _lastName = Names[nameIndex];
             _lastTitle = _titles[nameIndex];
             int spriteIndex = nameIndex % _images.Length;// < _images.Length ? nameIndex : _images.Length - 1;
             _lastSprite = _images[spriteIndex];
@@ -248,8 +274,8 @@ namespace Simemes.UI
                 UIChestSlot slot = _slots[i];
                 _playerData.Treasures.Add(new TreasureData() { RemainTime = slot.Content.RemainTime, HasBuff = slot.Content.HasBuff });
             }
-            _playerRecord.Add(_playerData);
-            _playerDataIndex = _playerRecord.Count - 1;
+            //_playerRecord.Add(_playerData);
+            //_playerDataIndex = _playerRecord.Count - 1;
 
             // ===============================================================
 
@@ -259,7 +285,7 @@ namespace Simemes.UI
         private void LoadInfoBase(int index)
         {
             _playerData = _playerRecord[index];
-            _lastName = _names[_playerData.Name];
+            _lastName = Names[_playerData.Name];
             _lastTitle = _titles[_playerData.Titles];
             _lastSprite = _images[_playerData.Sprite];
             LoadChestData(_playerData);

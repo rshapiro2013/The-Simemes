@@ -794,23 +794,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3248919293173867422}
     - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Open
+      value: Visit
       objectReference: {fileID: 0}
     - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Simemes.UI.Notification.UINotificationPanel, Assembly-CSharp
+      value: Simemes.UI.Frene.UIFreneSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3305201122480392573, guid: aa27390216c3a4dd89ce5cf5ad82da72, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

@@ -25,17 +25,24 @@ namespace Simemes.UI.Frene
         private CanvasGroup _canvasGroup;
 
         private FreneData _data;
+        private int _index;
 
         public FreneData Frene => _data;
 
 
-        public void Set(FreneData data)
+        public void Set(FreneData data, int index)
         {
             _data = data;
+            _index = index;
 
             //_icon.sprite = data.Icon;
             _name.text = data.Name;
             _count.text = data.Count.ToString("N0");
+        }
+
+        public void Visit()
+        {
+            UIFrenePanel.Instance.Visit(_index);
         }
     }
 }
