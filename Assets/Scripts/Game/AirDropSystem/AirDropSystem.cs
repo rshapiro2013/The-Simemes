@@ -4,21 +4,43 @@ using UnityEngine;
 using Core.Utilities;
 using Simemes.Treasures;
 using Simemes.Landscape;
+using Newtonsoft.Json;
 
 namespace Simemes.AirDrop
 {
     public class AirDropSystem : MonoSingleton<AirDropSystem>
     {
+        public class TreasureData
+        {
+            public int ItemID;
+            public long CreationTime;
+
+            public TreasureData()
+            {
+
+            }
+
+            public TreasureData(Treasure treasure)
+            {
+                ItemID = treasure.ID;
+                CreationTime = treasure.CreationTime;
+            }
+        }
+
         [SerializeField]
         protected AirDropConfig _airDropConfig;
 
         [SerializeField]
         private int _dropInterval;
 
+        [SerializeField]
+        private int _maxItemCount = 10;
 
         private long _lastCheckTime;
 
         private readonly Queue<Treasure> _treasures = new Queue<Treasure>();
+
+        private readonly List<TreasureData> _treasureData = new List<TreasureData>();
 
         public static long Now => System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
@@ -27,6 +49,8 @@ namespace Simemes.AirDrop
             base.Awake();
 
             //_lastCheckTime = PlayerPrefs.GetInt("LastCheckTime", 0);
+            LoadData();
+            InitialSpawn();
 
             StartCoroutine(DoUpdate());
         }
@@ -81,28 +105,93 @@ namespace Simemes.AirDrop
                 return;
 
             _treasures.Dequeue();
+
+            SaveData();
         }
 
         private void SpawnRandomItem()
         {
+            if (_treasures.Count >= _maxItemCount)
+                return;
+
             int itemID = _airDropConfig.GetRandomDropItem();
 
+            SpawnTreasureItem(itemID, Now);
+            SaveData();
+        }
+
+        private void SpawnTreasureItem(int itemID, long creationTime)
+        {
             var config = TreasureSystem.instance.GetTreasureConfig(itemID);
 
             if (config != null)
             {
-                var treasure = new Treasure(config, Now);
-                _treasures.Enqueue(treasure);
-
-                // §â¬Ý±o¨£ªºª««~¥[¨ì³õ´º¤¤
-                LobbyLandscape.instance.AddItem(treasure);
+                var treasure = new Treasure(config, creationTime);
+                SpawnTreasureItem(treasure);
             }
         }
         
+        private void SpawnTreasureItem(Treasure treasure)
+        {
+            _treasures.Enqueue(treasure);
+
+            // §â¬Ý±o¨£ªºª««~¥[¨ì³õ´º¤¤
+            LobbyLandscape.instance.AddItem(treasure);
+        }
+
         private void UpdateTime(long time)
         {
             _lastCheckTime = time;
-            //PlayerPrefs.SetInt("LastCheckTime", (int)_lastCheckTime);
+            PlayerPrefs.SetString("LastCheckTime", _lastCheckTime.ToString());
+        }
+
+        private void SaveData()
+        {
+            _treasureData.Clear();
+
+            foreach(var treasure in _treasures)
+                _treasureData.Add(new TreasureData(treasure));
+
+            string data = JsonConvert.SerializeObject(_treasureData);
+            PlayerPrefs.SetString("AirDropData", data);
+        }
+
+        private void LoadData()
+        {
+            string data = PlayerPrefs.GetString("AirDropData");
+            if (string.IsNullOrEmpty(data))
+                return;
+
+            _treasureData.Clear();
+            JsonConvert.PopulateObject(data, _treasureData);
+            foreach(var treasure in _treasureData)
+            {
+                SpawnTreasureItem(treasure.ItemID, treasure.CreationTime);
+            }
+        }
+
+        private void InitialSpawn()
+        {
+            string lastSpawnTimeStr = PlayerPrefs.GetString("LastCheckTime");
+            if(!string.IsNullOrEmpty(lastSpawnTimeStr))
+            {
+                _lastCheckTime = long.Parse(lastSpawnTimeStr);
+            }
+            else
+            {
+                _lastCheckTime = Now;
+                PlayerPrefs.SetString("LastCheckTime", _lastCheckTime.ToString());
+            }
+
+            if (Now - _lastCheckTime >= _dropInterval)
+            {
+                int times = (int)((Now - _lastCheckTime) / _dropInterval);
+                UpdateTime(_lastCheckTime + _dropInterval * times);
+
+                for (int i = 0; i < times; ++i)
+                    SpawnRandomItem();
+            }
+
         }
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
   _image: {fileID: 21300000, guid: 43220b709cb8eaf4887d3c508a93c978, type: 3}
-  _exp: 100
+  _exp: 20
