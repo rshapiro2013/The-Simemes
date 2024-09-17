@@ -93,12 +93,14 @@ namespace Simemes.UI
         Sprite _lastSprite;
 
         private int rewindCount = 1;
+        private int recommendationCount = 1;
         private int _chestCount;
         private int _playerDataIndex = 0;
 
         private void Awake()
         {
             rewindCount = SystemSetting.Config.RewindCount;
+            recommendationCount = SystemSetting.Config.RecommendationCount;
         }
 
         private void OnEnable()
@@ -170,9 +172,18 @@ namespace Simemes.UI
 
         public void Ban()
         {
-            _playerRecord.Add(_playerData);
-            _playerDataIndex = _playerRecord.Count;
+            if (!_playerRecord.Contains(_playerData))
+            {
+                _playerRecord.Add(_playerData);
+            }
+            _playerDataIndex = _playerRecord.Count-1;
             LoadNextInfo();
+        }
+
+        public void Popup(string msg)
+        {
+            _popupText.text = msg;
+            _popupFrame.SetActive(true);
         }
 
         public void LoadNextInfo()
@@ -180,15 +191,20 @@ namespace Simemes.UI
             //if (_playerDataIndex < _playerRecord.Count - 1)
             //    LoadInfoBase(++_playerDataIndex);
             //else
+            if(recommendationCount < 1)
+            {
+                Popup("No recommendation count");
+                return;
+            }
+            --recommendationCount;
             LoadNewInfo();
         }
 
         public void LoadPreviousInfo()
         {
-            if (rewindCount < 0)
+            if (rewindCount < 1)
             {
-                _popupText.text = "No rewind count";
-                _popupFrame.SetActive(true);
+                Popup("No rewind count");
                 return;
             }
 
