@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601899fd1d338234580bb81bc766a466, type: 3}
   m_Name: SettingConfig
   m_EditorClassIdentifier: 
-  RewindCount: 1
+  RewindCount: 5
+  RecommendationCount: 5
