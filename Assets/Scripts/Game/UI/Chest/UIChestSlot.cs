@@ -41,13 +41,14 @@ namespace Simemes.UI
 
         public bool Locked { get; private set; }
 
-        public void Init(ChestData chestData)
+        public void Clear(bool locked)
         {
-            Locked = chestData.IsLocked;
+            Locked = locked;
+            Content = null;
 
             UpdateState();
-        }
 
+        }
         // ©ñ¸mÄ_½c
         public void SetBox(ITreasureBox box)
         {

@@ -6,6 +6,11 @@ namespace Simemes.Treasures
 {
     public class TreasureBuffConfig : ScriptableObject, ITreasureBuff
     {
+        [SerializeField]
+        protected int _id;
+
+        public int ID => _id;
+
         public virtual void Init(ITreasureBox treasureBox)
         {
 

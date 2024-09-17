@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17828b84066e7f4a80e46ec73417262, type: 3}
   m_Name: ProtectionBuff
   m_EditorClassIdentifier: 
+  _id: 5001

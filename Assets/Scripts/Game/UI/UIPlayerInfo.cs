@@ -169,9 +169,12 @@ namespace Simemes.UI
         private void UpdatePlayerInfo(PlayerProfile profile)
         {
             _name.text = profile.UserName;
-            _title.text = profile.TierData.Title;
+            if (profile.TierData != null)
+            {
+                _title.text = profile.TierData.Title;
 
-            UpdateLevel(profile.Level);
+                UpdateLevel(profile.Level);
+            }
         }
 
         private void UpdateTierData(Tier.TierData tierData)

@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using Core.Utilities;
+using Core.Networking;
+using Simemes;
+using Simemes.Treasures;
 
 public class GameFlow : MonoSingleton<GameFlow>
 {
     [SerializeField]
     private Animator _state;
 
+    protected virtual void Start()
+    {
+        Init();
+    }
+
     public async Task Init()
     {
         Input.multiTouchEnabled = false;
 
-        SetTrigger("LicenseValid");
+        await RequestSystem.instance.Login();
+        await GameManager.instance.LoadPlayerData();
+        await TreasureSystem.instance.Init();
+
+        SetBool("UserDataLoaded", true);
     }
 
     public void SetBool(string name, bool value)

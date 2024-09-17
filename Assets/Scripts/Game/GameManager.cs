@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Utilities;
+using Core.Networking;
 using Simemes.Profile;
+using System.Threading.Tasks;
 
 namespace Simemes
 {
@@ -10,18 +12,28 @@ namespace Simemes
     {
         public PlayerProfile PlayerProfile = new PlayerProfile();
 
-        private void Start()
+        public async Task LoadPlayerData()
         {
             RequestSystem.instance.RequestData("PlayerProfile", PlayerProfile);
-
             if (string.IsNullOrEmpty(PlayerProfile.Character))
             {
                 PlayerProfile.Character = "yellow pepe farmer";
 
                 RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
+
+                await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
             }
+            else
+                await PlayerInfoRequest<PlayerProfile>.LoadPlayerData(PlayerProfile);
 
             PlayerProfile.Init();
+
+        }
+
+        public async Task SavePlayerData()
+        {
+            RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
+            await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
         }
     }
 }

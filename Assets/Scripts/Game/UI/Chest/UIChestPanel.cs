@@ -40,9 +40,18 @@ namespace Simemes.UI
         {
             base.Awake();
 
-            RefreshSlots();
-
             DisableEnchantMode();
+
+            TreasureSystem.instance.OnUpdateChests += RefreshSlots;
+            GameManager.instance.PlayerProfile.OnUpdateTierData += RefreshSlotLocks;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            TreasureSystem.instance.OnUpdateChests -= RefreshSlots;
+            GameManager.instance.PlayerProfile.OnUpdateTierData -= RefreshSlotLocks;
         }
 
         public void Click(UIChestSlot slot)
@@ -75,7 +84,12 @@ namespace Simemes.UI
         {
             // 箱子不是空的就可以關上倒數
             if (slot.Content != null)
+            {
                 slot.Seal();
+                int slotIdx = _slots.FindIndex(x => x == slot);
+
+                Simemes.Request.TreasureRequest.CloseTreasureBox(slotIdx);
+            }
         }
 
         public void Enchant(UIChestSlot slot)
@@ -84,6 +98,8 @@ namespace Simemes.UI
                 return;
 
             slot.AddBuff(TreasureSystem.instance.GetBuff(_buffIdx));
+            int slotIdx = _slots.FindIndex(x => x == slot);
+            Simemes.Request.TreasureRequest.Enchant(slotIdx, _buffIdx);
 
             _onEnchant?.Invoke();
 
@@ -119,8 +135,9 @@ namespace Simemes.UI
             if (treasureBoxConfig == null)
                 return false;
 
-            if(_selectedSlot == null)
+            if (_selectedSlot == null)
             {
+                
                 foreach(var slot in _slots)
                 {
                     if(slot.Content == null && !slot.Locked)
@@ -133,9 +150,12 @@ namespace Simemes.UI
 
             if (_selectedSlot != null)
             {
+                int slotIdx = _slots.FindIndex(x => x == _selectedSlot);
                 var treasureBox = new TreasureBox(treasureBoxConfig);
                 _selectedSlot.SetBox(treasureBox);
                 _selectedSlot = null;
+
+                Simemes.Request.TreasureRequest.AddTreasureBox(slotIdx, treasureBoxID);
 
                 return true;
             }
@@ -159,12 +179,33 @@ namespace Simemes.UI
             return false;
         }
 
+        private void RefreshSlotLocks(Tier.TierData tierData)
+        {
+            int chestCount = GameManager.instance.PlayerProfile.TierData.ChestSlot;
+            for (int i = 0; i < chestCount; ++i)
+                _slots[i].SetLock(false);
+
+            for (int i = chestCount; i < _slots.Count; ++i)
+                _slots[i].SetLock(true);
+        }
+
         private void RefreshSlots()
         {
-            for(int i=0;i<_slots.Count;++i)
+            var list = TreasureSystem.instance.GetTreasureBoxes();
+            int chestCount = GameManager.instance.PlayerProfile.TierData.ChestSlot;
+            for (int i = 0; i < chestCount; ++i)
+                _slots[i].Clear(false);
+            for (int i = chestCount; i < _slots.Count; ++i)
+                _slots[i].Clear(true);
+
+            foreach(var box in list)
             {
-                if (i < _fakeChestData.Count)
-                    _slots[i].Init(_fakeChestData[i]);
+                var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(box.ChestID);
+                var treasureBox = new TreasureBox(treasureBoxConfig);
+
+                treasureBox.Set(box);
+
+                _slots[box.SlotID].SetBox(treasureBox);
             }
         }
 
@@ -177,6 +218,9 @@ namespace Simemes.UI
 
             AirDropSystem.instance.RemoveFirstItem();
             LobbyLandscape.instance.PickItem(item, slot.transform.position, (treasure) => slot.SetTreasure(treasure as ITreasure));
+
+            int slotIdx = _slots.FindIndex(x => x == slot);
+            Simemes.Request.TreasureRequest.AddTreasureItem(slotIdx, item.ID);
         }
 
         private void ShowChestInfo(UIChestSlot slot)

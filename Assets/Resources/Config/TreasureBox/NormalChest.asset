@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4cca0d59ff48444a8f63c29a82a7fe2, type: 3}
   m_Name: NormalChest
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 21011
   _capacity: 1
   _coolDown: 60
   _images:

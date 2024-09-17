@@ -42,6 +42,32 @@ namespace Simemes.Treasures
             State = TreasureBoxState.Opened;
         }
 
+        public void Set(ChestData chestData)
+        {
+            var treasureSys = TreasureSystem.instance;
+
+            var box = treasureSys.GetTreasureBoxConfig(chestData.ChestID);
+            foreach(var itemIdx in chestData.Treasures)
+            {
+                var item = treasureSys.GetTreasureConfig(itemIdx);
+                var treasure = new Treasure(item, chestData.StartTime);
+                Add(treasure, chestData.StartTime);
+            }
+
+            if (chestData.IsSealed)
+                Seal();
+
+            if(chestData.BuffID > 0)
+            {
+                var buff = treasureSys.GetBuff(chestData.BuffID);
+                AddBuff(buff);
+            }
+
+            _startTime = chestData.StartTime;
+            if (chestData.IsSealed)
+                _remainTime = chestData.CoolDown - (AirDrop.AirDropSystem.Now - _startTime);
+        }
+
         public void Add(ITreasure item, long addTime)
         {
             _items.Add(item);

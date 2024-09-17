@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b635c71f078b4b744a6f15375cf91aa5, type: 3}
   m_Name: ReduceTimeBuff
   m_EditorClassIdentifier: 
+  _id: 5002

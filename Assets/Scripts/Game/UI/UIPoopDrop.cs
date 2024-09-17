@@ -88,7 +88,7 @@ namespace Simemes.UI
             GameObject newObject = Instantiate(_dropPrefab, _dropRange);
             RectTransform rectTransform = newObject.transform as RectTransform;
             rectTransform.position = randomPosition;
-            rectTransform.parent = transform;
+            rectTransform.SetParent(transform, true);
             _spawnedObjects.Add(newObject);
 
             newObject.GetComponent<Button>().onClick.AddListener(Collect);

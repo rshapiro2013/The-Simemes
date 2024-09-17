@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.Networking;
 using Simemes.Tier;
 using Newtonsoft.Json;
 
@@ -110,14 +111,15 @@ namespace Simemes.Profile
         {
             Coin = coin;
 
-            RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
+            GameManager.instance.SavePlayerData();
         }
 
         private void UpdateExp(int exp)
         {
             Exp = exp;
 
-            RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
+            GameManager.instance.SavePlayerData();
+
         }
 
         private void UpdateLevel(int level)
@@ -133,7 +135,8 @@ namespace Simemes.Profile
             else
                 MaxExp = 0;
 
-            RequestSystem.instance.UploadData<PlayerProfile>("PlayerProfile", this);
+            GameManager.instance.SavePlayerData();
+
         }
     }
 }
