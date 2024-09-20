@@ -17,4 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: a7b00adce113f4ed785fa92de2bd4565, type: 3}
   _currencyType: 0
   _price: 1
+  _desc: "Trigger 24 hours protection \nwhen theif try to steal this chest"
   _buffID: 1

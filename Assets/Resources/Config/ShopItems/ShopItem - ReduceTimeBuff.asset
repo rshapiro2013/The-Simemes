@@ -17,4 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 4973042e6ed5a4333b3298727fa8bebe, type: 3}
   _currencyType: 0
   _price: 1
+  _desc: Reduce count down by half
   _buffID: 0

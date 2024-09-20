@@ -27,11 +27,17 @@ namespace Simemes.Shop
         [SerializeField]
         protected int _price;
 
+        [TextArea(3,10)]
+        [SerializeField]
+        protected string _desc;
+
         public string Name => _name;
         public ShopItemType ItemType => _itemType;
 
         public Sprite Icon => _icon;
         public int CurrencyType => _currencyType;
         public int Price => _price;
+
+        public string Desc => _desc;
     }
 }

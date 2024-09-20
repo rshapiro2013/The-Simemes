@@ -17,4 +17,9 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 7872bcd9a528e2547a10a3c97d363fe7, type: 3}
   _currencyType: 0
   _price: 1
+  _desc: 'A normal chest
+
+    Countdown: 24 hours
+
+'
   _chestID: 0

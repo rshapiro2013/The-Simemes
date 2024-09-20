@@ -59,6 +59,12 @@ namespace Simemes.UI
             _price.text = item.Price.ToString();
             _price.color = canBuy ? _color_Normal : _color_Invalid;
         }
+        
+        // 顯示商品資訊
+        public void ShowItemInfo()
+        {
+            _storePanel.ShowItemInfo(_data);
+        }
 
         public void Purchase()
         {
