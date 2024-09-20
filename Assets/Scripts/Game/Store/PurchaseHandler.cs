@@ -28,7 +28,7 @@ namespace Simemes.Shop
 
         protected virtual void UnregisterHandler()
         {
-            ShopMgr.instance.UnregisterHandler(_targetItemType, this);
+            ShopMgr.instance?.UnregisterHandler(_targetItemType, this);
         }
 
         public virtual bool HandlePurchase(ShopItemConfig item)

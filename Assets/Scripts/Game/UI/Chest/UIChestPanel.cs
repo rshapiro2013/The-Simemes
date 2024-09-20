@@ -50,8 +50,10 @@ namespace Simemes.UI
         {
             base.OnDestroy();
 
-            TreasureSystem.instance.OnUpdateChests -= RefreshSlots;
-            GameManager.instance.PlayerProfile.OnUpdateTierData -= RefreshSlotLocks;
+            if (TreasureSystem.instanceExists)
+                TreasureSystem.instance.OnUpdateChests -= RefreshSlots;
+            if (GameManager.instanceExists)
+                GameManager.instance.PlayerProfile.OnUpdateTierData -= RefreshSlotLocks;
         }
 
         public void Click(UIChestSlot slot)

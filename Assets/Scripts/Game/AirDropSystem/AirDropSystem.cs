@@ -44,11 +44,8 @@ namespace Simemes.AirDrop
 
         public static long Now => System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
-        protected override void Awake()
+        protected virtual void Start()
         {
-            base.Awake();
-
-            //_lastCheckTime = PlayerPrefs.GetInt("LastCheckTime", 0);
             LoadData();
             InitialSpawn();
 

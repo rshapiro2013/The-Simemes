@@ -25,7 +25,8 @@ public class UIBackground : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateBackground;
+        if (GameManager.instanceExists)
+            GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateBackground;
     }
 
     private void UpdateBackground(Simemes.Tier.TierData tierData)
