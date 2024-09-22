@@ -19,15 +19,6 @@ namespace Simemes.Landscape
 
         protected readonly Dictionary<ILandscapeItem, GameObject> _items = new Dictionary<ILandscapeItem, GameObject>();
 
-        protected void OnEnable()
-        {
-            AdjustLandscapeArea();
-        }
-
-        protected void AdjustLandscapeArea()
-        {
-
-        }
 
         /// <summary>
         /// 新增物件到場上
