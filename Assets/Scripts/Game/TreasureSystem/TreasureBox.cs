@@ -65,7 +65,7 @@ namespace Simemes.Treasures
 
             _startTime = chestData.StartTime;
             if (chestData.IsSealed)
-                _remainTime = chestData.CoolDown - (AirDrop.AirDropSystem.Now - _startTime);
+                _remainTime = chestData.EndTime - AirDrop.AirDropSystem.Now;
         }
 
         public void Add(ITreasure item, long addTime)

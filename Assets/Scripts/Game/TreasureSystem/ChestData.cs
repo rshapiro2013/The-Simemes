@@ -20,11 +20,11 @@ namespace Simemes.Treasures
         [JsonProperty("items")]
         public List<int> Treasures;
 
-        [JsonProperty("startTime")]
+        [JsonProperty("starttime")]
         public long StartTime;
 
-        [JsonProperty("coolDown")]
-        public int CoolDown;
+        [JsonProperty("endtime")]
+        public int EndTime;
 
         [JsonProperty("buffId")]
         public int BuffID;
