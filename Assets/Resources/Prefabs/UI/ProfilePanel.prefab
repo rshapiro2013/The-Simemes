@@ -350,14 +350,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 218f40503040ab1458bc279bbb182153, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b97c79faaa88cd44bdaca03783a8053, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1530,6 +1530,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7560510575623450339}
     m_Modifications:
+    - target: {fileID: 369017031064767742, guid: 924e94d2a08f91a4f84709e5f73c292c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 592226036948870420, guid: 924e94d2a08f91a4f84709e5f73c292c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1653,6 +1657,10 @@ PrefabInstance:
     - target: {fileID: 5919910957721360902, guid: 924e94d2a08f91a4f84709e5f73c292c, type: 3}
       propertyPath: m_Name
       value: SearchFrensPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919910957721360902, guid: 924e94d2a08f91a4f84709e5f73c292c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5921671767618098787, guid: 924e94d2a08f91a4f84709e5f73c292c, type: 3}
       propertyPath: m_AnchorMax.y

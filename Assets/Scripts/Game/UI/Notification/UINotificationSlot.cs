@@ -16,12 +16,14 @@ namespace Simemes.UI.Notification
         private TextMeshProUGUI _title;
 
         [SerializeField]
+        private GameObject _buttons;
+
+        [SerializeField]
         private CanvasGroup _canvasGroup;
 
         private NotificationData _notification;
 
         public NotificationData Notification => _notification;
-
 
         public void Set(NotificationData data)
         {
@@ -29,6 +31,12 @@ namespace Simemes.UI.Notification
 
             //_icon.sprite = data.Icon;
             _title.text = data.Title;
+        }
+
+        public void ShowButtons(bool enable)
+        {
+            if (_buttons != null)
+                _buttons.SetActive(enable);
         }
     }
 }
