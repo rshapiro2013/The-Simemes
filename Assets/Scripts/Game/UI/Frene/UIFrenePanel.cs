@@ -48,9 +48,12 @@ namespace Simemes.UI.Frene
                 _frensMap[index] = playerData;
             }
 
-            int spriteIndex = index % _images.Length;
-            _stolenView.LoadInfo(playerData, data.Name, data.Title, _images[spriteIndex]);
-            _stolenView.gameObject.SetActive(true);
+            if (_stolenView != null)
+            {
+                int spriteIndex = index % _images.Length;
+                _stolenView.LoadInfo(playerData, data.Name, data.Title, _images[spriteIndex]);
+                _stolenView.gameObject.SetActive(true);
+            }
         }
 
         public void Open()
@@ -71,7 +74,8 @@ namespace Simemes.UI.Frene
         protected override void OnHidePanel()
         {
             base.OnHidePanel();
-            _stolenView.gameObject.SetActive(false);
+            if (_stolenView != null)
+                _stolenView.gameObject.SetActive(false);
         }
 
         protected override void OnShowPanel()
@@ -81,7 +85,7 @@ namespace Simemes.UI.Frene
             // 沒有通知資料，隨機產生
             if (_datas.Count == 0)
             {
-                for (int i = 0; i < 9; ++i)
+                for (int i = 0; i < 8; ++i)
                 {
                     var taskData = new FreneData() { Name = UIStolenInfo.Names[i], Count = Random.Range(50, 1000000000) };
                     _datas.Add(taskData);
