@@ -8,6 +8,7 @@ using Core.UI;
 using Simemes.Treasures;
 using Simemes.AirDrop;
 using Simemes.Landscape;
+using Simemes.Tasks;
 
 namespace Simemes.UI
 {
@@ -91,6 +92,8 @@ namespace Simemes.UI
                 int slotIdx = _slots.FindIndex(x => x == slot);
 
                 Simemes.Request.TreasureRequest.CloseTreasureBox(slotIdx);
+
+                TaskMgr.instance.FinishTask("SealTreasureBox", 1);
             }
         }
 
@@ -104,6 +107,8 @@ namespace Simemes.UI
             Simemes.Request.TreasureRequest.Enchant(slotIdx, _buffIdx);
 
             _onEnchant?.Invoke();
+
+            TaskMgr.instance.FinishTask("Enchant", 1);
 
             DisableEnchantMode();
         }

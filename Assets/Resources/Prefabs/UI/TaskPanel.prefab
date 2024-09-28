@@ -408,7 +408,7 @@ RectTransform:
   - {fileID: 7832553158552103781}
   - {fileID: 1981632417001710649}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33713e6289d35ae48a59ca8dddba753d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panelID: 
   _canvas: {fileID: 1448146516356679804}
   _defaultEnabled: 0
   _childCanvases: []
@@ -498,18 +499,14 @@ MonoBehaviour:
   _onHide:
     m_PersistentCalls:
       m_Calls: []
-  _taskSlots:
+  _dailyTaskSlots:
   - {fileID: 5502508428598769507}
   - {fileID: 6892185496631023604}
   - {fileID: 2771767672302008128}
+  _memeTaskSlots:
   - {fileID: 8780058219544469915}
   - {fileID: 3298070945737776411}
   - {fileID: 5009662900969925916}
-  _tasks:
-  - {fileID: 11400000, guid: 421b89be96fcd8f45b2cd2de95014260, type: 2}
-  - {fileID: 11400000, guid: d3158e92fb3ad7f429809b89557e8da9, type: 2}
-  - {fileID: 11400000, guid: a8cfa52af4b436d489a9587924a78b50, type: 2}
-  - {fileID: 11400000, guid: 6c45f47c6d5ec394aa2479838161c245, type: 2}
 --- !u!1 &2869557802325294616
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -107207.51}
+  m_AnchoredPosition: {x: 0, y: -46916.895}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8464739798655772063
@@ -629,7 +626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -13.54576}
+  m_AnchoredPosition: {x: 0, y: -5.9738984}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8291082677449955589

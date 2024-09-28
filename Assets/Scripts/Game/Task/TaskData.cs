@@ -6,40 +6,39 @@ namespace Simemes.Tasks
 {
     public class TaskData
     {
-        public class TaskProgress
-        {
-            public int Current;
-            public int Target;
-        }
-
-        [SerializeField]
-        private bool _claimed;
-
-        [SerializeField]
-        private bool _started;
-
         private TaskConfig _config;
 
-        private TaskProgress _progress = new TaskProgress();
+        private TaskProgress _progress;
 
         public TaskConfig Config => _config;
         public TaskProgress Progress => _progress;
 
-        public bool Claimed => _claimed;
+        public bool Claimed => _progress.Claimed;
         public bool Finished => _progress.Current >= _progress.Target;
-        public bool Started => _started;
+        public bool Started => _progress.Started;
 
-        public TaskData(TaskConfig config)
+        public TaskData(TaskConfig config, TaskProgress progress = null)
         {
             _config = config;
 
-            _progress.Current = 0;
-            _progress.Target = config.TargetValue;
+            if (progress != null)
+            {
+                _progress = progress;
+            }
+            else
+            {
+                _progress = new TaskProgress();
+                _progress.ID = _config.ID;
+                _progress.Current = config.UpdateProgress(0, 0);
+                _progress.Target = config.TargetValue;
+            }
         }
 
         public void StartTask()
         {
-            _started = true;
+            _progress.Started = true;
+            _config.TriggerStart();
+            TaskMgr.instance.UpdateTaskData();
         }
 
         public void Claim()
@@ -47,7 +46,23 @@ namespace Simemes.Tasks
             if (!Finished)
                 return;
 
-            _claimed = true;
+            _progress.Claimed = true;
+            _config.TriggerClaim();
+            TaskMgr.instance.UpdateTaskData();
+        }
+
+        public void FinishTask(string evt, int value)
+        {
+            if (!_progress.Started || _progress.Claimed)
+                return;
+
+            if (evt == _config.TaskEvent)
+                UpdateProgress(value);
+        }
+
+        public void UpdateProgress(int value)
+        {
+            _progress.Current = _config.UpdateProgress(_progress.Current, value);
         }
     }
 }

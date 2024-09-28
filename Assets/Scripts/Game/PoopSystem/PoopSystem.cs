@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Utilities;
+using Simemes.Tasks;
 
 namespace Simemes.Poop
 {
@@ -71,6 +72,8 @@ namespace Simemes.Poop
 
             long now = AirDrop.AirDropSystem.Now;
             PlayerPrefs.SetString("LastPoopCollectTime", now.ToString());
+
+            TaskMgr.instance.FinishTask("CollectPoops", 1);
         }
     }
 }

@@ -6,6 +6,7 @@ using Core.Utilities;
 using Core.Networking;
 using Simemes;
 using Simemes.Treasures;
+using Simemes.Tasks;
 
 public class GameFlow : MonoSingleton<GameFlow>
 {
@@ -24,6 +25,7 @@ public class GameFlow : MonoSingleton<GameFlow>
         await RequestSystem.instance.Login();
         await GameManager.instance.LoadPlayerData();
         await TreasureSystem.instance.Init();
+        await TaskMgr.instance.Init(GameManager.instance.PlayerProfile.TaskProgress);
 
         SetBool("UserDataLoaded", true);
     }

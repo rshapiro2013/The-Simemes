@@ -9,59 +9,38 @@ namespace Simemes.UI.Tasks
     public class UITaskPanel : UIPanel
     {
         [SerializeField]
-        private List<UITaskSlot> _taskSlots;
+        private List<UITaskSlot> _dailyTaskSlots;
 
         [SerializeField]
-        private List<TaskConfig> _tasks;
+        private List<UITaskSlot> _memeTaskSlots;
 
-        private readonly List<TaskData> _taskData = new List<TaskData>();
         protected override void OnShowPanel()
         {
             base.OnShowPanel();
 
-            // 沒有任務資料，隨機產生
-            if(_taskData.Count == 0)
-            {
-                for (int i = 0; i < _taskSlots.Count; ++i)
-                {
-                    var config = GetRandomTask();
-                    var taskData = new TaskData(config);
+            UpdateTaskList();
 
-                    RandomTaskState(taskData);
-                    _taskData.Add(taskData);
-                }
-            }
-
-            // 初始化任務欄位
-            for(int i=0;i<_taskSlots.Count;++i)
-                _taskSlots[i].Set(_taskData[i]);
-
+            TaskMgr.instance.OnFinishTask += UpdateTaskList;
         }
 
-        private TaskConfig GetRandomTask()
+        protected override void OnHidePanel()
         {
-            int idx = Random.Range(0, _tasks.Count);
-            return _tasks[idx];
+            base.OnHidePanel();
+
+            TaskMgr.instance.OnFinishTask -= UpdateTaskList;
         }
 
-        private void RandomTaskState(TaskData task)
+        public void UpdateTaskList()
         {
-            // 一半機率開始任務
-            if (Random.value < 0.5f)
-            {
-                task.StartTask();
+            var dailTasks = TaskMgr.instance.GetDailyTasks();
+            var memeTasks = TaskMgr.instance.GetMemeTasks();
 
-                // 一半機率完成任務
-                if (Random.value < 0.5f)
-                {
-                    task.Progress.Current = task.Progress.Target;
+            // 更新顯示的任務資料
+            for (int i = 0; i < _dailyTaskSlots.Count; ++i)
+                _dailyTaskSlots[i].Set(dailTasks[i]);
 
-                    // 一半機率領取獎勵
-                    if (Random.value < 0.5f)
-                        task.Claim();
-                }
-
-            }
+            for (int i = 0; i < _memeTaskSlots.Count; ++i)
+                _memeTaskSlots[i].Set(memeTasks[i]);
         }
     }
 }

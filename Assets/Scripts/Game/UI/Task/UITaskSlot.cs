@@ -19,6 +19,12 @@ namespace Simemes.UI.Tasks
         private TextMeshProUGUI _reward;
 
         [SerializeField]
+        private Slider _progressSlider;
+
+        [SerializeField]
+        private TextMeshProUGUI _progressText;
+
+        [SerializeField]
         private Button _button_Claim;
 
         [SerializeField]
@@ -42,7 +48,7 @@ namespace Simemes.UI.Tasks
             _taskIcon.sprite = data.Config.Icon;
 
             _taskName.text = data.Config.Name;
-            _reward.text = data.Config.Reward;
+            //_reward.text = data.Config.Reward;
 
             UpdateState();
         }
@@ -64,6 +70,14 @@ namespace Simemes.UI.Tasks
 
         private void UpdateState()
         {
+            _progressSlider.gameObject.SetActive(_task.Started && !_task.Claimed);
+
+            if (_task.Started)
+            {
+                _progressSlider.value = (float)_task.Progress.Current / _task.Progress.Target;
+                _progressText.text = $"{_task.Progress.Current}/{_task.Progress.Target}";
+            }
+
             _button_Claim.gameObject.SetActive(!_task.Claimed && _task.Finished);
             _button_Start.gameObject.SetActive(!_task.Started);
             _state_Claimed.SetActive(_task.Claimed);

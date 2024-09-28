@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2253b37d8af6674aaf8ba343fd1996d, type: 3}
-  m_Name: Steal Someone
+  m_Script: {fileID: 11500000, guid: 70dcf6e6cda956a41996a7dffe5e5626, type: 3}
+  m_Name: Level 10
   m_EditorClassIdentifier: 
-  _id: 4102
+  _id: 4501
   _type: 0
-  _name: Steal 1 player
+  _name: Reach Level 10
   _reward:
     ID: 2201
     Count: 20
-  _icon: {fileID: 21300000, guid: 5bf46333535a0414a944b9a726d6b053, type: 3}
-  _targetValue: 1
-  _taskEvent: SteelSuccess
+  _icon: {fileID: 21300000, guid: b4a4b8f5c2d49459891adf4008f22aeb, type: 3}
+  _targetValue: 10
+  _taskEvent: LevelUp

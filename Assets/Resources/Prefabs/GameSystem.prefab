@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2692674475398024134}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4535310868971328979}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2068784828703319804
 Animator:
@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 2381019942893380658}
   - component: {fileID: 1660959585433082003}
   - component: {fileID: 8043961048881448941}
+  - component: {fileID: 163789756995647834}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -87,7 +88,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6731942077212223513}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -95,6 +95,7 @@ Transform:
   m_Children:
   - {fileID: 3562172954472478611}
   m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6260925554104454761
 MonoBehaviour:
@@ -143,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _airDropConfig: {fileID: 11400000, guid: ad5c410dab15e52489bc85239dc9f418, type: 2}
   _dropInterval: 30
+  _maxItemCount: 10
 --- !u!114 &4367467062886839105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +248,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settingConfig: {fileID: 11400000, guid: a9599d55bb7723f4d98a591d08154f09, type: 2}
+--- !u!114 &163789756995647834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731942077212223513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f47ba52fdff3d04c9347fe9f7cb12f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _taskConfigs:
+  - {fileID: 11400000, guid: 32e80980cd910ee45a58c8bfe03ad8cb, type: 2}
+  - {fileID: 11400000, guid: 409651231ebaa8e46b8afebf8d0afe79, type: 2}
+  - {fileID: 11400000, guid: 421b89be96fcd8f45b2cd2de95014260, type: 2}
+  - {fileID: 11400000, guid: 37ebca154adafe54eba304b1a8448242, type: 2}
+  - {fileID: 11400000, guid: deae0624232a4884791f42e5cd956e2a, type: 2}
+  - {fileID: 11400000, guid: 15738115fa8837f4cbec868c7e7e3907, type: 2}
+  - {fileID: 11400000, guid: 4accd0aa81a364649888976644e51aef, type: 2}
+  - {fileID: 11400000, guid: 6c45f47c6d5ec394aa2479838161c245, type: 2}
+  - {fileID: 11400000, guid: a34553d0e1e43244fa39f1c74467acfb, type: 2}
+  - {fileID: 11400000, guid: 4e46ce696143d1b40a1453985526125f, type: 2}
+  - {fileID: 11400000, guid: 078e86f21f256384dbac939e29ccf246, type: 2}

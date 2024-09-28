@@ -4,6 +4,7 @@ using UnityEngine;
 using Core.Networking;
 using Simemes.Tier;
 using Newtonsoft.Json;
+using Simemes.Tasks;
 
 namespace Simemes.Profile
 {
@@ -19,6 +20,8 @@ namespace Simemes.Profile
         public int MaxExp;
 
         public int Coin;
+
+        public List<TaskProgress> TaskProgress;
 
         [JsonIgnore]
         public TierData TierData { get; private set; }
@@ -56,6 +59,9 @@ namespace Simemes.Profile
         {
             OnCoinChange?.Invoke(coin);
             UpdateCoin(Coin + coin);
+
+            if (coin > 0)
+                TaskMgr.instance.FinishTask("GetGold", coin);
         }
 
         public bool CheckCoin(int cost)
@@ -136,6 +142,7 @@ namespace Simemes.Profile
                 MaxExp = 0;
 
             GameManager.instance.SavePlayerData();
+            TaskMgr.instance.FinishTask("LevelUp", level);
 
         }
     }

@@ -7,27 +7,65 @@ namespace Simemes.Tasks
     [CreateAssetMenu(fileName = "TaskConfig", menuName = "Simemes/Task/TaskConfig")]
     public class TaskConfig : ScriptableObject
     {
-        [SerializeField]
-        private int _id;
+        [System.Serializable]
+        public class TaskReward
+        {
+            public int ID;
+            public int Count;
+        }
+
+        public enum TaskType
+        {
+            Daily,
+            Meme
+        }
 
         [SerializeField]
-        private string _name;
+        protected int _id;
 
         [SerializeField]
-        private string _reward;
+        protected TaskType _type;
 
         [SerializeField]
-        private Sprite _icon;
+        protected string _name;
 
         [SerializeField]
-        private int _targetValue;
+        protected TaskReward _reward;   
+
+        [SerializeField]
+        protected Sprite _icon;
+
+        [SerializeField]
+        protected int _targetValue;
+
+        [SerializeField]
+        protected string _taskEvent;
 
         public int ID => _id;
+        public TaskType Type => _type;
+
         public string Name => _name;
-        public string Reward => _reward;
+        public TaskReward Reward => _reward;
         public Sprite Icon => _icon;
 
         public int TargetValue => _targetValue;
+
+        public string TaskEvent => _taskEvent;
+
+        public virtual void TriggerStart()
+        {
+
+        }
+
+        public virtual void TriggerClaim()
+        {
+
+        }
+
+        public virtual int UpdateProgress(int current, int value)
+        {
+            return current + value;
+        }
 
     }
 }
