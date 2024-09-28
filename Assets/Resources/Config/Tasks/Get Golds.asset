@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 4301
   _type: 0
-  _name: Collect 100 Golds
+  _name: Collect 500 Golds
   _reward:
     ID: 2201
     Count: 10

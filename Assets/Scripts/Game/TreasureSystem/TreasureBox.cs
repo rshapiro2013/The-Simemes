@@ -50,6 +50,9 @@ namespace Simemes.Treasures
             foreach(var itemIdx in chestData.Treasures)
             {
                 var item = treasureSys.GetTreasureConfig(itemIdx);
+                if (item == null)
+                    continue;
+
                 var treasure = new Treasure(item, chestData.StartTime);
                 Add(treasure, chestData.StartTime);
             }

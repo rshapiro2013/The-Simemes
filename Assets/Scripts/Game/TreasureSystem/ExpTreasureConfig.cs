@@ -11,13 +11,12 @@ namespace Simemes.Treasures
         [SerializeField]
         protected int _exp;
 
-        public override void Obtain()
+        public override void Obtain(int count = 1)
         {
-            base.Obtain();
+            base.Obtain(count);
 
             // ¿Ú±o∏g≈Á≠»
-            GameManager.instance.PlayerProfile.AddExp(_exp);
+            GameManager.instance.PlayerProfile.AddExp(count * _exp);
         }
-
     }
 }

@@ -5,11 +5,8 @@ using UnityEngine;
 namespace Simemes.Treasures
 {
     [CreateAssetMenu(fileName = "TreasureItem", menuName = "Simemes/Treasure/TreasureItem")]
-    public class TreasureConfig : ScriptableObject
+    public class TreasureConfig : Simemes.Rewards.RewardConfig
     {
-        [SerializeField]
-        protected int _id;
-
         [SerializeField]
         protected int _weight;
 
@@ -19,15 +16,9 @@ namespace Simemes.Treasures
         [SerializeField]
         protected Sprite _image;
 
-        public int ID => _id;
         public int Weight => _weight;
         public Sprite Image => _image;
 
         public GameObject Prefab => _prefab;
-
-        public virtual void Obtain()
-        {
-
-        }
     }
 }

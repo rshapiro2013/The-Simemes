@@ -16,8 +16,8 @@ MonoBehaviour:
   _type: 1
   _name: Share post on X
   _reward:
-    ID: 0
-    Count: 0
+    ID: 2401
+    Count: 100
   _icon: {fileID: 21300000, guid: ba570a99bcba2a041bc91980c4b11ef4, type: 3}
   _targetValue: 1
   _taskEvent: SharePost

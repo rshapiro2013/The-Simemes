@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Simemes.Tasks;
+using Simemes.Rewards;
 
 namespace Simemes.UI.Tasks
 {
@@ -48,7 +49,9 @@ namespace Simemes.UI.Tasks
             _taskIcon.sprite = data.Config.Icon;
 
             _taskName.text = data.Config.Name;
-            //_reward.text = data.Config.Reward;
+
+            var reward = data.Config.Reward;
+            _reward.text = RewardMgr.instance.GetRewardText(reward.ID, reward.Count);
 
             UpdateState();
         }
@@ -70,7 +73,7 @@ namespace Simemes.UI.Tasks
 
         private void UpdateState()
         {
-            _progressSlider.gameObject.SetActive(_task.Started && !_task.Claimed);
+            _progressSlider.gameObject.SetActive(_task.Started && !_task.Finished);
 
             if (_task.Started)
             {
