@@ -18,4 +18,4 @@ MonoBehaviour:
   _currencyType: 0
   _price: 1
   _desc: Reduce count down by half
-  _buffID: 0
+  _buffID: 5002

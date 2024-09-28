@@ -18,4 +18,4 @@ MonoBehaviour:
   _currencyType: 0
   _price: 1
   _desc: "Trigger 24 hours protection \nwhen theif try to steal this chest"
-  _buffID: 1
+  _buffID: 5001
