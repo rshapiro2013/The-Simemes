@@ -227,7 +227,7 @@ namespace Simemes.UI
                 slot.gameObject.SetActive(enable);
                 if (enable)
                 {
-                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(0);
+                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(21011);
                     if (treasureBoxConfig == null)
                         return;
 
@@ -237,7 +237,7 @@ namespace Simemes.UI
                     slot.SetBox(treasureBox);
 
                     if (Random.Range(0, 100) < 50)
-                        slot.AddBuff(TreasureSystem.instance.GetBuff(1));
+                        slot.AddBuff(TreasureSystem.instance.GetBuff(5001));
 
                     slot.Seal();
                 }
@@ -255,7 +255,7 @@ namespace Simemes.UI
                 slot.gameObject.SetActive(enable);
                 if (enable)
                 {
-                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(0);
+                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(21011);
                     if (treasureBoxConfig == null)
                         return;
 
@@ -266,7 +266,7 @@ namespace Simemes.UI
                     slot.SetBox(treasureBox);
 
                     if (treasureData.HasBuff)
-                        slot.AddBuff(TreasureSystem.instance.GetBuff(1));
+                        slot.AddBuff(TreasureSystem.instance.GetBuff(5001));
 
                     slot.Seal();
                 }
