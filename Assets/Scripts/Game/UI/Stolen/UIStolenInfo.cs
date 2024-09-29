@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Simemes.Treasures;
+using Simemes.Request;
+using Simemes.Steal;
+
 
 namespace Simemes.UI
 {
@@ -101,11 +106,12 @@ namespace Simemes.UI
         {
             rewindCount = SystemSetting.Config.RewindCount;
             recommendationCount = SystemSetting.Config.RecommendationCount;
+            OnUpdateChests(StealSystem.instance.ChestDatas);
         }
 
         private void OnEnable()
         {
-            LoadNewInfo();
+            //LoadNewInfo();
         }
 
         private void Set(string name, string title, Sprite sprite)
@@ -175,8 +181,8 @@ namespace Simemes.UI
             if (!_playerRecord.Contains(_playerData))
             {
                 _playerRecord.Add(_playerData);
+                _playerDataIndex = _playerRecord.Count - 1;
             }
-            _playerDataIndex = _playerRecord.Count-1;
             LoadNextInfo();
         }
 
@@ -196,8 +202,15 @@ namespace Simemes.UI
                 Popup("No recommendation count");
                 return;
             }
-            --recommendationCount;
-            LoadNewInfo();
+
+            int playerDataIndex = _playerDataIndex + 1;
+            if (playerDataIndex < _playerRecord.Count)
+            {
+                --recommendationCount;
+                _playerDataIndex = playerDataIndex;
+                LoadInfoBase(_playerDataIndex);
+            }
+            //LoadNewInfo();
         }
 
         public void LoadPreviousInfo()
@@ -215,6 +228,47 @@ namespace Simemes.UI
                 _playerDataIndex = playerDataIndex;
                 LoadInfoBase(_playerDataIndex);
             }
+        }
+
+        private void LoadChestData(ChestDatas chestDatas)
+        {
+            int nameIndex = Random.Range(0, Names.Length);
+            _lastName = Names[nameIndex];
+            _lastTitle = _titles[nameIndex];
+            int spriteIndex = nameIndex % _images.Length;// < _images.Length ? nameIndex : _images.Length - 1;
+            _lastSprite = _images[spriteIndex];
+
+            int chestCount = chestDatas.ChestDataList.Count;
+            for (int i = 0; i < _slots.Count; ++i)
+            {
+                bool enable = i < chestCount;
+                UIChestSlot slot = _slots[i];
+                slot.gameObject.SetActive(enable);
+                if (enable)
+                {
+                    var treasureBoxConfig = TreasureSystem.instance.GetTreasureBoxConfig(21011);
+                    if (treasureBoxConfig == null)
+                        return;
+
+                    var treasureBox = new TreasureBox(treasureBoxConfig);
+                    treasureBox.RemainTime = Random.Range(1000, 86400);
+
+                    slot.SetBox(treasureBox);
+
+                    if (Random.Range(0, 100) < 50)
+                        slot.AddBuff(TreasureSystem.instance.GetBuff(5001));
+
+                    slot.Seal();
+                }
+            }
+
+            _playerData = new PlayerData() { Name = nameIndex, Titles = nameIndex, Sprite = spriteIndex, LastUpdate = System.DateTime.Now };
+            for (int i = 0; i < chestCount; ++i)
+            {
+                UIChestSlot slot = _slots[i];
+                _playerData.Treasures.Add(new TreasureData() { RemainTime = slot.Content.RemainTime, HasBuff = slot.Content.HasBuff });
+            }
+            _playerRecord.Add(_playerData);
         }
 
         private void LoadChestData()
@@ -306,6 +360,18 @@ namespace Simemes.UI
             _lastSprite = _images[_playerData.Sprite];
             LoadChestData(_playerData);
             Set(_lastName, _lastTitle, _lastSprite);
+        }
+
+        private void OnUpdateChests(List<ChestDatas> ChestDatas)
+        {
+            GameFlow.MainThread.Post(_ =>
+            {
+                foreach (ChestDatas chest in ChestDatas)
+                {
+                    LoadChestData(chest);
+                }
+                LoadInfoBase(_playerDataIndex);
+            }, null);
         }
     }
 }
