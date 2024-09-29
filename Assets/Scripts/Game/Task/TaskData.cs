@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Simemes.Rewards;
 
 namespace Simemes.Tasks
 {
@@ -45,6 +46,8 @@ namespace Simemes.Tasks
         {
             if (!Finished)
                 return;
+
+            RewardMgr.instance.ObtainReward(_config.Reward.ID, _config.Reward.Count);
 
             _progress.Claimed = true;
             _config.TriggerClaim();
