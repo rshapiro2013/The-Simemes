@@ -30,16 +30,22 @@ public class GameFlow : MonoSingleton<GameFlow>
 
     public async Task Init()
     {
-        Input.multiTouchEnabled = false;
+        try
+        {
+            Input.multiTouchEnabled = false;
+            await RequestSystem.instance.Login();
+            await GameManager.instance.LoadPlayerData();
+            await StealSystem.instance.Init();
+            await TreasureSystem.instance.Init();
+            await StealRequest.GetChestDatas();
+            await TaskMgr.instance.Init(GameManager.instance.PlayerProfile.TaskProgress);
 
-        await RequestSystem.instance.Login();
-        await GameManager.instance.LoadPlayerData();
-        await StealSystem.instance.Init();
-        await TreasureSystem.instance.Init();
-        await StealRequest.GetChestDatas();
-        await TaskMgr.instance.Init(GameManager.instance.PlayerProfile.TaskProgress);
-
-        SetBool("UserDataLoaded", true);
+            SetBool("UserDataLoaded", true);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 
     public void SetBool(string name, bool value)

@@ -5,6 +5,7 @@ using Core.Utilities;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace Core.Networking
 {
@@ -34,7 +35,7 @@ namespace Core.Networking
             request.SendWebRequest();
 
             while (!request.isDone)
-                await Task.Delay(20); // save Power
+                await UniTask.DelayFrame(20); // save Power
 
             if (request.isHttpError || request.isNetworkError)
             {
@@ -62,7 +63,7 @@ namespace Core.Networking
             request.SendWebRequest();
 
             while (!request.isDone)
-                await Task.Delay(20); // save Power
+                await UniTask.DelayFrame(20); // save Power
 
             if (request.isHttpError || request.isNetworkError)
             {
@@ -87,7 +88,7 @@ namespace Core.Networking
             request.SendWebRequest();
 
             while (!request.isDone)
-                await Task.Delay(20); // save Power
+                await UniTask.DelayFrame(20); // save Power
 
             if (request.isHttpError || request.isNetworkError)
             {

@@ -35,5 +35,13 @@ namespace Simemes
             RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
             await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
         }
+
+        private void OnGUI()
+        {
+            if (GUILayout.Button("Clear Player Data"))
+            {
+                PlayerPrefs.DeleteAll();
+            }
+        }
     }
 }

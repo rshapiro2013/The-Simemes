@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 public class UISpriteAnim : MonoBehaviour
 {
@@ -135,7 +136,7 @@ public class UISpriteAnim : MonoBehaviour
         while (_enabled)
         {
             IsPlaying = true;
-            await Task.Delay((int)(1000 / _autoPlayFPS));
+            await UniTask.DelayFrame((int)(1000 / _autoPlayFPS));
 
             if (!IsPlaying || playNumber != _playNumber)
                 return;
@@ -156,7 +157,7 @@ public class UISpriteAnim : MonoBehaviour
                     if (_loopDelayTime > 0)
                     {
                         SetSprite(idx);
-                        await Task.Delay((int)(_loopDelayTime * 1000));
+                        await UniTask.DelayFrame((int)(_loopDelayTime * 1000));
                     }
                 }
                 else
@@ -171,7 +172,7 @@ public class UISpriteAnim : MonoBehaviour
                     if (_loopDelayTime > 0)
                     {
                         SetSprite(idx);
-                        await Task.Delay((int)(_loopDelayTime * 1000));
+                        await UniTask.DelayFrame((int)(_loopDelayTime * 1000));
                     }
                 }
                 else
