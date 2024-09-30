@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AirDropConfig
   m_EditorClassIdentifier: 
   _dropItems:
-  - ItemID: 1
+  - ItemID: 2201
     Chance: 50
-  - ItemID: 2
+  - ItemID: 2210
     Chance: 35
-  - ItemID: 3
+  - ItemID: 2211
     Chance: 15
