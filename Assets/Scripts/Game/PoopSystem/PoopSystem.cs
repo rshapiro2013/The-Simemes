@@ -49,7 +49,8 @@ namespace Simemes.Poop
                 _lastCollectTime = long.Parse(lastCollectTimeStr);
 
             // 根據上次領取時間補足大便數量
-            for (long current = _lastCollectTime; current < now; current += (long)_testSpawnTime)
+            int poopCount = Mathf.Min(_limitCount, (int)((now - _lastCollectTime) / _testSpawnTime));
+            for (int i=0;i<poopCount;++i)
             {
                 if (!SpawnPoop())
                     break;

@@ -185,7 +185,8 @@ namespace Simemes.AirDrop
                 int times = (int)((Now - _lastCheckTime) / _dropInterval);
                 UpdateTime(_lastCheckTime + _dropInterval * times);
 
-                for (int i = 0; i < times; ++i)
+                int spawnCount = Mathf.Min(_maxItemCount - _treasures.Count, times);
+                for (int i = 0; i < spawnCount; ++i)
                     SpawnRandomItem();
             }
 

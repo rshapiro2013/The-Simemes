@@ -144,9 +144,14 @@ namespace Core.Networking
 
         public void RequestData<T>(string requestName, T data)
         {
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
+            {
+                ObjectCreationHandling = ObjectCreationHandling.Replace
+            };
+
             string serializedData = PlayerPrefs.GetString(requestName, string.Empty);
             if (!string.IsNullOrEmpty(serializedData))
-                JsonConvert.PopulateObject(serializedData, data);
+                JsonConvert.PopulateObject(serializedData, data, jsonSerializerSettings);
         }
 
         public void UploadData<T>(string requestName, T data)

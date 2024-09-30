@@ -47,7 +47,12 @@ namespace Core.Networking
                 return;
             }
 
-            JsonConvert.PopulateObject(response.userInfo, _playerInfo);
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
+            {
+                ObjectCreationHandling = ObjectCreationHandling.Replace
+            };
+
+            JsonConvert.PopulateObject(response.userInfo, _playerInfo, jsonSerializerSettings);
         }
     }
 }
