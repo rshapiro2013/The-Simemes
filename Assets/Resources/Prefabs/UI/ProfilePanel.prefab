@@ -2534,6 +2534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Method
       objectReference: {fileID: 0}
+    - target: {fileID: 9172768653221522851, guid: 961b93a38a48699499f90b07b48df2c2, type: 3}
+      propertyPath: m_text
+      value: Connect Wallet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

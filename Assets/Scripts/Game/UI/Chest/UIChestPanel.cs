@@ -86,7 +86,7 @@ namespace Simemes.UI
         public void Hold(UIChestSlot slot)
         {
             // 箱子不是空的就可以關上倒數
-            if (slot.Content != null)
+            if (slot.Content != null && !slot.Content.IsSealed)
             {
                 slot.Seal();
                 int slotIdx = _slots.FindIndex(x => x == slot);

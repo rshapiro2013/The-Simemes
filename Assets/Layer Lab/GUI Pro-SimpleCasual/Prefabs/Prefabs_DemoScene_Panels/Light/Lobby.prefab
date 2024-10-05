@@ -2557,8 +2557,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_mute
+        m_TargetAssemblyTypeName: Core.Audio.AudioControl, Assembly-CSharp
+        m_MethodName: SetMute
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3488,8 +3488,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_mute
+        m_TargetAssemblyTypeName: Core.Audio.AudioControl, Assembly-CSharp
+        m_MethodName: SetMute
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7437,6 +7437,7 @@ RectTransform:
   - {fileID: 8566504286063324216}
   - {fileID: 5412180322160618504}
   - {fileID: 5497311946618767526}
+  - {fileID: 4369559479904433231}
   - {fileID: 5497311946477289400}
   - {fileID: 5528876316101810554}
   - {fileID: 5272432727743993479}
@@ -7447,7 +7448,6 @@ RectTransform:
   - {fileID: 8558061516254663014}
   - {fileID: 585365577695312992}
   - {fileID: 1906086770081418947}
-  - {fileID: 4369559479904433231}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17242,6 +17242,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5497311946262390891}
     m_Modifications:
+    - target: {fileID: 953862041991293941, guid: a841522e491abf34d82f38f540e174f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27
+      objectReference: {fileID: 0}
     - target: {fileID: 2764972227169931310, guid: a841522e491abf34d82f38f540e174f7, type: 3}
       propertyPath: m_Name
       value: Character - Pepe Tier 1
@@ -17326,6 +17330,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8406307475233749576, guid: a841522e491abf34d82f38f540e174f7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: fffffc7bf2e74904ca086eb0908a2d28, type: 2}
+    - target: {fileID: 8406307475233749576, guid: a841522e491abf34d82f38f540e174f7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3270719932003369389, guid: fffffc7bf2e74904ca086eb0908a2d28, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
