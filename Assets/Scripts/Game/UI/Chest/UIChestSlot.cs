@@ -92,18 +92,26 @@ namespace Simemes.UI
         // 更新格子狀態
         private void UpdateState()
         {
+            if(_treasureBoxImage!=null)
             _treasureBoxImage.enabled = Content != null;
+
             if (Content != null)
                 _treasureBoxImage.sprite = Content.GetSprite();
 
-            _obj_Lock.SetActive(Locked);
-            _obj_Add.SetActive(!Locked && Content == null);
+            if (_obj_Lock != null)
+                _obj_Lock.SetActive(Locked);
 
-            _obj_Timer.SetActive(Content != null && Content.IsSealed);
+            if (_obj_Add != null)
+                _obj_Add.SetActive(!Locked && Content == null);
 
-            _obj_Buff.SetActive(Content != null && Content.HasBuff);
+            if (_obj_Timer != null)
+                _obj_Timer.SetActive(Content != null && Content.IsSealed);
 
-            _holdButton.ShowProgressBar(Content != null && Content.State != TreasureBoxState.Closed);
+            if(_obj_Buff!=null)
+                _obj_Buff.SetActive(Content != null && Content.HasBuff);
+
+            if (_holdButton != null)
+                _holdButton.ShowProgressBar(Content != null && Content.State != TreasureBoxState.Closed);
 
             UpdateCapacity();
         }

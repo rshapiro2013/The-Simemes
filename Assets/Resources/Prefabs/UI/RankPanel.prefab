@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wall of Mene
+  m_text: Wall of Meme
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
   m_sharedMaterial: {fileID: 3074828514974314926, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 4
+  m_characterSpacing: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1510,10 +1510,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6956725028382300352}
     m_Modifications:
-    - target: {fileID: 3108319286733584171, guid: 925184a11511d974c895adb85f35912d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2bbf21451fb0bbf4c8b52cc63997a52b, type: 3}
     - target: {fileID: 4268472690487670018, guid: 925184a11511d974c895adb85f35912d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
