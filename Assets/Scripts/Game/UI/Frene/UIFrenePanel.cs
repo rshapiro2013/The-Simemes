@@ -5,6 +5,7 @@ using Core.UI;
 using TMPro;
 using Simemes.Tasks;
 using Simemes.Frene;
+using UnityEngine.UI;
 
 namespace Simemes.UI.Frene
 {
@@ -16,6 +17,8 @@ namespace Simemes.UI.Frene
         [SerializeField] private TextMeshProUGUI _count;
         [SerializeField] private UIStolenView _stolenView;
         [SerializeField] private Sprite[] _images;
+
+        [SerializeField] private Image _profileImage;
 
         private static List<FreneData> _datas = new List<FreneData>();
         private Dictionary<FreneData, PlayerData> _frensMap = new Dictionary<FreneData, PlayerData>();
@@ -70,6 +73,17 @@ namespace Simemes.UI.Frene
             }
 
             _count.text = _datas.Count.ToString();
+        }
+
+        public void SelectProfilePhoto()
+        {
+            Core.Utilities.ImageLoader.instance.SelectImage(OnSelectImage);
+        }
+
+        protected void OnSelectImage(Texture2D image)
+        {
+            var sprite = Sprite.Create(image, new Rect(0, 0, image.width, image.height), new Vector2(0.5f, 0.5f));
+            _profileImage.sprite = sprite;
         }
 
         protected override void OnHidePanel()
