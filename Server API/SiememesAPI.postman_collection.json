@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "7a79c08f-9b34-49cc-a72a-aa770db8f427",
+		"name": "SiememesAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "548499"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"yeo@xyz.com\",\r\n    \"name\": \"test account\",\r\n    \"screenName\": \"jimkao0126\",\r\n    \"profileImageUrl\": \"https://pbs.twimg.com/profile_images/1574405532903153664/TC6kpsRx_normal.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/login",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Url}}api/ping",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get player Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Url}}api/UserInfo",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"UserInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update player Info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userInfo\": \"{ \\\"id\\\": 452, \\\"name\\\": \\\"Emily\\\", \\\"age\\\": 27, \\\"isEmployee\\\": true, \\\"department\\\": \\\"Sales\\\", \\\"salary\\\": 75000.50, \\\"skills\\\": [\\\"communication\\\", \\\"presentation\\\", \\\"negotiation\\\"], \\\"startDate\\\": \\\"2021-06-15\\\", \\\"activeProjects\\\": 5, \\\"email\\\": \\\"emily.johnson@example.com\\\" }\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/UserInfo",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"UserInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player retrieve chest boxes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/PlayerChest",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"PlayerChest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player receive a new chest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"chestDataId\": 21021,\r\n  \"slotId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/PlayerChest",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"PlayerChest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player chest utilities",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"slotId\": 1,\r\n  \"SealChestBox\": true,\r\n  \"buffId\": 5002\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/PlayerChestUtil",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"PlayerChestUtil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve target user and chest information",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/StealChest",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"StealChest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Steal the target chest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userGuid\": \"f432d04e-e507-4ca5-bd73-17d007351fa7\",\r\n    \"slotId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/StealChest",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"StealChest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Announcement",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/announcement",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"announcement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"yeo@xyz.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/friend",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"friend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/friend",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"friend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rank",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/rank",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"rank"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FriendRequest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "9ac7e1f1-3fd8-42e9-87d4-5597010eb687",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/friendrequest",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"friendrequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FriendRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "9ac7e1f1-3fd8-42e9-87d4-5597010eb687",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"isRequest\": true,\n  \"isConfirmed\": false,\n  \"isRejected\": false,\n  \"isCancelled\": false,\n  \"friendId\": \"23CB08\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}api/friendrequest",
+					"host": [
+						"{{Url}}api"
+					],
+					"path": [
+						"friendrequest"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AuthCode",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Url",
+			"value": "https://simemesbackendapi-gme6g6c8cwcserfw.eastasia-01.azurewebsites.net/",
+			"type": "string"
+		}
+	]
+}
