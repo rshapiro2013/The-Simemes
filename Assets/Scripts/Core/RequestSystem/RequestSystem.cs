@@ -17,6 +17,8 @@ namespace Core.Networking
 
         protected string _authCode;
 
+        public string AuthCode { get => _authCode; set => _authCode = value; }
+
         public async Task Post(string api, Dictionary<string, object> args, ResponseMethod callback = null)
         {
             var path = $"{_url}{api}";

@@ -55,6 +55,7 @@ namespace Simemes.UI
                 playerProfile.OnExpChange += OnExpChange;
                 playerProfile.OnSetLevel += SetLevel;
                 playerProfile.OnUpdateTierData += UpdateTierData;
+                playerProfile.OnUpdateProfile += UpdatePlayerInfo;
             }
         }
 
@@ -73,6 +74,7 @@ namespace Simemes.UI
                 playerProfile.OnExpChange -= OnExpChange;
                 playerProfile.OnSetLevel -= SetLevel;
                 playerProfile.OnUpdateTierData -= UpdateTierData;
+                playerProfile.OnUpdateProfile -= UpdatePlayerInfo;
             }
         }
 

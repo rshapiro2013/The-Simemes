@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Utilities;
 using Core.Networking;
+using Core.Auth;
 using Simemes.Profile;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Simemes
             RequestSystem.instance.RequestData("PlayerProfile", PlayerProfile);
             if (string.IsNullOrEmpty(PlayerProfile.Character))
             {
-                PlayerProfile.Character = "yellow pepe farmer";
+                InitPlayerProfile();
 
                 RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
 
@@ -34,6 +35,18 @@ namespace Simemes
         {
             RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
             await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
+        }
+
+        private void InitPlayerProfile()
+        {
+            PlayerProfile.Character = "yellow pepe farmer";
+
+            var userInfo = AuthMgr.instance.UserInfo;
+            if (userInfo != null)
+            {
+                PlayerProfile.UserName = userInfo.Username;
+                PlayerProfile.PhotoUrl = userInfo.PhotoUrl;
+            }
         }
 
         private void OnGUI()

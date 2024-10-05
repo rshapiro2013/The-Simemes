@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading;
 using System.Threading.Tasks;
 using Core.Utilities;
-using Core.Networking;
+using Core.Auth;
 using Simemes;
 using Simemes.Treasures;
 using Simemes.Tasks;
@@ -33,7 +33,7 @@ public class GameFlow : MonoSingleton<GameFlow>
         try
         {
             Input.multiTouchEnabled = false;
-            await RequestSystem.instance.Login();
+            await AuthMgr.instance.SignIn("Telegram");
             await GameManager.instance.LoadPlayerData();
             await StealSystem.instance.Init();
             await TreasureSystem.instance.Init();

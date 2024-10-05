@@ -11,6 +11,7 @@ namespace Simemes.Profile
     public class PlayerProfile
     {
         public string UserName;
+        public string PhotoUrl;
 
         public string Character;
 
@@ -40,13 +41,15 @@ namespace Simemes.Profile
         public System.Action<int, int> OnSetExp;
         [JsonIgnore]
         public System.Action<int> OnSetLevel;
-
+        [JsonIgnore]
+        public System.Action<PlayerProfile> OnUpdateProfile;
         public void Init()
         {
             SetCoin(Coin);
             SetLevel(Level);
             SetExp(Exp);
 
+            Update();
         }
 
         public void SetCoin(int coin)
@@ -106,6 +109,11 @@ namespace Simemes.Profile
 
             var tierData = TierSystem.instance.GetTierData(level);
             OnUpdateTierData?.Invoke(tierData);
+        }
+
+        public void Update()
+        {
+            OnUpdateProfile?.Invoke(this);
         }
 
         private void LevelUp()
