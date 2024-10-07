@@ -10,6 +10,9 @@ using Simemes.Treasures;
 using Simemes.Tasks;
 using Simemes.Request;
 using Simemes.Steal;
+using Simemes.Frene;
+using Simemes.Rank;
+using Simemes.Announcement;
 
 public class GameFlow : MonoSingleton<GameFlow>
 {
@@ -33,10 +36,13 @@ public class GameFlow : MonoSingleton<GameFlow>
         try
         {
             Input.multiTouchEnabled = false;
-            await AuthMgr.instance.SignIn("Telegram");
+            await AuthMgr.instance.SignIn();
             await GameManager.instance.LoadPlayerData();
             await StealSystem.instance.Init();
             await TreasureSystem.instance.Init();
+            await RankSystem.instance.Init();
+            await AnnouncementSystem.instance.Init();
+            await FreneSystem.instance.Init();
             await StealRequest.GetChestDatas();
             await TaskMgr.instance.Init(GameManager.instance.PlayerProfile.TaskProgress);
 

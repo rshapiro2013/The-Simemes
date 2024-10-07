@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Simemes.Tasks;
+using Simemes.Frene;
 
 namespace Simemes.UI.Frene
 {
@@ -36,13 +37,13 @@ namespace Simemes.UI.Frene
             _index = index;
 
             //_icon.sprite = data.Icon;
-            _name.text = data.Name;
-            _count.text = data.Count.ToString("N0");
+            _name.text = data.name;
+            _count.text = data.coinAmount.ToString("N0");
         }
 
         public void Visit()
         {
-            UIFrenePanel.Instance.Visit(_index);
+            UIFrenePanel.Instance.Visit(_data);
         }
     }
 }

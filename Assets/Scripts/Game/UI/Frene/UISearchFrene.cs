@@ -5,6 +5,7 @@ using Core.UI;
 using TMPro;
 using Simemes.Tasks;
 using System.Linq;
+using Simemes.Frene;
 
 namespace Simemes.UI.Frene
 {
@@ -55,20 +56,34 @@ namespace Simemes.UI.Frene
             SearchBase(_inputField.text);
         }
 
-        private void SearchBase(string keyword = "")
+        private async void SearchBase(string keyword = "")
         {
-            List<int> result = UIFrenePanel.FreneDatas.Where(item => item.Name.StartsWith(keyword, System.StringComparison.OrdinalIgnoreCase)).Select(item => UIFrenePanel.FreneDatas.IndexOf(item)).ToList();
-
-            for (int i = 0; i < _freneSlots.Count; ++i)
+            await FreneSystem.instance.SearchFrene(keyword, result =>
             {
-                UIFreneSlot slot = _freneSlots[i];
-                slot.gameObject.SetActive(false);
-            }
+                for (int i = 0; i < _freneSlots.Count; ++i)
+                {
+                    bool active = i < result.Count;
+                    UIFreneSlot slot = _freneSlots[i];
+                    slot.gameObject.SetActive(active);
+                    if (active)
+                    {
+                        slot.Set(result[i], i);
+                    }
+                }
+            });
 
-            for (int i = 0; i < result.Count; ++i)
-            {
-                _freneSlots[result[i]].gameObject.SetActive(true);
-            }
+            //List<int> result = UIFrenePanel.FreneDatas.Where(item => item.name.StartsWith(keyword, System.StringComparison.OrdinalIgnoreCase)).Select(item => UIFrenePanel.FreneDatas.IndexOf(item)).ToList();
+
+            //for (int i = 0; i < _freneSlots.Count; ++i)
+            //{
+            //    UIFreneSlot slot = _freneSlots[i];
+            //    slot.gameObject.SetActive(false);
+            //}
+
+            //for (int i = 0; i < result.Count; ++i)
+            //{
+            //    _freneSlots[result[i]].gameObject.SetActive(true);
+            //}
         }
     }
 }

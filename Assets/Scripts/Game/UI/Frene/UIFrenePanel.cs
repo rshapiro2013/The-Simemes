@@ -4,6 +4,7 @@ using UnityEngine;
 using Core.UI;
 using TMPro;
 using Simemes.Tasks;
+using Simemes.Frene;
 
 namespace Simemes.UI.Frene
 {
@@ -17,7 +18,7 @@ namespace Simemes.UI.Frene
         [SerializeField] private Sprite[] _images;
 
         private static List<FreneData> _datas = new List<FreneData>();
-        private Dictionary<int, PlayerData> _frensMap = new Dictionary<int, PlayerData>();
+        private Dictionary<FreneData, PlayerData> _frensMap = new Dictionary<FreneData, PlayerData>();
 
         public static List<FreneData> FreneDatas => _datas;
 
@@ -33,25 +34,25 @@ namespace Simemes.UI.Frene
             Instance = null;
         }
 
-        public void Visit(int index)
+        public void Visit(FreneData data)
         {
-            FreneData data = _datas[index];
+            //FreneData data = _datas[index];
 
-            if (!_frensMap.TryGetValue(index, out PlayerData playerData))
+            if (!_frensMap.TryGetValue(data, out PlayerData playerData))
             {
-                playerData = new PlayerData() { Name = index, Titles = index, Sprite = index, LastUpdate = System.DateTime.Now };
+                playerData = new PlayerData() { ID = data.id, Name = 0, Titles = 0, Sprite = 0, LastUpdate = System.DateTime.Now };
                 int chestCount = Random.Range(1, 8);
                 for (int i = 0; i < chestCount; ++i)
                 {
                     playerData.Treasures.Add(new TreasureData() { RemainTime = Random.Range(1000, 86400), HasBuff = Random.Range(0, 100) < 50 });
                 }
-                _frensMap[index] = playerData;
+                _frensMap[data] = playerData;
             }
 
             if (_stolenView != null)
             {
-                int spriteIndex = index % _images.Length;
-                _stolenView.LoadInfo(playerData, data.Name, data.Title, _images[spriteIndex]);
+                int spriteIndex = 0 % _images.Length;
+                _stolenView.LoadInfo(playerData, data.name, data.screenName, _images[spriteIndex]);
                 _stolenView.gameObject.SetActive(true);
             }
         }
@@ -85,12 +86,14 @@ namespace Simemes.UI.Frene
             // 沒有通知資料，隨機產生
             if (_datas.Count == 0)
             {
-                for (int i = 0; i < 8; ++i)
-                {
-                    var taskData = new FreneData() { Name = UIStolenInfo.Names[i], Count = Random.Range(50, 1000000000) };
-                    _datas.Add(taskData);
-                }
-                _datas.Sort((x, y) => y.Count.CompareTo(x.Count));
+                //for (int i = 0; i < 8; ++i)
+                //{
+                //    var taskData = new FreneData() { name = UIStolenInfo.Names[i], coinAmount = Random.Range(50, 1000000000) };
+                //    _datas.Add(taskData);
+                //}
+                //_datas.Sort((x, y) => y.coinAmount.CompareTo(x.coinAmount));
+
+                _datas = FreneSystem.instance.Datas;
             }
 
             Open();

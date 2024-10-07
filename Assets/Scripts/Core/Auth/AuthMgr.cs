@@ -12,6 +12,8 @@ namespace Core.Auth
     public class AuthMgr : MonoSingleton<AuthMgr>
     {
         [SerializeField]
+        private int _authMethodIndex = 0;
+        [SerializeField]
         private List<AuthMethod> _authMethods;
 
         private readonly Dictionary<string, AuthMethod> _methodDict = new Dictionary<string, AuthMethod>();
@@ -29,6 +31,11 @@ namespace Core.Auth
                 method.Init();
                 _methodDict[method.MethodName] = method;
             }
+        }
+
+        public async Task SignIn()
+        {
+            await SignIn(_authMethods[_authMethodIndex].MethodName);
         }
 
         public async Task SignIn(string methodName)

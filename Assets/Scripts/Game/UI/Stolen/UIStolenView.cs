@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Simemes.Treasures;
+using Simemes.Frene;
 
 namespace Simemes.UI
 {
@@ -16,6 +17,7 @@ namespace Simemes.UI
 
         [SerializeField] private UIStolenInfo _stolenInfo;
         [SerializeField] private Button _stealBtn;
+        [SerializeField] private Button _addBtn;
         [SerializeField] private GameObject _popupFrame;
         [SerializeField] private Text _popupText;
         [SerializeField] private Image _character;
@@ -27,6 +29,8 @@ namespace Simemes.UI
         {
             _name.text = name;
             _title.text = title;
+
+            _addBtn.gameObject.SetActive(!FreneSystem.instance.HasFrene(_playerData.ID));
         }
 
         public void Steal(int index)
@@ -67,6 +71,11 @@ namespace Simemes.UI
             }
 
             _popupFrame.SetActive(true);
+        }
+
+        public void AddFriend()
+        {
+            FreneSystem.instance.AddFrene(_playerData.ID);
         }
 
         public void LoadInfo(PlayerData playerData, string name, string title, Sprite sprite)

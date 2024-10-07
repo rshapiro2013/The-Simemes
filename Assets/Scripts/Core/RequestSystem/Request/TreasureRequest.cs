@@ -62,7 +62,6 @@ namespace Simemes.Request
             var response = JsonConvert.DeserializeObject<JSON>(text);
             var list = response.ParseList<Treasures.ChestData>("chestBoxes");
             OnUpdateList?.Invoke(list);
-
         }
     }
 }
