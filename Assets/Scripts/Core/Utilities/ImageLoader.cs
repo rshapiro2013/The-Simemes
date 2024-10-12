@@ -9,10 +9,11 @@ namespace Core.Utilities
     public class ImageLoader : MonoSingleton<ImageLoader>
     {
         private System.Action<Texture2D> _onSelectImage;
+        private System.Action<byte[]> _onUploadImage;
 
-        public void SelectImage(System.Action<Texture2D> callback = null)
+        public void SelectImage(System.Action<byte[]> callback = null)
         {
-            _onSelectImage = callback;
+            _onUploadImage = callback;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         // WebGL 环境下，使用JavaScript的文件选择器
@@ -37,7 +38,8 @@ namespace Core.Utilities
             Texture2D texture = new Texture2D(1, 1);
             texture.LoadImage(imageBytes);
 
-            _onSelectImage?.Invoke(texture);
+            //_onSelectImage?.Invoke(texture);
+            _onUploadImage?.Invoke(imageBytes);
         }
 
         // WebGL 下从Base64字符串加载图片
@@ -55,7 +57,8 @@ namespace Core.Utilities
             Texture2D texture = new Texture2D(1, 1);
             texture.LoadImage(imageBytes);
 
-            _onSelectImage?.Invoke(texture);
+            //_onSelectImage?.Invoke(texture);
+            _onUploadImage?.Invoke(imageBytes);
         }
 
 #if UNITY_WEBGL && !UNITY_EDITOR

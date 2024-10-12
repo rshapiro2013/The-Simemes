@@ -6,6 +6,7 @@ using TMPro;
 using Simemes.Tasks;
 using Simemes.Frene;
 using UnityEngine.UI;
+using Simemes.Request;
 
 namespace Simemes.UI.Frene
 {
@@ -18,7 +19,7 @@ namespace Simemes.UI.Frene
         [SerializeField] private UIStolenView _stolenView;
         [SerializeField] private Sprite[] _images;
 
-        [SerializeField] private Image _profileImage;
+        [SerializeField] private WebImage _profileImage;
 
         private static List<FreneData> _datas = new List<FreneData>();
         private Dictionary<FreneData, PlayerData> _frensMap = new Dictionary<FreneData, PlayerData>();
@@ -77,13 +78,23 @@ namespace Simemes.UI.Frene
 
         public void SelectProfilePhoto()
         {
-            Core.Utilities.ImageLoader.instance.SelectImage(OnSelectImage);
+            Core.Utilities.ImageLoader.instance.SelectImage(OnUploadImage);
         }
 
         protected void OnSelectImage(Texture2D image)
         {
             var sprite = Sprite.Create(image, new Rect(0, 0, image.width, image.height), new Vector2(0.5f, 0.5f));
-            _profileImage.sprite = sprite;
+            _profileImage.Image.sprite = sprite;
+        }
+
+        protected void OnSelectImage(string url)
+        {
+            GameManager.instance.ChangeProfileImage(url);
+        }
+
+        protected void OnUploadImage(byte[] imageBytes)
+        {
+            FileRequest.UploadFile("UserIcon", imageBytes, OnSelectImage);
         }
 
         protected override void OnHidePanel()

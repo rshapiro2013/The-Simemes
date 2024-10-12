@@ -47,6 +47,25 @@ namespace Core.Networking
                 callback?.Invoke(request.downloadHandler.text, false);
         }
 
+        public async Task Post(string api, WWWForm form, ResponseMethod callback = null)
+        {
+            var path = $"{_url}{api}";
+
+            var request = UnityWebRequest.Post(path, form);
+            
+            if (!string.IsNullOrWhiteSpace(_authCode))
+                request.SetRequestHeader("Authorization", _authCode);
+
+            await request.SendWebRequest();
+
+            if (request.isHttpError || request.isNetworkError)
+            {
+                callback?.Invoke(request.result.ToString(), true);
+            }
+            else
+                callback?.Invoke(request.downloadHandler.text, false);
+        }
+
         public async Task Post<T>(string api, T data, ResponseMethod callback = null)
         {
             var path = $"{_url}{api}";

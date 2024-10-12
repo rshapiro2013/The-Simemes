@@ -37,6 +37,14 @@ namespace Simemes
             await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
         }
 
+        public async Task ChangeProfileImage(string url)
+        {
+            PlayerProfile.PhotoUrl = url;
+            PlayerProfile.Update();
+
+            await SavePlayerData();
+        }
+
         private void InitPlayerProfile()
         {
             PlayerProfile.Character = "yellow pepe farmer";

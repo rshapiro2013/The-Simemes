@@ -744,7 +744,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0ce92983a8ae0ce47aeaedae59920dd2, type: 3}
   - {fileID: 21300000, guid: a99355c17f57b5340bcc0c2d08e421ca, type: 3}
   - {fileID: 21300000, guid: 594a2309496845544ac441900540efe7, type: 3}
-  _profileImage: {fileID: 6219834207269210679}
+  _profileImage: {fileID: 3369466680431209228}
 --- !u!1 &5941481309571252219
 GameObject:
   m_ObjectHideFlags: 0

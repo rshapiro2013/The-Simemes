@@ -15,6 +15,8 @@ namespace Core.UI
         private Image _image;
         private Coroutine _coroutine;
 
+        public Image Image => _image;
+
         private void Awake()
         {
             _image = GetComponent<Image>();
