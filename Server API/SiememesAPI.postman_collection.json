@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7a79c08f-9b34-49cc-a72a-aa770db8f427",
+		"_postman_id": "1879b2cd-f707-4c7c-a784-16e035ba0b01",
 		"name": "SiememesAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "548499"
@@ -105,6 +105,67 @@
 					],
 					"path": [
 						"UserInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "File Upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "FileAttr",
+							"value": "UserIcon",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef83303-618a-4b70-8845-1fe0bddde6ed"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Url}}File",
+					"host": [
+						"{{Url}}File"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get File",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AuthCode}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Url}}File?fileAttr=UserIcon",
+					"host": [
+						"{{Url}}File"
+					],
+					"query": [
+						{
+							"key": "fileAttr",
+							"value": "UserIcon"
+						}
 					]
 				}
 			},
@@ -324,7 +385,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"yeo@xyz.com\"\r\n}",
+					"raw": "{\r\n    \"id\": \"B4D276\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -332,12 +393,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{Url}}api/friend",
+					"raw": "{{Url}}api/friendrequest",
 					"host": [
 						"{{Url}}api"
 					],
 					"path": [
-						"friend"
+						"friendrequest"
 					]
 				}
 			},
@@ -426,7 +487,7 @@
 			"response": []
 		},
 		{
-			"name": "FriendRequest",
+			"name": "Friend Request Mapping Info",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -435,7 +496,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "9ac7e1f1-3fd8-42e9-87d4-5597010eb687",
+						"value": "{{AuthCode}}",
 						"type": "text"
 					},
 					{
@@ -455,25 +516,25 @@
 					}
 				},
 				"url": {
-					"raw": "{{Url}}api/friendrequest",
+					"raw": "{{Url}}api/friendrequestmappinginfo",
 					"host": [
 						"{{Url}}api"
 					],
 					"path": [
-						"friendrequest"
+						"friendrequestmappinginfo"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "FriendRequest",
+			"name": "Friend Request Mapping Info",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "9ac7e1f1-3fd8-42e9-87d4-5597010eb687",
+						"value": "{{AuthCode}}",
 						"type": "text"
 					},
 					{
@@ -485,7 +546,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"isRequest\": true,\n  \"isConfirmed\": false,\n  \"isRejected\": false,\n  \"isCancelled\": false,\n  \"friendId\": \"23CB08\"\n}",
+					"raw": "{\n  \"isRequest\": false,\n  \"isConfirmed\":true,\n  \"isRejected\": false,\n  \"isCancelled\": false,\n  \"friendId\": \"9B0DE0\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -493,12 +554,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{Url}}api/friendrequest",
+					"raw": "{{Url}}api/friendrequestmappinginfo",
 					"host": [
 						"{{Url}}api"
 					],
 					"path": [
-						"friendrequest"
+						"friendrequestmappinginfo"
 					]
 				}
 			},
@@ -530,7 +591,7 @@
 	"variable": [
 		{
 			"key": "AuthCode",
-			"value": "",
+			"value": "35071A49-3F17-4FC4-8C99-A1F461482F6E",
 			"type": "string"
 		},
 		{
