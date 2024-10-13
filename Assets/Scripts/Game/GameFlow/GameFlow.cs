@@ -45,6 +45,7 @@ public class GameFlow : MonoSingleton<GameFlow>
             await FreneSystem.instance.Init();
             await StealRequest.GetChestDatas();
             await TaskMgr.instance.Init(GameManager.instance.PlayerProfile.TaskProgress);
+            await DailyCheckInSystem.instance.Init();
 
             SetBool("UserDataLoaded", true);
         }

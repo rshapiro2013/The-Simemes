@@ -13,11 +13,7 @@ namespace Simemes.Treasures
         [SerializeField]
         protected GameObject _prefab;
 
-        [SerializeField]
-        protected Sprite _image;
-
         public int Weight => _weight;
-        public Sprite Image => _image;
 
         public GameObject Prefab => _prefab;
     }

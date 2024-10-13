@@ -14,10 +14,16 @@ namespace Simemes.Rewards
         protected string _name;
 
         [SerializeField]
+        protected Sprite _image;
+
+        [SerializeField]
         protected string _rewardFormat;
 
         public int ID => _id;
+
         public string Name => _name;
+
+        public Sprite Image => _image;
 
         public string RewardFormat => _rewardFormat;
 
