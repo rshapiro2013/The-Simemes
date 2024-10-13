@@ -16,8 +16,10 @@ namespace Core.Networking
         protected const string _url = "https://simemesbackendapi-gme6g6c8cwcserfw.eastasia-01.azurewebsites.net/";
 
         protected string _authCode;
+        protected string _friendId;
 
         public string AuthCode { get => _authCode; set => _authCode = value; }
+        public string FriendID { get => _friendId; set => _friendId = value; }
 
         public async Task Post(string api, Dictionary<string, object> args, ResponseMethod callback = null)
         {

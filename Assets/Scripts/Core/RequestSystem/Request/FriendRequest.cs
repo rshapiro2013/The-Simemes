@@ -12,10 +12,11 @@ namespace Simemes.Request
 {
     public class FriendRequestData
     {
-        public string id { get; set; }
+        public string friendId { get; set; }
         public string name { get; set; }
         public string screenName { get; set; }
         public string profileImageUrl { get; set; }
+        public string status { get; set; }
     }
 
     public class FriendRequest
@@ -29,7 +30,7 @@ namespace Simemes.Request
 
         public class ResponseFriendRequestData
         {
-            public List<FriendRequestData> friendRequestDatas { get; set; }
+            public List<FriendRequestData> friendRequestMappingInfoDatas { get; set; }
             public int errorCode { get; set; }
             public string message { get; set; }
         }
@@ -65,10 +66,10 @@ namespace Simemes.Request
 
         public static async Task GetFriendRequest(System.Action<List<FriendRequestData>> callback = null)
         {
-            await RequestSystem.instance.Get("api/friendrequest", (text, isError) =>
+            await RequestSystem.instance.Get("api/friendrequestmappinginfo", (text, isError) =>
             {
                 ResponseFriendRequestData response = JsonConvert.DeserializeObject<ResponseFriendRequestData>(text);
-                callback?.Invoke(response.friendRequestDatas);
+                callback?.Invoke(response.friendRequestMappingInfoDatas);
 #if REQUEST_LOG
                 Debug.Log(text);
 #endif
@@ -84,10 +85,10 @@ namespace Simemes.Request
             _requestData["isReisCancelledjected"] = isCancelled;    
             _requestData["friendId"] = friendId;
 
-            await RequestSystem.instance.Post("api/friendrequest", _requestData, (text, isError) =>
+            await RequestSystem.instance.Post("api/friendrequestmappinginfo", _requestData, (text, isError) =>
             {
                 ResponseFriendRequestData response = JsonConvert.DeserializeObject<ResponseFriendRequestData>(text);
-                callback?.Invoke(response.friendRequestDatas);
+                callback?.Invoke(response.friendRequestMappingInfoDatas);
 #if REQUEST_LOG
                 Debug.Log(text);
 #endif

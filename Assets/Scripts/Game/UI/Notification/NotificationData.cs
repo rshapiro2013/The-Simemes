@@ -9,7 +9,7 @@ namespace Simemes.UI.Notification
 {
     public class NotificationData
     {
-        public int ID;
+        public string ID;
 
         public string Title;
 

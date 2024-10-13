@@ -36,7 +36,7 @@ namespace Core.Auth
             _userInfo = userInfo;
 
             _authInfo = new AuthInfo();
-            _authInfo.Id = userInfo.Id;
+            _authInfo.Id = userInfo.Id.ToString();
 
             _authInfo.Username = userInfo.Username;
             if (string.IsNullOrEmpty(_authInfo.Username))

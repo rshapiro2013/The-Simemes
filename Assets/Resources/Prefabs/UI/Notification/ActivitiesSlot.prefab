@@ -157,6 +157,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7084581689936361961}
+        m_TargetAssemblyTypeName: Simemes.UI.Notification.UINotificationSlot, Assembly-CSharp
+        m_MethodName: Reject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 6858212815889716710}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -289,6 +301,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7084581689936361961}
+        m_TargetAssemblyTypeName: Simemes.UI.Notification.UINotificationSlot, Assembly-CSharp
+        m_MethodName: Argee
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 6858212815889716710}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -467,3 +491,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6424584883335808003, guid: 452f9ec2d6ff42844ac924e44f2f716b, type: 3}
   m_PrefabInstance: {fileID: 434018821841359333}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7084581689936361961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7229557591143393292, guid: 452f9ec2d6ff42844ac924e44f2f716b, type: 3}
+  m_PrefabInstance: {fileID: 434018821841359333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6858212815889716710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790fa67e362c43a49a7360dbb28cff7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

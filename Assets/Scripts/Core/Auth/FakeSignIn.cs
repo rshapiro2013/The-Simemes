@@ -7,6 +7,8 @@ namespace Core.Auth
 {
     public class FakeSignIn : AuthMethod
     {
+        [SerializeField]
+        private string _id = "fakeID";
         public override string MethodName => "FakeSignIn";
 
         public override void Init() => SignIn();
@@ -16,7 +18,7 @@ namespace Core.Auth
             _isSignedIn = true;
 
             _authInfo = new AuthInfo();
-            _authInfo.Id = 1234567;
+            _authInfo.Id = _id;
 
             _authInfo.Username = "FakeAuth";
             //if (string.IsNullOrEmpty(_authInfo.Username))

@@ -23,18 +23,20 @@ namespace Simemes.UI.Frene
         private TextMeshProUGUI _title;
 
         [SerializeField]
-        private CanvasGroup _canvasGroup;
+        private UIFrenePanel _uIFrenePanel;
 
         private FreneData _data;
+        private string _freneID;
         private int _index;
 
         public FreneData Frene => _data;
 
 
-        public void Set(FreneData data, int index)
+        public void Set(FreneData data, int index, string freneID = "")
         {
             _data = data;
             _index = index;
+            _freneID = freneID;
 
             //_icon.sprite = data.Icon;
             _name.text = data.name;
@@ -43,7 +45,8 @@ namespace Simemes.UI.Frene
 
         public void Visit()
         {
-            UIFrenePanel.Instance.Visit(_data);
+            UIStolenView.FreneID = _freneID;
+            _uIFrenePanel.Visit(_data);
         }
     }
 }

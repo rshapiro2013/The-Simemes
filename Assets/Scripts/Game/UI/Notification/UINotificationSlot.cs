@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Simemes.Tasks;
+using Simemes.Frene;
 
 namespace Simemes.UI.Notification
 {
@@ -37,6 +37,16 @@ namespace Simemes.UI.Notification
         {
             if (_buttons != null)
                 _buttons.SetActive(enable);
+        }
+
+        public void Argee()
+        {
+            FreneSystem.instance.ConfirmeFrene(_notification.ID);
+        }
+
+        public void Reject()
+        {
+            FreneSystem.instance.RejecteFrene(_notification.ID);
         }
     }
 }

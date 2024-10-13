@@ -62,7 +62,7 @@ namespace Core.Auth
             string playerID = PlayerPrefs.GetString("PlayerID", string.Empty);
             if (string.IsNullOrEmpty(playerID))
             {
-                playerID = _authMethod.AuthInfo.Id.ToString();
+                playerID = _authMethod.AuthInfo.Id;
                 PlayerPrefs.SetString("PlayerID", playerID);
             }
 
@@ -86,7 +86,7 @@ namespace Core.Auth
                 return;
 
             RequestSystem.instance.AuthCode = (string)response.data["authCode"];
-
+            RequestSystem.instance.FriendID = (string)response.data["friendId"];
         }
     }
 }

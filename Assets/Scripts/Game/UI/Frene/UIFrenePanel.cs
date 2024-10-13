@@ -7,12 +7,16 @@ using Simemes.Tasks;
 using Simemes.Frene;
 using UnityEngine.UI;
 using Simemes.Request;
+using Simemes.Profile;
+using Core.Networking;
 
 namespace Simemes.UI.Frene
 {
     public class UIFrenePanel : UIPanel
     {
-        public static UIFrenePanel Instance;
+        //public static UIFrenePanel Instance;
+        [SerializeField] private TextMeshProUGUI _name;
+        [SerializeField] private TextMeshProUGUI _tag;
 
         [SerializeField] private List<UIFreneSlot> _freneSlots;
         [SerializeField] private TextMeshProUGUI _count;
@@ -28,14 +32,14 @@ namespace Simemes.UI.Frene
 
         protected override void Awake()
         {
-            Instance = this;
+            //Instance = this;
             base.Awake();
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            Instance = null;
+            //Instance = null;
         }
 
         public void Visit(FreneData data)
@@ -73,6 +77,15 @@ namespace Simemes.UI.Frene
                     slot.Set(_datas[i], i);
             }
 
+            if (_name != null)
+            {
+                _name.text = GameManager.instance.PlayerProfile.UserName;
+            }
+
+            if (_tag != null)
+            {
+                _tag.text = $"@{RequestSystem.instance.FriendID}" ;
+            }
             _count.text = _datas.Count.ToString();
         }
 

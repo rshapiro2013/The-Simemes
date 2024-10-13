@@ -31,23 +31,28 @@ namespace Simemes.UI.Frene
             //_inputField.onValueChanged.AddListener(SearchBase);
             _inputField.onSubmit.AddListener(SearchBase);
 
-            List<FreneData> freneDatas = UIFrenePanel.FreneDatas;
-            if (_freneSlots.Count < freneDatas.Count)
-            {
-                int count = freneDatas.Count - _freneSlots.Count;
-                for (int i = 0; i < count; ++i)
-                {
-                    _freneSlots.Add(Instantiate(_source, _parent));
-                }
-            }
+            //List<FreneData> freneDatas = UIFrenePanel.FreneDatas;
+            //if (_freneSlots.Count < freneDatas.Count)
+            //{
+            //    int count = freneDatas.Count - _freneSlots.Count;
+            //    for (int i = 0; i < count; ++i)
+            //    {
+            //        _freneSlots.Add(Instantiate(_source, _parent));
+            //    }
+            //}
+
+            //for (int i = 0; i < _freneSlots.Count; ++i)
+            //{
+            //    bool active = i < freneDatas.Count;
+            //    UIFreneSlot slot = _freneSlots[i];
+            //    slot.gameObject.SetActive(active);
+            //    if (active)
+            //        slot.Set(freneDatas[i], i);
+            //}
 
             for (int i = 0; i < _freneSlots.Count; ++i)
             {
-                bool active = i < freneDatas.Count;
-                UIFreneSlot slot = _freneSlots[i];
-                slot.gameObject.SetActive(active);
-                if (active)
-                    slot.Set(freneDatas[i], i);
+                _freneSlots[i].gameObject.SetActive(false);
             }
         }
 
@@ -62,12 +67,12 @@ namespace Simemes.UI.Frene
             {
                 for (int i = 0; i < _freneSlots.Count; ++i)
                 {
-                    bool active = i < result.Count;
+                    bool active = result != null && i < result.Count;
                     UIFreneSlot slot = _freneSlots[i];
                     slot.gameObject.SetActive(active);
                     if (active)
                     {
-                        slot.Set(result[i], i);
+                        slot.Set(result[i], i, keyword);
                     }
                 }
             });

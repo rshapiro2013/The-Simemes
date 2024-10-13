@@ -692,7 +692,7 @@ PlayerSettings:
     QNX: DOTWEEN
     Stadia: DOTWEEN
     Standalone: DOTWEEN
-    WebGL: DOTWEEN
+    WebGL: DOTWEEN;REQUEST_LOG
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
     iPhone: DOTWEEN

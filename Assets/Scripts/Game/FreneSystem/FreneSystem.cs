@@ -38,8 +38,11 @@ namespace Simemes.Frene
         {
             await FriendRequest.GetFriendRequest(list =>
             {
-                _frendRequestData.Clear();
-                _frendRequestData.AddRange(list);
+                if (list != null)
+                {
+                    _frendRequestData.Clear();
+                    _frendRequestData.AddRange(list);
+                }
             });
         }
 

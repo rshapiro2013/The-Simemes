@@ -10,6 +10,7 @@ namespace Simemes.UI
 {
     public class UIStolenView : MonoBehaviour
     {
+        public static string FreneID;
         [SerializeField] private UIChestPanel _chestPanel;
         [SerializeField] private Text _name;
         [SerializeField] private Text _title;
@@ -75,7 +76,8 @@ namespace Simemes.UI
 
         public void AddFriend()
         {
-            FreneSystem.instance.AddFrene(_playerData.ID);
+            if(!string.IsNullOrEmpty(FreneID))
+                FreneSystem.instance.AddFrene(FreneID);
         }
 
         public void LoadInfo(PlayerData playerData, string name, string title, Sprite sprite)

@@ -6,7 +6,7 @@ namespace Core.Auth
 {
     public class AuthInfo
     {
-        public long Id;
+        public string Id;
 
         public string Username;
 
