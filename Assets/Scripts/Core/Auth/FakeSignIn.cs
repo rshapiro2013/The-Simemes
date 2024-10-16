@@ -13,6 +13,7 @@ namespace Core.Auth
 
         public override void Init() => SignIn();
 
+        public override string UserID => SystemInfo.deviceUniqueIdentifier + "_" + System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         public override void SignIn()
         {
             _isSignedIn = true;

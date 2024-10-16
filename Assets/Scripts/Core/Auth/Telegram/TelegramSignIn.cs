@@ -13,6 +13,8 @@ namespace Core.Auth
 
         public override string MethodName => "Telegram";
 
+        public override string UserID => _authInfo.Id.ToString();
+
         public override void Init()
         {
             _telegramAuth = new TelegramAuth();

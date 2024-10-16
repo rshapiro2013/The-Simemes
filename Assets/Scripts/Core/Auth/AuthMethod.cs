@@ -15,6 +15,8 @@ namespace Core.Auth
         public bool IsError => _isError;
         public AuthInfo AuthInfo => _authInfo;
 
+        public virtual string UserID => string.Empty;
+
         public virtual void Init()
         {
 
