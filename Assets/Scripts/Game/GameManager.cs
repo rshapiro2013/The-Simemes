@@ -64,5 +64,11 @@ namespace Simemes
                 PlayerPrefs.DeleteAll();
             }
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.F1))
+                PlayerProfile.AddExp(PlayerProfile.MaxExp);
+        }
     }
 }
