@@ -28,7 +28,7 @@ namespace Simemes.AirDrop
         }
 
         [SerializeField]
-        protected AirDropConfig _airDropConfig;
+        private TextAsset _airDropTableAsset;
 
         [SerializeField]
         private int _dropInterval;
@@ -41,6 +41,8 @@ namespace Simemes.AirDrop
         private readonly Queue<Treasure> _treasures = new Queue<Treasure>();
 
         private readonly List<TreasureData> _treasureData = new List<TreasureData>();
+
+        private AirDropTable _airDropTable = new AirDropTable();
 
         public static long Now => System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
@@ -111,7 +113,7 @@ namespace Simemes.AirDrop
             if (_treasures.Count >= _maxItemCount)
                 return;
 
-            int itemID = _airDropConfig.GetRandomDropItem();
+            int itemID = _airDropTable.GetRandomItem(GameManager.instance.PlayerProfile.TierData.Id);
 
             SpawnTreasureItem(itemID, Now);
             SaveData();
@@ -155,6 +157,8 @@ namespace Simemes.AirDrop
 
         private void LoadData()
         {
+            _airDropTable.Init(_airDropTableAsset.text);
+
             string data = PlayerPrefs.GetString("AirDropData");
             if (string.IsNullOrEmpty(data))
                 return;

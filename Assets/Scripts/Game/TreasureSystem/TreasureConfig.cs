@@ -13,6 +13,10 @@ namespace Simemes.Treasures
         [SerializeField]
         protected GameObject _prefab;
 
+        [TextArea(3, 10)]
+        [SerializeField]
+        protected string _desc;
+
         public int Weight => _weight;
 
         public GameObject Prefab => _prefab;

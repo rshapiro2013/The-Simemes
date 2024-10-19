@@ -225,6 +225,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 126a62b782b5ecb43af0ae6990283c0e, type: 2}
   - {fileID: 11400000, guid: 00dbf99ae64573944adc4265b4129b3b, type: 2}
   - {fileID: 11400000, guid: 0cbeb74e9b4e8204ea0c5d41c622faca, type: 2}
+  - {fileID: 11400000, guid: 92a0c0562eea9a7448dd20df452a233e, type: 2}
+  - {fileID: 11400000, guid: 5491693f2b0f4fa4bb66d8d802053207, type: 2}
+  - {fileID: 11400000, guid: 40720baafc0b3a24d8d7ea85558b4c7a, type: 2}
+  - {fileID: 11400000, guid: 79b15b69d64accb439139e0c5d723456, type: 2}
+  - {fileID: 11400000, guid: 3d4a98ac72f29e54fb16adc0384bb387, type: 2}
+  - {fileID: 11400000, guid: 2340a0e6e1f7da843a65e5504e2f4852, type: 2}
+  - {fileID: 11400000, guid: dd55548a689ddfd4980fa2068fc6c87e, type: 2}
+  - {fileID: 11400000, guid: 1c80855fd2fb34646bd966a8c3d1b02e, type: 2}
+  - {fileID: 11400000, guid: 0e349e3c509a34a4a8d824e4fc32f6d9, type: 2}
+  - {fileID: 11400000, guid: 8c7356ce70344bc4fbbd04c3212e031d, type: 2}
+  - {fileID: 11400000, guid: 847ef8f372eceb44da062a539ef6237d, type: 2}
+  - {fileID: 11400000, guid: c56614072a9ed4540a425c52a37f5abc, type: 2}
+  - {fileID: 11400000, guid: 216b8bdfd2d1f9d49ab70a4a655b4ab6, type: 2}
+  - {fileID: 11400000, guid: 998917e92370af74886ac0d711c67ce5, type: 2}
+  - {fileID: 11400000, guid: 7ab2292092e5a0f48b09c9ca5356def6, type: 2}
+  - {fileID: 11400000, guid: 8fb1c0046b3a96f46883d76b1b84d446, type: 2}
+  - {fileID: 11400000, guid: e8b0dbb3650a3ef4892024ce2e38d5ea, type: 2}
+  - {fileID: 11400000, guid: af9b8cfd8b22980409dfd1054221e669, type: 2}
+  - {fileID: 11400000, guid: b267c5083b5a8c648966b69b49e1d5ab, type: 2}
+  - {fileID: 11400000, guid: 2c86a340be6662644a291709bac2f195, type: 2}
+  - {fileID: 11400000, guid: 80dc7374b14f98240ac7166dd1ea8858, type: 2}
+  - {fileID: 11400000, guid: c148d93810c8bc6409a8d2a30e8ab391, type: 2}
+  - {fileID: 11400000, guid: 96353eb3f084f5c4a8a2166a79d433fb, type: 2}
   _treasureBuffs:
   - {fileID: 11400000, guid: a1fc96fdae592cc478bfcfdd1757d708, type: 2}
   - {fileID: 11400000, guid: 50b51941143d9c14abef088980295c16, type: 2}
@@ -241,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _airDropConfig: {fileID: 11400000, guid: ad5c410dab15e52489bc85239dc9f418, type: 2}
+  _airDropTableAsset: {fileID: 4900000, guid: 08176fc4325b4a743a9cf7ff4f9c391b, type: 3}
   _dropInterval: 30
   _maxItemCount: 10
 --- !u!114 &4367467062886839105

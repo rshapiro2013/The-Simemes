@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658bb90f9bd99e249ad552813d7d5675, type: 3}
   m_Name: Exp3
   m_EditorClassIdentifier: 
-  _id: 2211
+  _id: 2203
   _name: Steak
+  _image: {fileID: 21300000, guid: d94306d96074d474f9ec5b3bf73aac40, type: 3}
+  _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
-  _image: {fileID: 21300000, guid: 43220b709cb8eaf4887d3c508a93c978, type: 3}
-  _exp: 20
+  _exp: 3

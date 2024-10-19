@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dropItems:
   - ItemID: 2201
-    Chance: 50
+    Chance: 60
   - ItemID: 2210
-    Chance: 35
-  - ItemID: 2211
-    Chance: 15
+    Chance: 40

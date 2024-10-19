@@ -17,8 +17,8 @@ namespace Core.Auth
 
         public override void Init()
         {
-            _telegramAuth = new TelegramAuth();
-            _telegramAuth.TryResume(OnSignIn);
+            //_telegramAuth = new TelegramAuth();
+            //_telegramAuth.TryResume(OnSignIn);
         }
 
         public override void SignIn()
