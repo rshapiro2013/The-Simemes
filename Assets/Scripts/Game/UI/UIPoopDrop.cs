@@ -28,6 +28,7 @@ namespace Simemes.UI
     public class UIPoopDrop : MonoBehaviour
     {
         [SerializeField] private RectTransform _dropRange;
+        [SerializeField] private DropArea _dropArea;
 
         [SerializeField] private GameObject _dropPrefab;
 
@@ -72,23 +73,20 @@ namespace Simemes.UI
 
         public void RandomSpawn(int count)
         {
-            Vector2 worldMin = _dropRange.TransformPoint(_dropRange.rect.min);
-            Vector2 worldMax = _dropRange.TransformPoint(_dropRange.rect.max);
             for (int i = 0; i < count; ++i)
             {
-                float randomX = Random.Range(worldMin.x, worldMax.x);
-                float randomY = Random.Range(worldMin.y, worldMax.y);
-                Vector2 randomPosition = new Vector2(randomX, randomY);
-                Create(randomPosition);
+                _dropArea.GetParentAndPos(out var parent, out var pos);
+
+                Create(parent, pos);
             }
         }
 
-        private GameObject Create(Vector2 randomPosition)
+        private GameObject Create(RectTransform parent, Vector2 randomPosition)
         {
-            GameObject newObject = Instantiate(_dropPrefab, _dropRange);
+            GameObject newObject = Instantiate(_dropPrefab, parent);
             RectTransform rectTransform = newObject.transform as RectTransform;
             rectTransform.position = randomPosition;
-            rectTransform.SetParent(transform, true);
+            rectTransform.SetParent(parent, true);
             _spawnedObjects.Add(newObject);
 
             newObject.GetComponent<Button>().onClick.AddListener(Collect);
