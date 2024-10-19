@@ -630,7 +630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9,999,999
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
   m_sharedMaterial: {fileID: 2517202264660172603, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
@@ -2679,7 +2679,6 @@ GameObject:
   - component: {fileID: 2321233990075900005}
   - component: {fileID: 1124181557365016864}
   - component: {fileID: 43464983943592210}
-  - component: {fileID: 8129052855585289523}
   m_Layer: 5
   m_Name: Stats_Diamond
   m_TagString: Untagged
@@ -2788,20 +2787,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
---- !u!114 &8129052855585289523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3293537889230248012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234770d8e1681e543b9d4de2b4d28667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _updateInterval: 0.05
-  _coinText: {fileID: 2227419864376770066}
 --- !u!1 &3479413122474039040
 GameObject:
   m_ObjectHideFlags: 0
@@ -8034,7 +8019,7 @@ RectTransform:
   - {fileID: 9183249684614484524}
   - {fileID: 229832029890488583}
   m_Father: {fileID: 0}
-  m_RootOrder: -2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
