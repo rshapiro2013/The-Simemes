@@ -20,7 +20,8 @@ public class UIBackground : MonoBehaviour
         foreach (var sprite in _backgrounds)
             _backgroundData[sprite.name] = sprite;
 
-        GameManager.instance.PlayerProfile.OnUpdateTierData += UpdateBackground;
+        if (GameManager.instanceExists)
+            GameManager.instance.PlayerProfile.OnUpdateTierData += UpdateBackground;
     }
 
     private void OnDestroy()

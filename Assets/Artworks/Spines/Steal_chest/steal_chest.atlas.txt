@@ -1,0 +1,32 @@
+steal_chest.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+CFX4_T_FireSoft RGB
+bounds:896,108,93,90
+rotate:90
+Chest-open full
+bounds:399,85,235,241
+rotate:180
+Chest-open full_L
+bounds:885,51,80,55
+Frame 189_L
+bounds:766,132,194,128
+rotate:90
+Frame 189_R
+bounds:636,132,194,128
+rotate:90
+OO
+bounds:621,2,128,128
+shadow
+bounds:403,37,174,47
+offsets:2,1,178,49
+sparkle3
+bounds:344,276,50,50
+thief_Lleg
+bounds:896,203,123,78
+rotate:90
+thief_Rleg
+bounds:751,45,132,85
+thief_body
+bounds:2,9,400,317

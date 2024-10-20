@@ -5,9 +5,32 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using Simemes.Treasures;
 using Simemes.Frene;
+#if UNITY_EDITOR
+using UnityEditor;
 
 namespace Simemes.UI
 {
+    [CustomEditor(typeof(UIStolenView))]
+    public class UIStolenViewEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            UIStolenView stolenView = target as UIStolenView;
+            if (GUILayout.Button("InvokeSuccess"))
+            {
+                stolenView.InvokeSuccess();
+            }
+            if (GUILayout.Button("InvokeFailed"))
+            {
+                stolenView.InvokeFailed();
+            }
+            base.OnInspectorGUI();
+        }
+    }
+#else
+namespace Simemes.UI
+{
+#endif
     public class UIStolenView : MonoBehaviour
     {
         public static string FreneID;
@@ -22,9 +45,24 @@ namespace Simemes.UI
         [SerializeField] private GameObject _popupFrame;
         [SerializeField] private Text _popupText;
         [SerializeField] private Image _character;
+        [SerializeField] private UnityEvent _onStealSusscee;
+        [SerializeField] private UnityEvent _onStealFailed;
 
         private int _chestCount;
         private PlayerData _playerData;
+
+
+#if UNITY_EDITOR
+        public void InvokeSuccess()
+        {
+            _onStealSusscee?.Invoke();
+        }
+
+        public void InvokeFailed()
+        {
+            _onStealFailed?.Invoke();
+        }
+#endif
 
         private void Set(string name, string title)
         {
@@ -63,7 +101,10 @@ namespace Simemes.UI
                         empty.Seal();
                     }
                     _stolenInfo.Steal(index);
+                    _onStealSusscee?.Invoke();
                 }
+                else
+                    _onStealFailed?.Invoke();
                 _popupText.text = hasBuff ? "Trigger guard!\n<color=red>Steal failed...</color>" : success ? "Steal succeeded!" : "<color=red>Steal failed...</color>"; ;// "偷取失敗\n觸發防護罩" : success ? "成功偷取" : "偷取失敗";
             }
             else
