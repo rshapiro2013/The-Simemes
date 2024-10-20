@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp12
   m_EditorClassIdentifier: 
   _id: 2212
-  _name: Steak
+  _name: Ares Spear
   _image: {fileID: 21300000, guid: a7e1b02aa66da814d972f0be85bf9985, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: Forged by Ares himself, this spear makes you feel like an unstoppable god
+    of war on the battlefield!
   _exp: 8

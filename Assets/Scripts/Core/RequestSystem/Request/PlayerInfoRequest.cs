@@ -49,10 +49,10 @@ namespace Core.Networking
 
             JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
             {
-                ObjectCreationHandling = ObjectCreationHandling.Replace
+                ObjectCreationHandling = ObjectCreationHandling.Auto
             };
 
-            JsonConvert.PopulateObject(response.userInfo, _playerInfo, jsonSerializerSettings);
+            JsonConvert.PopulateObject(response.userInfo, _playerInfo);
         }
     }
 }

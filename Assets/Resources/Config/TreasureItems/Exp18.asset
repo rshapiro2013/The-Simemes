@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp18
   m_EditorClassIdentifier: 
   _id: 2218
-  _name: Steak
+  _name: Hephaestus Hammer
   _image: {fileID: 21300000, guid: c8c9f7eb8a7844741aa74987cdcc8c12, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "The divine hammer of Hephaestus\u2014any weapon you forge with this turns
+    into god-tier gear in your hands!"
   _exp: 10

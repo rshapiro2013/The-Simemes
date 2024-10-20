@@ -248,6 +248,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 80dc7374b14f98240ac7166dd1ea8858, type: 2}
   - {fileID: 11400000, guid: c148d93810c8bc6409a8d2a30e8ab391, type: 2}
   - {fileID: 11400000, guid: 96353eb3f084f5c4a8a2166a79d433fb, type: 2}
+  - {fileID: 11400000, guid: fd00ff7f67b8b27438cc99d2b838ff38, type: 2}
   _treasureBuffs:
   - {fileID: 11400000, guid: a1fc96fdae592cc478bfcfdd1757d708, type: 2}
   - {fileID: 11400000, guid: 50b51941143d9c14abef088980295c16, type: 2}
@@ -263,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a107386a71c8f47b45059bba6a011d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _airDropConfig: {fileID: 11400000, guid: ad5c410dab15e52489bc85239dc9f418, type: 2}
   _airDropTableAsset: {fileID: 4900000, guid: 08176fc4325b4a743a9cf7ff4f9c391b, type: 3}
   _dropInterval: 30
   _maxItemCount: 10

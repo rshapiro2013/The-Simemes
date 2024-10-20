@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp13
   m_EditorClassIdentifier: 
   _id: 2213
-  _name: Steak
+  _name: Artemis Bow
   _image: {fileID: 21300000, guid: 699e90061298fe24b983e9d754626adf, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "With this bow in hand, your archery skills will surpass even Olympic champions.
+    Bulls-eye? Child\u2019s play."
   _exp: 8

@@ -113,6 +113,9 @@ namespace Simemes.AirDrop
             if (_treasures.Count >= _maxItemCount)
                 return;
 
+            if (GameManager.instance.PlayerProfile.TierData == null)
+                return;
+
             int itemID = _airDropTable.GetRandomItem(GameManager.instance.PlayerProfile.TierData.Id);
 
             SpawnTreasureItem(itemID, Now);

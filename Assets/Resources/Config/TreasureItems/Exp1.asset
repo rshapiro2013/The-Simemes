@@ -18,4 +18,5 @@ MonoBehaviour:
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "Take a bite, and feel the rush of health power! Professionally verified\u2014snake-free! "
   _exp: 1

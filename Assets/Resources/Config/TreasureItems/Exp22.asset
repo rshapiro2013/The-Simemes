@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp22
   m_EditorClassIdentifier: 
   _id: 2222
-  _name: Steak
+  _name: Sushi
   _image: {fileID: 21300000, guid: 8743be0bf053a6d4abdf019e604355d6, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "Fresh salmon sushi that refreshes your soul like you\u2019ve just walked
+    out of a fish market. Grants a random \"Lucky\" buff."
   _exp: 13

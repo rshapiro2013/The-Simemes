@@ -15,8 +15,18 @@ namespace Simemes.Treasures
         {
             base.Obtain(count);
 
+            var saveData = GameManager.instance.SaveData;
+
+            // 解鎖圖鑑
+            saveData.Collection.Unlock(_id);
+
             // 獲得經驗值
-            GameManager.instance.PlayerProfile.AddExp(count * _exp);
+            saveData.Profile.AddExp(count * _exp);
+        }
+
+        public override string GetEffect()
+        {
+            return $"{_exp} XP";
         }
     }
 }

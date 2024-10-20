@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp11
   m_EditorClassIdentifier: 
   _id: 2211
-  _name: Steak
+  _name: Chicken
   _image: {fileID: 21300000, guid: af8552d0c477b924f89f10445085e06b, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "One bite, and you\u2019ll feel like you\u2019ve hit life\u2019s peak. No
+    one can resist the lure of fried chicken\u2014not even your enemies."
   _exp: 8

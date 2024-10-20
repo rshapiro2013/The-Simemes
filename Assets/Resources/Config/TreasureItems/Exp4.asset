@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp4
   m_EditorClassIdentifier: 
   _id: 2204
-  _name: Steak
+  _name: Fries
   _image: {fileID: 21300000, guid: c5b6544c15e7b4b4db4cfe34bd81c455, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: Crispy fries filled with equal parts guilt and joy! Grants a temporary boost
+    in happiness and a "regret" debuff.
   _exp: 4

@@ -170,12 +170,12 @@ namespace Core.Networking
         {
             JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
             {
-                ObjectCreationHandling = ObjectCreationHandling.Replace
+                ObjectCreationHandling = ObjectCreationHandling.Auto
             };
 
             string serializedData = PlayerPrefs.GetString(requestName, string.Empty);
             if (!string.IsNullOrEmpty(serializedData))
-                JsonConvert.PopulateObject(serializedData, data, jsonSerializerSettings);
+                JsonConvert.PopulateObject(serializedData, data);
         }
 
         public void UploadData<T>(string requestName, T data)

@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp3
   m_EditorClassIdentifier: 
   _id: 2203
-  _name: Steak
+  _name: Coke
   _image: {fileID: 21300000, guid: d94306d96074d474f9ec5b3bf73aac40, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "A sip of chilled refreshment instantly resets your spirit meter! That \"psst\"
+    sound? That\u2019s the sound of leveling up."
   _exp: 3

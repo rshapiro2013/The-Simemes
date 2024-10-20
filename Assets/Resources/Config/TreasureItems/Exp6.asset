@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp6
   m_EditorClassIdentifier: 
   _id: 2206
-  _name: Steak
+  _name: Hotdog
   _image: {fileID: 21300000, guid: ee1a78b222d3498448957932c603e221, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "Not just a regular hotdog! After eating this, you\u2019ll feel stadium-level
+    energy, ready for action with boiling blood."
   _exp: 6

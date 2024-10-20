@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658bb90f9bd99e249ad552813d7d5675, type: 3}
+  m_Name: Exp27
+  m_EditorClassIdentifier: 
+  _id: 2227
+  _name: Zeus Bolt
+  _image: {fileID: 21300000, guid: 8b6844cac71002843a47c746006af5e1, type: 3}
+  _rewardFormat: 
+  _weight: 1
+  _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "Zeus\u2019 thunderbolt grants you the power to summon lightning, frying
+    your enemies to a crisp! But don\u2019t overdo it\u2014beware of electrocution!"
+  _exp: 15

@@ -20,5 +20,9 @@ namespace Simemes.Treasures
         public int Weight => _weight;
 
         public GameObject Prefab => _prefab;
+
+        public string Desc => _desc;
+
+        public virtual string GetEffect() => string.Empty;
     }
 }

@@ -11,49 +11,51 @@ namespace Simemes
 {
     public class GameManager : MonoSingleton<GameManager>
     {
-        public PlayerProfile PlayerProfile = new PlayerProfile();
+        public SaveData SaveData = new SaveData();
+
+        public PlayerProfile PlayerProfile => SaveData.Profile;
 
         public async Task LoadPlayerData()
         {
-            RequestSystem.instance.RequestData("PlayerProfile", PlayerProfile);
-            if (string.IsNullOrEmpty(PlayerProfile.Character))
+            RequestSystem.instance.RequestData("PlayerProfile", SaveData);
+            if (string.IsNullOrEmpty(SaveData.Profile.Character))
             {
                 InitPlayerProfile();
 
-                RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
+                RequestSystem.instance.UploadData("PlayerProfile", SaveData);
 
-                await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
+                await PlayerInfoRequest<SaveData>.SavePlayerData(SaveData);
             }
             else
-                await PlayerInfoRequest<PlayerProfile>.LoadPlayerData(PlayerProfile);
+                await PlayerInfoRequest<SaveData>.LoadPlayerData(SaveData);
 
-            PlayerProfile.Init();
+            SaveData.Init();
 
         }
 
         public async Task SavePlayerData()
         {
-            RequestSystem.instance.UploadData("PlayerProfile", PlayerProfile);
-            await PlayerInfoRequest<PlayerProfile>.SavePlayerData(PlayerProfile);
+            RequestSystem.instance.UploadData("PlayerProfile", SaveData);
+            await PlayerInfoRequest<SaveData>.SavePlayerData(SaveData);
         }
 
         public async Task ChangeProfileImage(string url)
         {
-            PlayerProfile.PhotoUrl = url;
-            PlayerProfile.Update();
+            SaveData.Profile.PhotoUrl = url;
+            SaveData.Profile.Update();
 
             await SavePlayerData();
         }
 
         private void InitPlayerProfile()
         {
-            PlayerProfile.Character = "yellow pepe farmer";
+            SaveData.Profile.Character = "yellow pepe farmer";
 
             var userInfo = AuthMgr.instance.UserInfo;
             if (userInfo != null)
             {
-                PlayerProfile.UserName = userInfo.Username;
-                PlayerProfile.PhotoUrl = userInfo.PhotoUrl;
+                SaveData.Profile.UserName = userInfo.Username;
+                SaveData.Profile.PhotoUrl = userInfo.PhotoUrl;
             }
         }
 
@@ -68,7 +70,20 @@ namespace Simemes
         private void Update()
         {
             if (Input.GetKeyUp(KeyCode.F1))
-                PlayerProfile.AddExp(PlayerProfile.MaxExp);
+                SaveData.Profile.AddExp(SaveData.Profile.MaxExp);
+
+            if (Input.GetKeyUp(KeyCode.F2))
+            {
+                var treasureItems = Treasures.TreasureSystem.instance.TreasureItems;
+                foreach (var item in treasureItems)
+                {
+                    if (SaveData.Collection.IsUnlocked(item.ID))
+                        continue;
+
+                    item.Obtain(1);
+                    return;
+                }
+            }
         }
     }
 }

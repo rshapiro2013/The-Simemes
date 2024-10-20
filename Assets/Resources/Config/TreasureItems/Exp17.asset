@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp17
   m_EditorClassIdentifier: 
   _id: 2217
-  _name: Steak
+  _name: Athena Owl
   _image: {fileID: 21300000, guid: 7422fdd6bbdc8fc4d8d3368164cb75de, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "With Athena\u2019s owl, you gain instant wisdom and insight\u2014yes, even
+    that tricky homework becomes a breeze."
   _exp: 10

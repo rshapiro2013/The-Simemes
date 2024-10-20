@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp15
   m_EditorClassIdentifier: 
   _id: 2215
-  _name: Steak
+  _name: Hestia Torch
   _image: {fileID: 21300000, guid: fb2431ac0c3e88d4a9814ffdedf32e7b, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: A torch from Hestia, goddess of the hearth, that lights your way wherever
+    you go. Also great for roasting marshmallows!
   _exp: 9

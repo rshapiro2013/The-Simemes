@@ -22,6 +22,8 @@ namespace Simemes.Treasures
 
         public event System.Action OnUpdateChests;
 
+        public List<TreasureConfig> TreasureItems => _treasureItems;
+
         public TreasureBoxConfig GetTreasureBoxConfig(int id)
         {
             return _treasureBoxConfigs.Find(x => x.ID == id);

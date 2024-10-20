@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp21
   m_EditorClassIdentifier: 
   _id: 2221
-  _name: Steak
+  _name: Hermes Staff
   _image: {fileID: 21300000, guid: ba3a4dd54f3d1b84884fce40fb6f545a, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "Hermes\u2019 staff grants you speed so fast, even Wi-Fi struggles to keep
+    up with you!"
   _exp: 11

@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp26
   m_EditorClassIdentifier: 
   _id: 2226
-  _name: Steak
+  _name: Gemini Clone
   _image: {fileID: 21300000, guid: 76ab555aba904394f8b380b1bfa99ec3, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "This Gemini-crafted Pepe doll summons your clone with unpredictable emotions.
+    Whether it helps or not\u2026 that\u2019s up to your clone\u2019s mood."
   _exp: 15

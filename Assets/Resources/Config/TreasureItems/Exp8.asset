@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp8
   m_EditorClassIdentifier: 
   _id: 2208
-  _name: Steak
+  _name: Beer
   _image: {fileID: 21300000, guid: ea8c67b60ef1b724981c83926459c953, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: One sip and all your worries fade! Beware of the "Drunkard" status, triggering
+    random actions anytime.
   _exp: 7

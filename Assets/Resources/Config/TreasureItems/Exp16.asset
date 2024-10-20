@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp16
   m_EditorClassIdentifier: 
   _id: 2216
-  _name: Steak
+  _name: Burger
   _image: {fileID: 21300000, guid: b0c9a26cad10ad14ebe0d55ed63af072, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "This isn\u2019t just a burger, it\u2019s your combat stamina booster! Restores
+    lots of energy and keeps you full, so no hunger while slaying."
   _exp: 10

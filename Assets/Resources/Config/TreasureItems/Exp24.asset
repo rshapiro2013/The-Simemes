@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp24
   m_EditorClassIdentifier: 
   _id: 2224
-  _name: Steak
+  _name: Wagyu
   _image: {fileID: 21300000, guid: 5e83637529579bc4fa6ee53afe787754, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "This premium wagyu beef will make you feel like you\u2019re at the top
+    of the gourmet food chain. Grants temporary VIP status after consumption."
   _exp: 15

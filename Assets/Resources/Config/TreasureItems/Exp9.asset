@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp9
   m_EditorClassIdentifier: 
   _id: 2209
-  _name: Steak
+  _name: Aphrodite Mirror
   _image: {fileID: 21300000, guid: cc807ffce26788945ba4fe748ddc0a77, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: After using this mirror, your charm stat skyrockets! You might just fall
+    in love with your own reflection.
   _exp: 7

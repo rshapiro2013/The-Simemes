@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp20
   m_EditorClassIdentifier: 
   _id: 2220
-  _name: Steak
+  _name: Hera Staff
   _image: {fileID: 21300000, guid: 3654059fa3440a246b4d7988eb790683, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "The symbol of queen Hera. Wield this staff and your leadership skills will
+    become unmatched\u2014even the gods must obey."
   _exp: 11

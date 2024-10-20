@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp5
   m_EditorClassIdentifier: 
   _id: 2205
-  _name: Steak
+  _name: Salad
   _image: {fileID: 21300000, guid: 0e7d7c544b9f1524a9824314f8985401, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "The symbol of health! Eating it makes you feel like a fitness guru\u2026
+    but it\u2019s really just some extra lettuce."
   _exp: 5

@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Exp23
   m_EditorClassIdentifier: 
   _id: 2223
-  _name: Steak
+  _name: Poseidon Trident
   _image: {fileID: 21300000, guid: c1f09660471b1454cba6df16037ac72e, type: 3}
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: "Poseidon\u2019s trident gives you the power to control water and easily
+    defeat any crab boss in your path!"
   _exp: 13

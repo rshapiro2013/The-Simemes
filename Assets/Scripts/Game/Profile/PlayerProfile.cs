@@ -22,6 +22,7 @@ namespace Simemes.Profile
 
         public int Coin;
 
+        [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Replace)]
         public List<TaskProgress> TaskProgress;
 
         [JsonIgnore]

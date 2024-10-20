@@ -18,4 +18,6 @@ MonoBehaviour:
   _rewardFormat: 
   _weight: 1
   _prefab: {fileID: 140646666375953303, guid: eab6e1320e8e47d45bc36823576d9562, type: 3}
+  _desc: The ultimate energy booster. Use it and feel like a pro banana-throwing
+    Mario Kart racer.
   _exp: 2
