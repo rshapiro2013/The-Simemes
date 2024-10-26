@@ -412,6 +412,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0cbeb74e9b4e8204ea0c5d41c622faca, type: 2}
   - {fileID: 11400000, guid: c56acc786a69fd64e9fe77c619821d1a, type: 2}
   - {fileID: 11400000, guid: bf171fb30c55da54b9a3c46efa119716, type: 2}
+  - {fileID: 11400000, guid: bb55c94406d42b547887ccaa4b8d59f6, type: 2}
 --- !u!114 &2063002498207138231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,8 +498,8 @@ MonoBehaviour:
     Count: 500
   - ID: 2101
     Count: 500
-  - ID: 2101
-    Count: 10000
+  - ID: 2102
+    Count: 100
 --- !u!1 &7227979910652732476
 GameObject:
   m_ObjectHideFlags: 0

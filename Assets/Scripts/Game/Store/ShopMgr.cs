@@ -24,8 +24,10 @@ namespace Simemes.Shop
 
         public bool Purchase(ShopItemConfig item)
         {
+            bool canBuy = CanBuy(item);
+
             // 沒有足夠錢
-            if (!GameManager.instance.PlayerProfile.CheckCoin(item.Price))
+            if (!canBuy)
                 return false;
 
             // 沒有能處理該商品類型的handler
@@ -36,10 +38,21 @@ namespace Simemes.Shop
             return handler.HandlePurchase(item);
         }
 
+        public bool CanBuy(ShopItemConfig item)
+        {
+            if (item.CurrencyType == 1)
+                return true;
+
+            var currencyConfig = Rewards.RewardMgr.instance.GetRewardConfig(item.CurrencyType);
+            return currencyConfig.Check(item.Price);
+        }
+
         public void OnPurchaseSuccess(ShopItemConfig item)
         {
+            var currencyConfig = Rewards.RewardMgr.instance.GetRewardConfig(item.CurrencyType);
+
             // 確定成功購買使用，開始扣錢
-            GameManager.instance.PlayerProfile.AddCoin(-item.Price);
+            currencyConfig.Obtain(-item.Price);
         }
     }
 }

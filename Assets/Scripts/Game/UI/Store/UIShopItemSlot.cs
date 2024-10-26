@@ -54,10 +54,24 @@ namespace Simemes.UI
             _icon.sprite = item.Icon;
             _icon.SetNativeSize();
 
-            bool canBuy = GameManager.instance.PlayerProfile.CheckCoin(item.Price);
+            bool canBuy = ShopMgr.instance.CanBuy(item);
 
             _price.text = item.Price.ToString();
             _price.color = canBuy ? _color_Normal : _color_Invalid;
+
+            if (item.CurrencyType == 1)
+            {
+                _currency.gameObject.SetActive(false);
+                _price.text = $"{item.USD} USD";
+            }
+            else
+            {
+                _currency.gameObject.SetActive(true);
+
+                var currencyConfig = Rewards.RewardMgr.instance.GetRewardConfig(item.CurrencyType);
+                if (currencyConfig != null)
+                    _currency.sprite = currencyConfig.Image;
+            }
         }
         
         // 顯示商品資訊
@@ -68,7 +82,7 @@ namespace Simemes.UI
 
         public void Purchase()
         {
-            bool canBuy = GameManager.instance.PlayerProfile.CheckCoin(_data.Price);
+            bool canBuy = ShopMgr.instance.CanBuy(_data);
 
             if (canBuy)
                 _storePanel.PurchaseItem(this);

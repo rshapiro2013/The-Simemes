@@ -216,7 +216,7 @@ MonoBehaviour:
       - m_Target: {fileID: 757470336454098902}
         m_TargetAssemblyTypeName: Simemes.UI.UIChestSlot, Assembly-CSharp
         m_MethodName: ClickBuff
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -501,7 +501,7 @@ MonoBehaviour:
       - m_Target: {fileID: 757470336454098902}
         m_TargetAssemblyTypeName: Simemes.UI.UIChestSlot, Assembly-CSharp
         m_MethodName: ClickBuff
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1222,7 +1222,7 @@ MonoBehaviour:
       - m_Target: {fileID: 757470336454098902}
         m_TargetAssemblyTypeName: Simemes.UI.UIChestSlot, Assembly-CSharp
         m_MethodName: ClickBuff
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2276,7 +2276,7 @@ MonoBehaviour:
       - m_Target: {fileID: 757470336454098902}
         m_TargetAssemblyTypeName: Simemes.UI.UIChestSlot, Assembly-CSharp
         m_MethodName: ClickBuff
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2627,7 +2627,7 @@ MonoBehaviour:
       - m_Target: {fileID: 757470336454098902}
         m_TargetAssemblyTypeName: Simemes.UI.UIChestSlot, Assembly-CSharp
         m_MethodName: ClickBuff
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

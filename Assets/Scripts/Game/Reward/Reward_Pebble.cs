@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace Simemes.Rewards
 {
-    [CreateAssetMenu(fileName = "Coin", menuName = "Simemes/Reward/Coin")]
-    public class Reward_Coin : RewardConfig
+    [CreateAssetMenu(fileName = "Pebble", menuName = "Simemes/Reward/Pebble")]
+    public class Reward_Pebble : RewardConfig
     {
         public override void Obtain(int count = 1)
         {
             base.Obtain(count);
 
-            GameManager.instance.PlayerProfile.AddCoin(count);
+            GameManager.instance.PlayerProfile.AddDiamond(count);
         }
 
         public override bool Check(int count)
         {
-            return GameManager.instance.PlayerProfile.CheckCoin(count);
+            return GameManager.instance.PlayerProfile.CheckDiamond(count);
         }
     }
 }

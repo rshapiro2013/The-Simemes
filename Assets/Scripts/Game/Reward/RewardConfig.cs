@@ -31,5 +31,10 @@ namespace Simemes.Rewards
         {
 
         }
+
+        public virtual bool Check(int count)
+        {
+            return false;
+        }
     }
 }

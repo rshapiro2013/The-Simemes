@@ -52,6 +52,8 @@ namespace Simemes.Tasks
 
         public string TaskEvent => _taskEvent;
 
+        public bool AutoStart => _type != TaskType.Meme;
+
         public virtual void TriggerStart()
         {
 

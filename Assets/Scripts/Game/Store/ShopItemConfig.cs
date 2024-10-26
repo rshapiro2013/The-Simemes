@@ -7,7 +7,8 @@ namespace Simemes.Shop
     public enum ShopItemType
     {
         Chest,
-        Buff
+        Buff,
+        Reward
     }
 
     public class ShopItemConfig : ScriptableObject
@@ -19,6 +20,9 @@ namespace Simemes.Shop
         protected ShopItemType _itemType;
 
         [SerializeField]
+        protected int _itemCount;
+
+        [SerializeField]
         protected Sprite _icon;
 
         [SerializeField]
@@ -26,6 +30,9 @@ namespace Simemes.Shop
 
         [SerializeField]
         protected int _price;
+
+        [SerializeField]
+        protected float _usd;
 
         [TextArea(3,10)]
         [SerializeField]
@@ -37,6 +44,9 @@ namespace Simemes.Shop
         public Sprite Icon => _icon;
         public int CurrencyType => _currencyType;
         public int Price => _price;
+        public int ItemCount => _itemCount;
+
+        public float USD => _usd;
 
         public string Desc => _desc;
     }

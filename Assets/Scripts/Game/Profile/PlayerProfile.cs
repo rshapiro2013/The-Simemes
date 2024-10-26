@@ -21,6 +21,7 @@ namespace Simemes.Profile
         public int MaxExp;
 
         public int Coin;
+        public int Diamond;
 
         [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Replace)]
         public List<TaskProgress> TaskProgress;
@@ -36,6 +37,12 @@ namespace Simemes.Profile
         public System.Action<int> OnCoinChange;
         [JsonIgnore]
         public System.Action<int> OnSetCoin;
+
+        [JsonIgnore]
+        public System.Action<int> OnDiamondChange;
+        [JsonIgnore]
+        public System.Action<int> OnSetDiamond;
+
         [JsonIgnore]
         public System.Action<int, int> OnExpChange;
         [JsonIgnore]
@@ -49,6 +56,7 @@ namespace Simemes.Profile
             SetCoin(Coin);
             SetLevel(Level);
             SetExp(Exp);
+            SetDiamond(Diamond);
 
             Update();
         }
@@ -71,6 +79,23 @@ namespace Simemes.Profile
         public bool CheckCoin(int cost)
         {
             return Coin >= cost;
+        }
+
+        public void SetDiamond(int diamond)
+        {
+            OnSetDiamond?.Invoke(diamond);
+            UpdateDiamond(diamond);
+        }
+
+        public void AddDiamond(int diamond)
+        {
+            OnDiamondChange?.Invoke(diamond);
+            UpdateDiamond(Diamond + diamond);
+        }
+
+        public bool CheckDiamond(int cost)
+        {
+            return Diamond >= cost;
         }
 
         public void SetExp(int exp)
@@ -125,6 +150,13 @@ namespace Simemes.Profile
         private void UpdateCoin(int coin)
         {
             Coin = coin;
+
+            GameManager.instance.SavePlayerData();
+        }
+
+        private void UpdateDiamond(int diamond)
+        {
+            Diamond = diamond;
 
             GameManager.instance.SavePlayerData();
         }

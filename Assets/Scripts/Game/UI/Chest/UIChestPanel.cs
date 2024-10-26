@@ -100,8 +100,10 @@ namespace Simemes.UI
             }
         }
 
-        public void Enchant(int buffIdx)
+        public void Enchant(int buffIdx, System.Action onEnchant = null)
         {
+            _onEnchant = onEnchant;
+
             if (_selectedSlot != null)
                 Enchant(_selectedSlot, buffIdx);
         }

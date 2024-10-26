@@ -33,6 +33,9 @@ namespace Simemes.Tasks
                 _progress.Current = config.UpdateProgress(0, 0);
                 _progress.Target = config.TargetValue;
             }
+
+            if (_config.AutoStart)
+                StartTask();
         }
 
         public void StartTask()

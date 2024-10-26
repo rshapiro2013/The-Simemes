@@ -2715,6 +2715,7 @@ GameObject:
   - component: {fileID: 2321233990075900005}
   - component: {fileID: 1124181557365016864}
   - component: {fileID: 43464983943592210}
+  - component: {fileID: 1672230247867046773}
   m_Layer: 5
   m_Name: Stats_Diamond
   m_TagString: Untagged
@@ -2823,6 +2824,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &1672230247867046773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293537889230248012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49e36333fa80554fa8ea97f4cfdcabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateInterval: 0.05
+  _diamondText: {fileID: 2227419864376770066}
 --- !u!1 &3479413122474039040
 GameObject:
   m_ObjectHideFlags: 0

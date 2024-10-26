@@ -4,18 +4,16 @@ using UnityEngine;
 
 namespace Simemes.Shop
 {
-    public class PurchaseHandler_Buff : PurchaseHandler
+    public class PurchaseHandler_Reward : PurchaseHandler
     {
-        [SerializeField]
-        protected Simemes.UI.UIChestPanel _chestPanel;
-
         public override bool HandlePurchase(ShopItemConfig item)
         {
             base.HandlePurchase(item);
 
-            var buff = item as ShopItem_Buff;
+            var reward = item as ShopItem_Reward;
 
-            _chestPanel.Enchant(buff.BuffID, OnPurchaseSuccess);
+            Rewards.RewardMgr.instance.ObtainReward(reward.RewardID, reward.ItemCount);
+
             return true;
         }
     }
