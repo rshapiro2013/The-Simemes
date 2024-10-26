@@ -154,6 +154,7 @@ MonoBehaviour:
   _parentPanel: {fileID: 0}
   _effect: {fileID: 6164595259837385800}
   _desc: {fileID: 0}
+  _lockIcon: {fileID: 21300000, guid: 358970efe2792794aab99ad363f6bdba, type: 3}
 --- !u!1 &5278118633512387869
 GameObject:
   m_ObjectHideFlags: 0

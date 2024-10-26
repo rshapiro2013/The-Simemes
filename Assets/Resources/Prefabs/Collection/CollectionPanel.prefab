@@ -1092,7 +1092,7 @@ RectTransform:
   - {fileID: 363033451888722911}
   - {fileID: 3206206052985602832}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1106,7 +1106,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5517080836975025871}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2080,6 +2080,10 @@ PrefabInstance:
       propertyPath: _desc
       value: 
       objectReference: {fileID: 5473968481699320090}
+    - target: {fileID: 1512464381236477223, guid: 9615c4fb8c2fd234ba655823ab1ee6a5, type: 3}
+      propertyPath: _parentPanel
+      value: 
+      objectReference: {fileID: 3682301846608610168}
     - target: {fileID: 3717029444718747725, guid: 9615c4fb8c2fd234ba655823ab1ee6a5, type: 3}
       propertyPath: m_SizeDelta.x
       value: 300
@@ -2198,6 +2202,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907382206979161462, guid: 9615c4fb8c2fd234ba655823ab1ee6a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164595259837385800, guid: 9615c4fb8c2fd234ba655823ab1ee6a5, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6741378034459890853, guid: 9615c4fb8c2fd234ba655823ab1ee6a5, type: 3}
