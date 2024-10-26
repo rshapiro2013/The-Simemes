@@ -9,6 +9,7 @@ namespace Simemes.Treasures
         protected TreasureBoxConfig _config;
         protected List<ITreasure> _items;
         protected ITreasureBuff _buff;
+        protected List<ITreasureBuff> _buffs;
 
         protected float _remainTime;
         protected long _startTime;
@@ -24,11 +25,12 @@ namespace Simemes.Treasures
 
         public List<ITreasure> Items => _items;
         public ITreasureBuff Buff => _buff;
+        public List<ITreasureBuff> Buffs => _buffs;
 
         public bool IsEmpty => _items == null || _items.Count == 0;
         public bool IsFull => _itemWeight >= _config.Capacity;
         public bool IsSealed => _isSealed;
-        public bool HasBuff => _buff != null;
+        public bool HasBuff => _buffs.Count > 0;
 
         public int ItemWeight => _itemWeight;
 
@@ -38,6 +40,7 @@ namespace Simemes.Treasures
         {
             _config = config;
             _items = new List<ITreasure>();
+            _buffs = new List<ITreasureBuff>();
             _remainTime = config.CoolDown;
             State = TreasureBoxState.Opened;
         }
@@ -93,7 +96,8 @@ namespace Simemes.Treasures
 
         public void Obtain()
         {
-            _buff?.TriggerObtain(this);
+            foreach (var buff in _buffs)
+                buff?.TriggerObtain(this);
 
             if (_items.Count == 0)
                 return;
@@ -117,14 +121,22 @@ namespace Simemes.Treasures
 
         public void AddBuff(ITreasureBuff buff)
         {
-            _buff = buff;
-            _buff.Init(this);
+            //_buff = buff;
+            //_buff.Init(this);
+            buff.Init(this);
+            _buffs.Add(buff);
         }
 
         public void RemoveBuff(ITreasureBuff buff)
         {
-            if (_buff == buff)
-                _buff = null;
+            foreach (var element in _buffs)
+            {
+                if (element == buff)
+                {
+                    _buffs.Remove(element);
+                    return;
+                }
+            }
         }
 
         public bool Update()

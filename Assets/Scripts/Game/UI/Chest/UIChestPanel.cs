@@ -28,6 +28,9 @@ namespace Simemes.UI
         [SerializeField]
         private UnityEvent _onViewChestList;
 
+        [SerializeField]
+        private UnityEvent _onAddBuff;
+
         private UIChestSlot _selectedSlot;
 
         private int _buffIdx;
@@ -66,7 +69,7 @@ namespace Simemes.UI
             // 附魔模式
             if(_enchantMode)
             {
-                Enchant(slot);
+                Enchant(slot, _buffIdx);
                 return;
             }
 
@@ -78,8 +81,8 @@ namespace Simemes.UI
             // 箱子沒有滿也還沒關
             else if (!slot.Content.IsFull && !slot.Content.IsSealed)
                 AddTreasureIntoChest(slot);
-            // 箱子滿了
-            else if(slot.Content.IsSealed)
+            // 箱子有東西
+            else
                 ShowChestInfo(slot);
         }
 
@@ -97,14 +100,20 @@ namespace Simemes.UI
             }
         }
 
-        public void Enchant(UIChestSlot slot)
+        public void Enchant(int buffIdx)
         {
-            if (slot.Content == null || !slot.Content.IsSealed || slot.Content.HasBuff)
+            if (_selectedSlot != null)
+                Enchant(_selectedSlot, buffIdx);
+        }
+
+        public void Enchant(UIChestSlot slot, int buffIdx)
+        {
+            if (slot.Content == null || !slot.Content.IsSealed)
                 return;
 
-            slot.AddBuff(TreasureSystem.instance.GetBuff(_buffIdx));
+            slot.AddBuff(TreasureSystem.instance.GetBuff(buffIdx));
             int slotIdx = _slots.FindIndex(x => x == slot);
-            Simemes.Request.TreasureRequest.Enchant(slotIdx, _buffIdx);
+            Simemes.Request.TreasureRequest.Enchant(slotIdx, buffIdx);
 
             _onEnchant?.Invoke();
 
@@ -186,6 +195,12 @@ namespace Simemes.UI
             return false;
         }
 
+        public void AddBuff(UIChestSlot slot)
+        {
+            _selectedSlot = slot;
+            _onAddBuff.Invoke();
+        }
+
         private void RefreshSlotLocks(Tier.TierData tierData)
         {
             int chestCount = GameManager.instance.PlayerProfile.TierData.ChestSlot;
@@ -232,7 +247,7 @@ namespace Simemes.UI
 
         private void ShowChestInfo(UIChestSlot slot)
         {
-
+            slot.ShowTreasure(!slot.TreasureVisible);
         }
     }
 }

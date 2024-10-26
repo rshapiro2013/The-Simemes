@@ -23,6 +23,8 @@ namespace Simemes.Treasures
         // Ä_½cªþÅ]
         ITreasureBuff Buff { get; }
 
+        List<ITreasureBuff> Buffs { get; }
+
         bool IsEmpty { get; }
         bool IsFull { get; }
         bool IsSealed { get; }

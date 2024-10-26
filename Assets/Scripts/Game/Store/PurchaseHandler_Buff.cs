@@ -15,7 +15,7 @@ namespace Simemes.Shop
 
             var buff = item as ShopItem_Buff;
 
-            _chestPanel.EnableEnchantMode(buff.BuffID, OnPurchaseSuccess);
+            _chestPanel.Enchant(buff.BuffID);
             return true;
         }
     }

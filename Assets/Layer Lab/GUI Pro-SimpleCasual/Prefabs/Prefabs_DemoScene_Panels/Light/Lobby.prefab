@@ -209,6 +209,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8244267149672861042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +438,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UITab, Assembly-CSharp
         m_MethodName: SetTab
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2304,6 +2328,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3513453109517437718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3457,6 +3493,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9153580626846752731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3897,7 +3945,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2609157887990428287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5423148482612291868}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &4073612135341176082
 GameObject:
   m_ObjectHideFlags: 0
@@ -8019,7 +8115,7 @@ RectTransform:
   - {fileID: 9183249684614484524}
   - {fileID: 229832029890488583}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9154,7 +9250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.1, y: -203.6}
+  m_AnchoredPosition: {x: -50.100098, y: -203.6001}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &5497311946477289406
@@ -17150,7 +17246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 52.6, y: -36}
+  m_AnchoredPosition: {x: 52.600098, y: -36}
   m_SizeDelta: {x: 722.81226, y: 184.12427}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &7819296031167982585
@@ -17740,6 +17836,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Core.UI.UIPanel, Assembly-CSharp
+        m_MethodName: EnablePanel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -26160,6 +26268,34 @@ PrefabInstance:
     - target: {fileID: 7348949884675701669, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnablePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Core.UI.UIPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872688327046323022, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
+      propertyPath: _onAddBuff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8089641533068878491, guid: ccccfb3fe41ea314b9f3d3a804f83769, type: 3}
       propertyPath: m_AnchorMax.x

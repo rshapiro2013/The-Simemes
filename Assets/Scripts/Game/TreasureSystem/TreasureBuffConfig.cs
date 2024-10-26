@@ -9,7 +9,11 @@ namespace Simemes.Treasures
         [SerializeField]
         protected int _id;
 
+        [SerializeField]
+        protected Sprite _icon;
+
         public int ID => _id;
+        public Sprite Icon => _icon;
 
         public virtual void Init(ITreasureBox treasureBox)
         {
