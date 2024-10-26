@@ -12,6 +12,9 @@ namespace Simemes.UI
         [SerializeField]
         private TextMeshProUGUI _level;
 
+        [SerializeField]
+        private TextMeshProUGUI _title;
+
         protected override void Awake()
         {
             base.Awake();
@@ -28,6 +31,8 @@ namespace Simemes.UI
         private void OnUpdateLevel(int level)
         {
             _level.text = level.ToString();
+            var tierData = Tier.TierSystem.instance.GetTierData(level);
+            _title.text = tierData.Title;
 
             EnablePanel(true);
         }
