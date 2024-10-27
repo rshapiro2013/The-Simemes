@@ -16,8 +16,10 @@ namespace Simemes.Tasks
 
         public enum TaskType
         {
-            Daily,
-            Meme
+            New,
+            Social,
+            Meme,
+            Event
         }
 
         [SerializeField]
@@ -41,6 +43,9 @@ namespace Simemes.Tasks
         [SerializeField]
         protected string _taskEvent;
 
+        [SerializeField]
+        protected bool _autoStart;
+
         public int ID => _id;
         public TaskType Type => _type;
 
@@ -52,7 +57,7 @@ namespace Simemes.Tasks
 
         public string TaskEvent => _taskEvent;
 
-        public bool AutoStart => _type != TaskType.Meme;
+        public bool AutoStart => _autoStart;
 
         public virtual void TriggerStart()
         {

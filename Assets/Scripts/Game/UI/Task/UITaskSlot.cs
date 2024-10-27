@@ -8,7 +8,7 @@ using Simemes.Rewards;
 
 namespace Simemes.UI.Tasks
 {
-    public class UITaskSlot : MonoBehaviour
+    public class UITaskSlot : Core.UI.UIElement
     {
         [SerializeField]
         private Image _taskIcon;

@@ -21,3 +21,4 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: c3b84b005329e4880b610d57e7bf2195, type: 3}
   _targetValue: 500
   _taskEvent: GetGold
+  _autoStart: 1

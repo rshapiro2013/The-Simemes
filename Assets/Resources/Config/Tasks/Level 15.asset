@@ -21,3 +21,4 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: b4a4b8f5c2d49459891adf4008f22aeb, type: 3}
   _targetValue: 15
   _taskEvent: LevelUp
+  _autoStart: 1

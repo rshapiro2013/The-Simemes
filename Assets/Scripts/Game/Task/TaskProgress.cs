@@ -5,6 +5,7 @@ using UnityEngine;
 public class TaskProgress
 {
     public int ID;
+    public int EventID;
     public int Current;
     public int Target;
 

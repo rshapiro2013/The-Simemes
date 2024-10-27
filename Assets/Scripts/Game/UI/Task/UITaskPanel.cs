@@ -14,11 +14,21 @@ namespace Simemes.UI.Tasks
         [SerializeField]
         private List<UITaskSlot> _memeTaskSlots;
 
+        [SerializeField]
+        private UIElementList _taskEventList;
+
+        [SerializeField]
+        private UIElementList _taskList;
+
+        private int _currentType;
+
         protected override void OnShowPanel()
         {
             base.OnShowPanel();
 
             UpdateTaskList();
+
+            UpdateTaskEventList();
 
             TaskMgr.instance.OnFinishTask += UpdateTaskList;
         }
@@ -32,15 +42,40 @@ namespace Simemes.UI.Tasks
 
         public void UpdateTaskList()
         {
-            var dailTasks = TaskMgr.instance.GetDailyTasks();
-            var memeTasks = TaskMgr.instance.GetMemeTasks();
+            SwitchTaskType(_currentType);
+        }
+
+        public void UpdateTaskEventList()
+        {
+            var taskEventList = TaskMgr.instance.GetTaskEvents();
+
+            if (taskEventList == null || taskEventList.Count == 0)
+                return;
+        }
+
+        public void SwitchTaskType(int idx)
+        {
+            _currentType = idx;
+
+            UpdateTaskList(idx);
+        }
+
+        private void UpdateTaskList(int idx)
+        {
+            _taskList.Clear();
+
+            var tasks = TaskMgr.instance.GetTasks(idx);
+
+            if (tasks == null || tasks.Count == 0)
+                return;
 
             // 更新顯示的任務資料
-            for (int i = 0; i < _dailyTaskSlots.Count; ++i)
-                _dailyTaskSlots[i].Set(dailTasks[i]);
-
-            for (int i = 0; i < _memeTaskSlots.Count; ++i)
-                _memeTaskSlots[i].Set(memeTasks[i]);
+            for (int i = 0; i < tasks.Count; ++i)
+            {
+                var element = _taskList.CreateElement<UITaskSlot>();
+                element.Set(tasks[i]);
+                element.gameObject.SetActive(true);
+            }
         }
     }
 }
