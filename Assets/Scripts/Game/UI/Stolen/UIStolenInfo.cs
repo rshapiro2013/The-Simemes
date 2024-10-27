@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using Simemes.Treasures;
 using Simemes.Request;
 using Simemes.Steal;
+using TMPro;
 
 
 namespace Simemes.UI
@@ -41,6 +42,9 @@ namespace Simemes.UI
         [SerializeField] private GameObject _popupFrame;
         [SerializeField] private Text _popupText;
         [SerializeField] private UIStolenView _stolenView;
+        [SerializeField] private TextMeshProUGUI _stealRemaining;
+
+        private static readonly string _stealRemainingText = "Steals Remaining ({0}/{1})";
 
         // for local Test ======================================================
         [SerializeField] private Sprite[] _images;
@@ -98,16 +102,22 @@ namespace Simemes.UI
         string _lastTitle;
         Sprite _lastSprite;
 
-        private int rewindCount = 1;
-        private int recommendationCount = 1;
+        private int _rewindCount = 1;
+        private int _recommendationCount = 1;
         private int _chestCount;
         private int _playerDataIndex = 0;
 
         private void Awake()
         {
-            rewindCount = SystemSetting.Config.RewindCount;
-            recommendationCount = SystemSetting.Config.RecommendationCount;
+            _rewindCount = SystemSetting.Config.RewindCount;
+            _recommendationCount = SystemSetting.Config.RecommendationCount;
             OnUpdateChests(StealSystem.instance.ChestDatas);
+            SetStealRemainingCount();
+        }
+
+        private void SetStealRemainingCount()
+        {
+            _stealRemaining.SetText(string.Format(_stealRemainingText, SystemSetting.Config.StealCount, 10));
         }
 
         private void OnEnable()
@@ -198,7 +208,7 @@ namespace Simemes.UI
             //if (_playerDataIndex < _playerRecord.Count - 1)
             //    LoadInfoBase(++_playerDataIndex);
             //else
-            if(recommendationCount < 1)
+            if(_recommendationCount < 1)
             {
                 Popup("No recommendation count");
                 return;
@@ -207,7 +217,7 @@ namespace Simemes.UI
             int playerDataIndex = _playerDataIndex + 1;
             if (playerDataIndex < _playerRecord.Count)
             {
-                --recommendationCount;
+                --_recommendationCount;
                 _playerDataIndex = playerDataIndex;
                 LoadInfoBase(_playerDataIndex);
             }
@@ -216,7 +226,7 @@ namespace Simemes.UI
 
         public void LoadPreviousInfo()
         {
-            if (rewindCount < 1)
+            if (_rewindCount < 1)
             {
                 Popup("No rewind count");
                 return;
@@ -225,7 +235,7 @@ namespace Simemes.UI
             int playerDataIndex = _playerDataIndex - 1;
             if (playerDataIndex > -1)
             {
-                --rewindCount;
+                --_rewindCount;
                 _playerDataIndex = playerDataIndex;
                 LoadInfoBase(_playerDataIndex);
             }

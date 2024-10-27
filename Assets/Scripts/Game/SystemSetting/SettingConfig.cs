@@ -9,5 +9,6 @@ namespace Simemes
     {
         public int RewindCount = 5;
         public int RecommendationCount = 5;
+        public int StealCount = 10;
     }
 }

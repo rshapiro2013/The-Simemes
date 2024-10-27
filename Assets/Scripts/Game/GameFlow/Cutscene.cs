@@ -7,6 +7,8 @@ using Spine.Unity;
 public class Cutscene : MonoBehaviour
 {
     [SerializeField]
+    private bool _hideOnAnimationCompleted;
+    [SerializeField]
     private SkeletonGraphic _characterSpine;
 
     private void OnEnable()
@@ -41,7 +43,8 @@ public class Cutscene : MonoBehaviour
     private void OnAnimationComplete(TrackEntry trackEntry)
     {
         _characterSpine.AnimationState.Complete -= OnAnimationComplete;
-        gameObject.SetActive(false);
+        if(_hideOnAnimationCompleted)
+            gameObject.SetActive(false);
         Debug.Log($"Animation '{trackEntry.Animation.Name}' completed.");
     }
 }

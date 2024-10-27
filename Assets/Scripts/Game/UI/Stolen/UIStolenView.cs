@@ -102,6 +102,7 @@ namespace Simemes.UI
                     }
                     _stolenInfo.Steal(index);
                     _onStealSusscee?.Invoke();
+                    --SystemSetting.Config.StealCount;
                 }
                 else
                     _onStealFailed?.Invoke();
