@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.078431375}
   m_EffectDistance: {x: 0, y: -6}
   m_UseGraphicAlpha: 1
+  _userData: {fileID: 288850481171228087}
 --- !u!1 &552581709047130215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,6 +3029,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+  _userData: {fileID: 288850481171228087}
 --- !u!1 &7611581595326504604
 GameObject:
   m_ObjectHideFlags: 0

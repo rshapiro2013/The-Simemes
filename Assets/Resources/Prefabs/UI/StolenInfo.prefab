@@ -1135,11 +1135,11 @@ RectTransform:
   - {fileID: 580736407711833751}
   - {fileID: 7281292036903500722}
   - {fileID: 8650267479455032446}
+  - {fileID: 4597385735153521935}
   - {fileID: 4825880851878422287}
   - {fileID: 1996340715500908344}
   - {fileID: 6274538356990376822}
   - {fileID: 5962642346494032206}
-  - {fileID: 4597385735153521935}
   - {fileID: 4718997794173172224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1174,8 +1174,8 @@ MonoBehaviour:
   - {fileID: 4145618886067623845}
   - {fileID: 1624449046474417412}
   _stealBtn: {fileID: 8397944788548178303}
-  _popupFrame: {fileID: 1996340715500908347}
-  _popupText: {fileID: 5854022159682771780}
+  _popupFrame: {fileID: 0}
+  _popupText: {fileID: 0}
   _stolenView: {fileID: 309253022129619177}
   _stealRemaining: {fileID: 4509063688415276344}
   _images:
@@ -2182,14 +2182,6 @@ PrefabInstance:
       propertyPath: _stealBtn
       value: 
       objectReference: {fileID: 8397944788548178303}
-    - target: {fileID: 790442182261149581, guid: e71e84c8f79ea1f4885524273da13ed6, type: 3}
-      propertyPath: _popupText
-      value: 
-      objectReference: {fileID: 5854022159682771780}
-    - target: {fileID: 790442182261149581, guid: e71e84c8f79ea1f4885524273da13ed6, type: 3}
-      propertyPath: _popupFrame
-      value: 
-      objectReference: {fileID: 1996340715500908347}
     - target: {fileID: 790442182261149581, guid: e71e84c8f79ea1f4885524273da13ed6, type: 3}
       propertyPath: _stolenInfo
       value: 

@@ -221,7 +221,7 @@ namespace Simemes.UI
         public void OnDrop(UIDropArea dropArea, GameObject droppedObject)
         {
             var treasureItem = droppedObject.GetComponent<TreasureItem>();
-            UIChestSlot slot = dropArea.GetComponent<UIChestSlot>();
+            UIChestSlot slot = dropArea.UserData.GetComponent<UIChestSlot>();
 
             // 把寶物加到箱子
             if (treasureItem != null)

@@ -199,8 +199,10 @@ namespace Simemes.UI
 
         public void Popup(string msg)
         {
-            _popupText.text = msg;
-            _popupFrame.SetActive(true);
+            if (_popupText != null)
+                _popupText.text = msg;
+            if (_popupFrame != null)
+                _popupFrame.SetActive(true);
         }
 
         public void LoadNextInfo()

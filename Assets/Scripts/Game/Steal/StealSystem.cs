@@ -30,6 +30,29 @@ namespace Simemes.Steal
         private void OnUpdateChests(List<ChestDatas> list)
         {
             _chests = list;
+#if LOCAL_TEST
+
+            System.DateTime now = System.DateTime.Now;
+            foreach (ChestDatas data in list)
+            {
+                data.ChestDataList.Clear();
+                int count = Random.Range(3, 9);
+
+                for (int i = 0; i < count; ++i)
+                {
+                    data.ChestDataList.Add(new Treasures.ChestData
+                    {
+                        ChestID = 21011,
+                        EndTime = (int)((System.DateTimeOffset)now.AddSeconds(Random.Range(1000f, 86400f))).ToUnixTimeSeconds(),
+                        IsSealed = Random.Range(0, 100) > 50,
+                        SlotID = i,
+                        StartTime = (int)((System.DateTimeOffset)now).ToUnixTimeSeconds(),
+                        BuffID = Random.Range(0, 100) > 50 ? 5001 : 0,
+                        Treasures = new List<int> { 1, 2, 3 }
+                    }); ;
+                }
+            }
+#endif
             //OnUpdateChests?.Invoke();
         }
     }

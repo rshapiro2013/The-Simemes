@@ -107,14 +107,16 @@ namespace Simemes.UI
                 }
                 else
                     _onStealFailed?.Invoke();
-                _popupText.text = hasBuff ? "Trigger guard!\n<color=red>Steal failed...</color>" : success ? "Steal succeeded!" : "<color=red>Steal failed...</color>"; ;// "偷取失敗\n觸發防護罩" : success ? "成功偷取" : "偷取失敗";
+                if(_popupText!=null)
+                    _popupText.text = hasBuff ? "Trigger guard!\n<color=red>Steal failed...</color>" : success ? "Steal succeeded!" : "<color=red>Steal failed...</color>"; ;// "偷取失敗\n觸發防護罩" : success ? "成功偷取" : "偷取失敗";
             }
             //else
             //{
             //    _popupText.text = "Your chest is full";//"你的寶箱已滿";
             //}
 
-            _popupFrame.SetActive(true);
+            if(_popupFrame!=null)
+                _popupFrame.SetActive(true);
         }
 
         public void AddFriend()

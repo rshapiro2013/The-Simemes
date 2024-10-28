@@ -20,6 +20,11 @@ public class UIDropArea : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     [SerializeField]
     private UnityEvent<GameObject> _onExit;
 
+
+    [SerializeField] private Component _userData;
+
+    public Component UserData { get => _userData; set => _userData = value; }
+
     public void OnDrop(PointerEventData eventData)
     {
         GameObject droppedObject = eventData.pointerDrag;
@@ -39,7 +44,7 @@ public class UIDropArea : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
             return;
 
         _onEnter?.Invoke(eventData.pointerDrag);
-    }
+}
 
     public void OnPointerExit(PointerEventData eventData)
     {
