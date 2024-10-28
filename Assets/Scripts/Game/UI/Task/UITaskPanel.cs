@@ -20,6 +20,12 @@ namespace Simemes.UI.Tasks
         [SerializeField]
         private UIElementList _taskList;
 
+        [SerializeField]
+        private UIPanel _taskEventInfoPanel;
+
+        [SerializeField]
+        private UITaskEventSlot _taskEventInfo;
+
         private int _currentType;
 
         protected override void OnShowPanel()
@@ -47,10 +53,19 @@ namespace Simemes.UI.Tasks
 
         public void UpdateTaskEventList()
         {
+            _taskEventList.Clear();
+
             var taskEventList = TaskMgr.instance.GetTaskEvents();
 
             if (taskEventList == null || taskEventList.Count == 0)
                 return;
+
+            foreach(var evt in taskEventList)
+            {
+                var element = _taskEventList.CreateElement<UITaskEventSlot>();
+                element.Set(evt.Value);
+                element.gameObject.SetActive(true);
+            }
         }
 
         public void SwitchTaskType(int idx)
@@ -58,6 +73,12 @@ namespace Simemes.UI.Tasks
             _currentType = idx;
 
             UpdateTaskList(idx);
+        }
+
+        public void ShowTaskEventInfo(UITaskEventSlot slot)
+        {
+            _taskEventInfo.Set(slot.TaskEvent);
+            _taskEventInfoPanel.EnablePanel(true);
         }
 
         private void UpdateTaskList(int idx)

@@ -26,6 +26,9 @@ namespace Simemes.Profile
         [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Replace)]
         public List<TaskProgress> TaskProgress;
 
+        [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Replace)]
+        public Dictionary<int, TaskEventProgress> TaskEventProgress;
+
         [JsonIgnore]
         public TierData TierData { get; private set; }
 

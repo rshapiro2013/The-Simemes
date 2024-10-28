@@ -41,6 +41,12 @@ namespace Simemes.UI.Tasks
 
         public TaskData Task => _task;
 
+        public event System.Action OnUpdateState;
+
+        private void OnDestroy()
+        {
+            OnUpdateState = null;
+        }
 
         public void Set(TaskData data)
         {
@@ -86,6 +92,8 @@ namespace Simemes.UI.Tasks
             _state_Claimed.SetActive(_task.Claimed);
 
             _canvasGroup.alpha = _task.Claimed ? 0.5f : 1.0f;
+
+            OnUpdateState?.Invoke();
         }
     }
 }

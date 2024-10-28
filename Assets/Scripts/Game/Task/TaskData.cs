@@ -12,7 +12,7 @@ namespace Simemes.Tasks
         private TaskProgress _progress;
 
         public TaskConfig Config => _config;
-        public TaskProgress Progress => _progress;
+        public TaskProgress Progress { get => _progress; set => _progress = value; }
 
         public bool Claimed => _progress.Claimed;
         public bool Finished => _progress.Current >= _progress.Target;

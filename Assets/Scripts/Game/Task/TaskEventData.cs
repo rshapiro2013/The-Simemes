@@ -9,16 +9,34 @@ namespace Simemes.Tasks
     {
         private TaskEventConfig _config;
 
-        private TaskProgress _progress;
+        private TaskEventProgress _progress;
+
+        private readonly List<TaskData> _tasks = new List<TaskData>();
 
         public TaskEventConfig Config => _config;
-        public TaskProgress Progress => _progress;
+
+        public List<TaskData> Tasks => _tasks;
+
+        public TaskEventProgress Progress => _progress;
+
+        public bool Finished
+        {
+            get
+            {
+                foreach(var task in _tasks)
+                {
+                    if (!task.Claimed)
+                        return false;
+                }
+
+                return true;
+            }
+        }
+        public bool Started => true;
 
         public bool Claimed => _progress.Claimed;
-        public bool Finished => _progress.Current >= _progress.Target;
-        public bool Started => _progress.Started;
 
-        public TaskEventData(TaskEventConfig config, TaskProgress progress = null)
+        public TaskEventData(TaskEventConfig config, TaskEventProgress progress = null)
         {
             _config = config;
 
@@ -28,11 +46,16 @@ namespace Simemes.Tasks
             }
             else
             {
-                _progress = new TaskProgress();
-                _progress.ID = _config.ID;
-                _progress.Current = 0;
-                _progress.Target = config.Tasks.Count;
+                _progress = new TaskEventProgress();
+                _progress.EventID = _config.ID;
+                _progress.Claimed = false;
             }
+        }
+
+        public void AddTask(TaskData task)
+        {
+            _tasks.Add(task);
+            _progress.Progress.Add(task.Progress);
         }
 
         public void Claim()
