@@ -74,7 +74,7 @@ namespace Simemes.UI
 
         public void Steal(int index)
         {
-            if (_chestPanel.TryGetEmptySlot(out UIChestSlot empty))
+            //if (_chestPanel.TryGetEmptySlot(out UIChestSlot empty))
             {
                 bool success;
                 bool hasBuff;
@@ -95,10 +95,11 @@ namespace Simemes.UI
 
                     if (_chestPanel != null)
                     {
-                        _chestPanel.AddChest(_chestPanel.Slots.IndexOf(empty));
+                        _chestPanel.SetNewChest(slot.Content);
+                        //_chestPanel.AddChest(_chestPanel.Slots.IndexOf(empty));
 
-                        empty.SetBox(slot.Content);
-                        empty.Seal();
+                        //empty.SetBox(slot.Content);
+                        //empty.Seal();
                     }
                     _stolenInfo.Steal(index);
                     _onStealSusscee?.Invoke();
@@ -108,10 +109,10 @@ namespace Simemes.UI
                     _onStealFailed?.Invoke();
                 _popupText.text = hasBuff ? "Trigger guard!\n<color=red>Steal failed...</color>" : success ? "Steal succeeded!" : "<color=red>Steal failed...</color>"; ;// "偷取失敗\n觸發防護罩" : success ? "成功偷取" : "偷取失敗";
             }
-            else
-            {
-                _popupText.text = "Your chest is full";//"你的寶箱已滿";
-            }
+            //else
+            //{
+            //    _popupText.text = "Your chest is full";//"你的寶箱已滿";
+            //}
 
             _popupFrame.SetActive(true);
         }

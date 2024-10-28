@@ -31,12 +31,18 @@ namespace Simemes.UI
         [SerializeField]
         private UnityEvent _onAddBuff;
 
+        [SerializeField]
+        private UIDraggableItem _draggableChest;
+
         private UIChestSlot _selectedSlot;
 
         private int _buffIdx;
         private bool _enchantMode;
 
         private System.Action _onEnchant;
+
+
+        private ITreasureBox _newTreasureBox;
 
         public List<UIChestSlot> Slots => _slots; 
 
@@ -201,6 +207,30 @@ namespace Simemes.UI
         {
             _selectedSlot = slot;
             _onAddBuff.Invoke();
+        }
+
+        public void SetNewChest(ITreasureBox box)
+        {
+            _newTreasureBox = box;
+            if (_draggableChest != null)
+                _draggableChest.Show();
+        }
+
+        public void OnDrop(UIDropArea dropArea, GameObject droppedObject)
+        {
+            if (_draggableChest != null)
+            {
+                _draggableChest.Hide();
+            }
+
+            UIChestSlot slot = dropArea.GetComponent<UIChestSlot>();
+            if (_newTreasureBox != null)
+            {
+                slot.SetBox(_newTreasureBox);
+                _newTreasureBox = null;
+            }
+            else
+                AddChest(21011);
         }
 
         private void RefreshSlotLocks(Tier.TierData tierData)

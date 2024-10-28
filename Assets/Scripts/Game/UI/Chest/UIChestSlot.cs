@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 using Core.UI;
 using Simemes.Treasures;
 
@@ -51,6 +51,9 @@ namespace Simemes.UI
 
         [SerializeField]
         private List<UIBuff> _buffs;
+
+        [SerializeField]
+        private UnityEvent<UIDropArea, GameObject> _onDrop;
 
         public ITreasureBox Content { get; private set; }
 
@@ -221,6 +224,11 @@ namespace Simemes.UI
                 if (timesUp)
                     ObtainTreasure();
             }
+        }
+
+        public void OnDrop(UIDropArea dropArea, GameObject droppedObject)
+        {
+            _onDrop?.Invoke(dropArea, droppedObject);
         }
     }
 }
