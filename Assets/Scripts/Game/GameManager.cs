@@ -84,6 +84,9 @@ namespace Simemes
                     return;
                 }
             }
+
+            if(Input.GetKeyUp(KeyCode.F3))
+                AirDrop.AirDropSystem.instance.SpawnRandomItem();
         }
     }
 }

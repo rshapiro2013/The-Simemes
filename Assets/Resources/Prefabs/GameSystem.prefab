@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cbfa59a36a6a6429af08bd11a7076d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: fakeID
+  _id: yeo@xyz.com
 --- !u!1 &2692674475398024134
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +142,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f3c3833c5a86e49a588488f6294ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4798437295788352062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6071878701000437706}
+  - component: {fileID: 6755521569963213831}
+  - component: {fileID: 1406061467901108913}
+  m_Layer: 0
+  m_Name: TelegramController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6071878701000437706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798437295788352062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4535310868971328979}
+  m_RootOrder: -2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6755521569963213831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798437295788352062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b348e4eaf6dfb47856aef64d878cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgrounds: []
+  buttons: []
+  inputs: []
+  infos: []
+--- !u!114 &1406061467901108913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798437295788352062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c87170d49789449b445b23232408db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6731942077212223513
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,8 +253,9 @@ Transform:
   - {fileID: 3562172954472478611}
   - {fileID: 6754329840252142984}
   - {fileID: 2446760132623067169}
+  - {fileID: 6071878701000437706}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6260925554104454761
 MonoBehaviour:
@@ -265,8 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _airDropTableAsset: {fileID: 4900000, guid: 08176fc4325b4a743a9cf7ff4f9c391b, type: 3}
-  _dropInterval: 30
-  _maxItemCount: 10
+  _dropInterval: 14400
+  _maxItemCount: 8
 --- !u!114 &4367467062886839105
 MonoBehaviour:
   m_ObjectHideFlags: 0

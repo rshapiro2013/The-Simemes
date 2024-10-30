@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5231844551079133529}
   - component: {fileID: 6498671692131172974}
   - component: {fileID: 6687224771889483319}
+  - component: {fileID: 1435468908047164495}
+  - component: {fileID: -7363893586010520515}
   m_Layer: 0
   m_Name: TreasureItem
   m_TagString: Untagged
@@ -90,3 +92,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPoolCapacity: 10
+--- !u!114 &1435468908047164495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140646666375953303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a245de6949bc947bfb30622d199313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onDrop:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-7363893586010520515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140646666375953303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9941ad68b353394fa839f0b8414e987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -21,6 +21,7 @@ public class UIDraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         _originalParent = transform.parent;
+        _originalPosition = _rectTransform.anchoredPosition;
 
         transform.SetParent(_originalParent.root);
 
@@ -47,8 +48,8 @@ public class UIDraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void ResetBase()
     {
         GetComponent<Image>().raycastTarget = true;
-        _rectTransform.anchoredPosition = _originalPosition;
-        transform.SetParent(_originalParent);
+        transform.SetParent(_originalParent, false);
+        _rectTransform.anchoredPosition = _originalPosition;    
     }
 
     public void Show()

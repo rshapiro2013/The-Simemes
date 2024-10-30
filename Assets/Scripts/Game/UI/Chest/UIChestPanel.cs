@@ -86,7 +86,9 @@ namespace Simemes.UI
                 _onViewChestList.Invoke();
             // 箱子沒有滿也還沒關
             else if (!slot.Content.IsFull && !slot.Content.IsSealed)
-                AddTreasureIntoChest(slot);
+            {
+                //AddTreasureIntoChest(slot);
+            }
             // 箱子有東西
             else
                 ShowChestInfo(slot);
@@ -218,12 +220,25 @@ namespace Simemes.UI
 
         public void OnDrop(UIDropArea dropArea, GameObject droppedObject)
         {
+            var treasureItem = droppedObject.GetComponent<TreasureItem>();
+            UIChestSlot slot = dropArea.GetComponent<UIChestSlot>();
+
+            // 把寶物加到箱子
+            if (treasureItem != null)
+            {
+                if (slot != null && slot.Content != null && !slot.Content.IsFull && !slot.Content.IsSealed)
+                    AddTreasureIntoChest(slot, treasureItem.Treasure);
+
+                droppedObject.GetComponent<UIDraggableItem>()?.ResetBase();
+
+                return;
+            }
+
             if (_draggableChest != null)
             {
                 _draggableChest.Hide();
             }
 
-            UIChestSlot slot = dropArea.GetComponent<UIChestSlot>();
             if (_newTreasureBox != null)
             {
                 slot.SetBox(_newTreasureBox);
@@ -275,6 +290,15 @@ namespace Simemes.UI
 
             int slotIdx = _slots.FindIndex(x => x == slot);
             Simemes.Request.TreasureRequest.AddTreasureItem(slotIdx, item.ID);
+        }
+
+        private void AddTreasureIntoChest(UIChestSlot slot, Treasure treasure)
+        {
+            AirDropSystem.instance.RemoveItem(treasure);
+            LobbyLandscape.instance.RemoveItem(treasure);
+
+            int slotIdx = _slots.FindIndex(x => x == slot);
+            Simemes.Request.TreasureRequest.AddTreasureItem(slotIdx, treasure.ID);
         }
 
         private void ShowChestInfo(UIChestSlot slot)

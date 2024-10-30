@@ -27,7 +27,7 @@ namespace Simemes.Landscape
         /// 新增物件到場上
         /// </summary>
         /// <param name="item"></param>
-        public void AddItem(ILandscapeItem item)
+        public GameObject AddItem(ILandscapeItem item)
         {
             // prefab可能有不同功能行為
             var instance = Poolable.TryGetPoolable(item.Prefab);
@@ -39,7 +39,7 @@ namespace Simemes.Landscape
             else
             {
                 Debug.LogError("物件已經存在!");
-                return;
+                return null;
             }
 
             // 如果需要換圖的話
@@ -55,6 +55,8 @@ namespace Simemes.Landscape
 
             instance.transform.SetParent(parent, false);
             instance.transform.position = pos;
+
+            return instance;
         }
 
         /// <summary>
@@ -70,12 +72,25 @@ namespace Simemes.Landscape
 
             instance.transform.SetParent(_movingParent, true);
 
+            _items.Remove(item);
+            Poolable.TryPool(instance);
+            onReach?.Invoke(item);
+
             instance.transform.DOMove(destination, 0.5f).OnComplete(() =>
             {
                 _items.Remove(item);
                 Poolable.TryPool(instance);
                 onReach?.Invoke(item);
             });
+        }
+
+        public void RemoveItem(ILandscapeItem item)
+        {
+            if (!_items.TryGetValue(item, out var instance))
+                return;
+
+            _items.Remove(item);
+            Poolable.TryPool(instance);
         }
     }
 }

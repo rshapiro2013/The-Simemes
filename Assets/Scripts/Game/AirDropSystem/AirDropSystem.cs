@@ -38,7 +38,7 @@ namespace Simemes.AirDrop
 
         private long _lastCheckTime;
 
-        private readonly Queue<Treasure> _treasures = new Queue<Treasure>();
+        private readonly LinkedList<Treasure> _treasures = new LinkedList<Treasure>();
 
         private readonly List<TreasureData> _treasureData = new List<TreasureData>();
 
@@ -95,7 +95,7 @@ namespace Simemes.AirDrop
             if (_treasures.Count == 0)
                 return null;
 
-            return _treasures.Peek();
+            return _treasures.First.Value;
         }
 
         public void RemoveFirstItem()
@@ -103,12 +103,21 @@ namespace Simemes.AirDrop
             if (_treasures.Count == 0)
                 return;
 
-            _treasures.Dequeue();
+            _treasures.RemoveFirst();
 
             SaveData();
         }
 
-        private void SpawnRandomItem()
+        public void RemoveItem(Treasure treasure)
+        {
+            var node = _treasures.Find(treasure);
+            if (node != null)
+                _treasures.Remove(node);
+
+            SaveData();
+        }
+
+        public void SpawnRandomItem()
         {
             if (_treasures.Count >= _maxItemCount)
                 return;
@@ -135,10 +144,13 @@ namespace Simemes.AirDrop
         
         private void SpawnTreasureItem(Treasure treasure)
         {
-            _treasures.Enqueue(treasure);
+            _treasures.AddLast(treasure);
 
             // 把看得見的物品加到場景中
-            LobbyLandscape.instance.AddItem(treasure);
+            var item = LobbyLandscape.instance.AddItem(treasure);
+            var treasureItem = item.GetComponent<TreasureItem>();
+            if (treasureItem != null)
+                treasureItem.Treasure = treasure;
         }
 
         private void UpdateTime(long time)
