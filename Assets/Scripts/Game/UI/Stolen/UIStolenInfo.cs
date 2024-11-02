@@ -25,6 +25,7 @@ namespace Simemes.UI
         public int Sprite;
         public int Name;
         public int Titles;
+        public string Background;
         public System.DateTime LastUpdate;
         public List<TreasureData> Treasures = new List<TreasureData>();
     }

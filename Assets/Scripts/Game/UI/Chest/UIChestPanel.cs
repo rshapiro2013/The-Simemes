@@ -221,7 +221,7 @@ namespace Simemes.UI
         public void OnDrop(UIDropArea dropArea, GameObject droppedObject)
         {
             var treasureItem = droppedObject.GetComponent<TreasureItem>();
-            UIChestSlot slot = dropArea.UserData.GetComponent<UIChestSlot>();
+            UIChestSlot slot = dropArea.UserData as UIChestSlot;
 
             // 把寶物加到箱子
             if (treasureItem != null)
@@ -239,13 +239,15 @@ namespace Simemes.UI
                 _draggableChest.Hide();
             }
 
-            if (_newTreasureBox != null)
+            if (_newTreasureBox != null && slot != null)
             {
                 slot.SetBox(_newTreasureBox);
                 _newTreasureBox = null;
             }
+#if LOCAL_TEST
             else
                 AddChest(21011);
+#endif
         }
 
         private void RefreshSlotLocks(Tier.TierData tierData)

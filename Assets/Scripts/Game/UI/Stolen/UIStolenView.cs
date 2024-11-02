@@ -45,6 +45,7 @@ namespace Simemes.UI
         [SerializeField] private GameObject _popupFrame;
         [SerializeField] private Text _popupText;
         [SerializeField] private Image _character;
+        [SerializeField] private UIBackground _uiBackground;
         [SerializeField] private UnityEvent _onStealSusscee;
         [SerializeField] private UnityEvent _onStealFailed;
 
@@ -64,11 +65,11 @@ namespace Simemes.UI
         }
 #endif
 
-        private void Set(string name, string title)
+        private void Set(string name, string title, string bg)
         {
             _name.text = name;
             _title.text = title;
-
+            _uiBackground.SetBackground(bg);
             _addBtn.gameObject.SetActive(!FreneSystem.instance.HasFrene(_playerData.ID));
         }
 
@@ -81,7 +82,7 @@ namespace Simemes.UI
 
                 UIChestSlot slot = _slots[index];
                 hasBuff = slot.Content.HasBuff;
-                success = hasBuff ? false : Random.Range(0, 100) < 75;
+                success = hasBuff ? false : Random.Range(0, 100) < 50;
 
                 //if (hasBuff)
                 //    _stealBtn.interactable = false;
@@ -190,7 +191,7 @@ namespace Simemes.UI
         private void LoadInfoBase(PlayerData playerData, string name, string title, Sprite sprite)
         {
             LoadChestData(playerData);
-            Set(name, title);
+            Set(name, title, playerData.Background);
             _character.sprite = sprite;
         }
     }

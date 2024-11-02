@@ -596,6 +596,7 @@ MonoBehaviour:
   _popupFrame: {fileID: 0}
   _popupText: {fileID: 0}
   _character: {fileID: 78372092828761105}
+  _uiBackground: {fileID: 4712366049009007975}
   _onStealSusscee:
     m_PersistentCalls:
       m_Calls: []
@@ -2202,6 +2203,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03e12797a76d89c4a8442528d3a46c3b, type: 3}
+--- !u!114 &4712366049009007975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8051530297726341165, guid: 03e12797a76d89c4a8442528d3a46c3b, type: 3}
+  m_PrefabInstance: {fileID: 3375843546468511050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa6fe396f70e8240a2208d650246392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5497311946811126738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7103029589609078424, guid: 03e12797a76d89c4a8442528d3a46c3b, type: 3}
