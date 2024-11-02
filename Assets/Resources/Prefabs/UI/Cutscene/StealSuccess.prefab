@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 7132852956074442455}
   - component: {fileID: 6523817243155155018}
   - component: {fileID: 1898658115250040088}
+  - component: {fileID: 5439916512233242542}
   - component: {fileID: 6163474003919978054}
   - component: {fileID: 3404226633514188527}
   m_Layer: 5
@@ -188,6 +189,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hideOnAnimationCompleted: 1
   _characterSpine: {fileID: 3124773094335253713}
+--- !u!114 &5439916512233242542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733480184172020020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48161224939890c468fdd74f0caa71bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 8755321567053970281}
 --- !u!114 &6163474003919978054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1068,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2d81821232423f146b2921a4d98a76a6, type: 3}
   - {fileID: 21300000, guid: ebde8ac41dc47c8408710ae710cc59e0, type: 3}
   _backgroundImage: {fileID: 7809515374921251465}
+  _updateByPlayerProfile: 0
 --- !u!114 &3566273540491158519
 MonoBehaviour:
   m_ObjectHideFlags: 0

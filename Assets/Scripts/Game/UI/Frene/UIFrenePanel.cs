@@ -50,10 +50,10 @@ namespace Simemes.UI.Frene
             {
                 playerData = new PlayerData() { ID = data.id, Name = 0, Titles = 0, Sprite = 0, LastUpdate = System.DateTime.Now };
                 int chestCount = Random.Range(1, 8);
-                for (int i = 0; i < chestCount; ++i)
-                {
-                    playerData.Treasures.Add(new TreasureData() { RemainTime = Random.Range(1000, 86400), HasBuff = Random.Range(0, 100) < 50 });
-                }
+                //for (int i = 0; i < chestCount; ++i)
+                //{
+                //    playerData.Treasures.Add(new TreasureData() { RemainTime = Random.Range(1000, 86400), HasBuff = Random.Range(0, 100) < 50 });
+                //}
                 _frensMap[data] = playerData;
             }
 

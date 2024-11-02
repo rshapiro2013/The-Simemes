@@ -47,8 +47,8 @@ namespace Simemes.Steal
                         IsSealed = Random.Range(0, 100) > 50,
                         SlotID = i,
                         StartTime = (int)((System.DateTimeOffset)now).ToUnixTimeSeconds(),
-                        BuffID = Random.Range(0, 100) > 50 ? 5001 : 0,
-                        Treasures = new List<int> { 1, 2, 3 }
+                        BuffID = Random.Range(0, 100) > 75 ? 5001 : 0,
+                        Treasures = new List<int> { Random.Range(2201, 2227) }
                     }); ;
                 }
             }

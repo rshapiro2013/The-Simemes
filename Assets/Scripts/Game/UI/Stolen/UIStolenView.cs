@@ -18,7 +18,7 @@ namespace Simemes.UI
             UIStolenView stolenView = target as UIStolenView;
             if (GUILayout.Button("InvokeSuccess"))
             {
-                stolenView.InvokeSuccess();
+                stolenView.InvokeSuccess(null);
             }
             if (GUILayout.Button("InvokeFailed"))
             {
@@ -46,7 +46,7 @@ namespace Simemes.UI
         [SerializeField] private Text _popupText;
         [SerializeField] private Image _character;
         [SerializeField] private UIBackground _uiBackground;
-        [SerializeField] private UnityEvent _onStealSusscee;
+        [SerializeField] private UnityEvent<Sprite> _onStealSusscee;
         [SerializeField] private UnityEvent _onStealFailed;
 
         private int _chestCount;
@@ -54,9 +54,9 @@ namespace Simemes.UI
 
 
 #if UNITY_EDITOR
-        public void InvokeSuccess()
+        public void InvokeSuccess(Sprite sprite)
         {
-            _onStealSusscee?.Invoke();
+            _onStealSusscee?.Invoke(sprite);
         }
 
         public void InvokeFailed()
@@ -92,7 +92,7 @@ namespace Simemes.UI
                     slot.gameObject.SetActive(false);
 
                     // remove treasure data
-                    _playerData.Treasures.RemoveAt(index);
+                    _playerData.ChestDataList.RemoveAt(index);
 
                     if (_chestPanel != null)
                     {
@@ -103,7 +103,8 @@ namespace Simemes.UI
                         //empty.Seal();
                     }
                     _stolenInfo.Steal(index);
-                    _onStealSusscee?.Invoke();
+                    Sprite sprite = slot.Content.Items.Count > 0 ? slot.Content.Items[0].Image : null;
+                    _onStealSusscee?.Invoke(sprite);
                     --SystemSetting.Config.StealCount;
                 }
                 else
@@ -162,7 +163,7 @@ namespace Simemes.UI
         {
             _playerData = playerData;
             System.DateTime now = System.DateTime.Now;
-            _chestCount = playerData.Treasures.Count;
+            _chestCount = playerData.ChestDataList.Count;
             for (int i = 0; i < _slots.Count; ++i)
             {
                 bool enable = i < _chestCount;
@@ -174,15 +175,10 @@ namespace Simemes.UI
                     if (treasureBoxConfig == null)
                         return;
 
-                    TreasureData treasureData = playerData.Treasures[i];
+                    ChestData chestData = playerData.ChestDataList[i];
                     var treasureBox = new TreasureBox(treasureBoxConfig);
-                    treasureBox.RemainTime = (float)(treasureData.RemainTime - (now - playerData.LastUpdate).TotalSeconds);
-
+                    treasureBox.Set(chestData);
                     slot.SetBox(treasureBox);
-
-                    if (treasureData.HasBuff)
-                        slot.AddBuff(TreasureSystem.instance.GetBuff(5001));
-
                     slot.Seal();
                 }
             }

@@ -27,7 +27,7 @@ namespace Simemes.UI
         public int Titles;
         public string Background;
         public System.DateTime LastUpdate;
-        public List<TreasureData> Treasures = new List<TreasureData>();
+        public List<ChestData> ChestDataList = new List<ChestData>();
     }
 
     public class UIStolenInfo : MonoBehaviour
@@ -277,11 +277,7 @@ namespace Simemes.UI
             }
 
             _playerData = new PlayerData() { ID = chestDatas.UserID, Name = nameIndex, Titles = nameIndex, Sprite = spriteIndex, LastUpdate = System.DateTime.Now };
-            for (int i = 0; i < chestCount; ++i)
-            {
-                UIChestSlot slot = _slots[i];
-                _playerData.Treasures.Add(new TreasureData() { RemainTime = slot.Content.RemainTime, HasBuff = slot.Content.HasBuff });
-            }
+            _playerData.ChestDataList.AddRange(chestDatas.ChestDataList);
             _playerRecord.Add(_playerData);
         }
 
@@ -314,8 +310,8 @@ namespace Simemes.UI
 
         private void LoadChestData(PlayerData playerData)
         {
-            System.DateTime now = System.DateTime.Now;
-            _chestCount = playerData.Treasures.Count;
+            long now = AirDrop.AirDropSystem.Now;
+            _chestCount = playerData.ChestDataList.Count;
             for (int i = 0; i < _slots.Count; ++i)
             {
                 bool enable = i < _chestCount;
@@ -327,15 +323,10 @@ namespace Simemes.UI
                     if (treasureBoxConfig == null)
                         return;
 
-                    TreasureData treasureData = playerData.Treasures[i];
+                    ChestData chestData = playerData.ChestDataList[i];
                     var treasureBox = new TreasureBox(treasureBoxConfig);
-                    treasureBox.RemainTime = (float)(treasureData.RemainTime - (now - playerData.LastUpdate).TotalSeconds);
-
+                    treasureBox.Set(chestData);
                     slot.SetBox(treasureBox);
-
-                    if (treasureData.HasBuff)
-                        slot.AddBuff(TreasureSystem.instance.GetBuff(5001));
-
                     slot.Seal();
                 }
             }
