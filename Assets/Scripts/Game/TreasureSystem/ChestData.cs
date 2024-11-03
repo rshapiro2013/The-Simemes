@@ -24,7 +24,7 @@ namespace Simemes.Treasures
         public long StartTime;
 
         [JsonProperty("endtime")]
-        public int EndTime;
+        public long EndTime;
 
         [JsonProperty("buffId")]
         public int BuffID;

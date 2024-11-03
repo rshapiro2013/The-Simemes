@@ -45,6 +45,11 @@ namespace Simemes.UI
         [SerializeField] private UIStolenView _stolenView;
         [SerializeField] private TextMeshProUGUI _stealRemaining;
 
+        [SerializeField] private ScrollRect _scrollRect;
+        [SerializeField] private Transform _contentRoot;
+        [SerializeField] private UITreasureIcon _sourceIterm;
+        private List<UITreasureIcon> _pools = new List<UITreasureIcon>();
+
         private static readonly string _stealRemainingText = "Steals Remaining ({0}/{1})";
 
         // for local Test ======================================================
@@ -123,15 +128,44 @@ namespace Simemes.UI
 
         private void OnEnable()
         {
-            //LoadNewInfo();
+            _scrollRect.velocity = Vector2.zero;
+            _scrollRect.horizontalNormalizedPosition = 0f;
         }
 
         private void Set(string name, string title, Sprite sprite)
         {
+            OnEnable();
             _name.text = name;
             _title.text = title;
             _photo.sprite = sprite;
             _stealBtn.interactable = true;
+
+            if (_pools.Count < _playerData.ChestDataList.Count)
+            {
+                int count = _playerData.ChestDataList.Count - _pools.Count;
+                for (int i = 0; i < count; ++i)
+                {
+                    UITreasureIcon item = Instantiate(_sourceIterm, _contentRoot);
+                    _pools.Add(item);
+                }
+            }
+
+            TreasureSystem treasureSys = TreasureSystem.instance;
+            List<ChestData> chestDatas = _playerData.ChestDataList;
+            for (int i = 0; i < chestDatas.Count; ++i)
+            {
+                UITreasureIcon item = _pools[i];
+                ChestData chestData = chestDatas[i];
+                int id = chestData.Treasures.Count > 0 ? chestData.Treasures[0] : 0;
+                if (id > 0)
+                {
+                    TreasureConfig treasure = treasureSys.GetTreasureConfig(id);
+                    item.Set(treasure.Image, treasure.Name);
+                    item.gameObject.SetActive(true);
+                }
+                else
+                    item.gameObject.SetActive(false);
+            }
         }
 
         public void Steal()

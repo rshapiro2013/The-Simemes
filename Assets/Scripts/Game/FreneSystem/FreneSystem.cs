@@ -32,6 +32,35 @@ namespace Simemes.Frene
             if (_data == null)
                 _data = new List<FreneData>();
             await FriendRequest.GetFriend(OnUpdateBase);
+
+#if LOCAL_TEST
+            if (_data.Count == 0)
+            {
+                int count = Random.Range(10, 20);
+
+                for (int i = 0; i < count; ++i)
+                {
+                    int count2 = Random.Range(3, 8);
+                    List<string> items = new List<string>();
+
+                    for (int j = 0; j < count2; ++j)
+                    {
+                        items.Add(Random.Range(2201, 2227).ToString());
+                    }
+
+                    items.Sort();
+
+                    _data.Add(new FreneData
+                    {
+                        id = i.ToString(),
+                        name = UI.UIStolenInfo.Names[i],
+                        coinAmount = Random.Range(1000, 10000), 
+                        screenName = name, 
+                        items = items
+                    });
+                }
+            }
+#endif
         }
 
         public async Task SyncFreneRequestData()

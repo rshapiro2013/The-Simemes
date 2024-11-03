@@ -43,10 +43,10 @@ namespace Simemes.Steal
                     data.ChestDataList.Add(new Treasures.ChestData
                     {
                         ChestID = 21011,
-                        EndTime = (int)((System.DateTimeOffset)now.AddSeconds(Random.Range(1000f, 86400f))).ToUnixTimeSeconds(),
-                        IsSealed = Random.Range(0, 100) > 50,
+                        EndTime = ((System.DateTimeOffset)now.AddSeconds(Random.Range(1000f, 86400f))).ToUnixTimeSeconds(),
+                        IsSealed = true,
                         SlotID = i,
-                        StartTime = (int)((System.DateTimeOffset)now).ToUnixTimeSeconds(),
+                        StartTime = ((System.DateTimeOffset)now).ToUnixTimeSeconds(),
                         BuffID = Random.Range(0, 100) > 75 ? 5001 : 0,
                         Treasures = new List<int> { Random.Range(2201, 2227) }
                     }); ;

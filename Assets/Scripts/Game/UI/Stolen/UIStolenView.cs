@@ -102,7 +102,8 @@ namespace Simemes.UI
                         //empty.SetBox(slot.Content);
                         //empty.Seal();
                     }
-                    _stolenInfo.Steal(index);
+                    if(_stolenInfo != null)
+                        _stolenInfo.Steal(index);
                     Sprite sprite = slot.Content.Items.Count > 0 ? slot.Content.Items[0].Image : null;
                     _onStealSusscee?.Invoke(sprite);
                     --SystemSetting.Config.StealCount;

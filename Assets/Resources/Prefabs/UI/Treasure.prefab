@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6164096952560112204}
   - component: {fileID: 1610219416661211721}
   m_Layer: 5
-  m_Name: bg
+  m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,6 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2966022335740359729}
+  - component: {fileID: 8664691843470979311}
   m_Layer: 5
   m_Name: Treasure
   m_TagString: Untagged
@@ -113,6 +114,20 @@ RectTransform:
   m_AnchoredPosition: {x: 134.1, y: 16.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8664691843470979311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081753005211642012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48161224939890c468fdd74f0caa71bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 8790264658877673901}
+  _text: {fileID: 2293816280320167564}
 --- !u!1 &3569589492825854340
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +140,7 @@ GameObject:
   - component: {fileID: 7946680839437855815}
   - component: {fileID: 2293816280320167564}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +274,7 @@ GameObject:
   - component: {fileID: 1573073112284418801}
   - component: {fileID: 8790264658877673901}
   m_Layer: 5
-  m_Name: Photo (1)
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

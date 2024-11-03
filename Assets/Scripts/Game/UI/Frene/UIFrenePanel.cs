@@ -7,6 +7,7 @@ using Simemes.Tasks;
 using Simemes.Frene;
 using UnityEngine.UI;
 using Simemes.Request;
+using Simemes.Treasures;
 using Simemes.Profile;
 using Core.Networking;
 
@@ -30,30 +31,30 @@ namespace Simemes.UI.Frene
 
         public static List<FreneData> FreneDatas => _datas;
 
-        protected override void Awake()
-        {
-            //Instance = this;
-            base.Awake();
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            //Instance = null;
-        }
-
         public void Visit(FreneData data)
         {
-            //FreneData data = _datas[index];
-
             if (!_frensMap.TryGetValue(data, out PlayerData playerData))
             {
+                System.DateTime now = System.DateTime.Now;
                 playerData = new PlayerData() { ID = data.id, Name = 0, Titles = 0, Sprite = 0, LastUpdate = System.DateTime.Now };
-                int chestCount = Random.Range(1, 8);
-                //for (int i = 0; i < chestCount; ++i)
-                //{
-                //    playerData.Treasures.Add(new TreasureData() { RemainTime = Random.Range(1000, 86400), HasBuff = Random.Range(0, 100) < 50 });
-                //}
+                playerData.ChestDataList = new List<ChestData>(); 
+                int chestCount = data.items.Count;
+                for (int i = 0; i < chestCount; ++i)
+                {
+                    if (int.TryParse(data.items[i], out int id))
+                    {
+                        playerData.ChestDataList.Add(new ChestData
+                        {
+                            ChestID = 21011,
+                            EndTime = ((System.DateTimeOffset)now.AddSeconds(Random.Range(1000f, 86400f))).ToUnixTimeSeconds(),
+                            IsSealed = true,
+                            SlotID = i,
+                            StartTime = ((System.DateTimeOffset)now).ToUnixTimeSeconds(),
+                            BuffID = Random.Range(0, 100) > 75 ? 5001 : 0,
+                            Treasures = new List<int> { id },
+                        });
+                    }
+                }
                 _frensMap[data] = playerData;
             }
 
