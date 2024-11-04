@@ -36,7 +36,7 @@ namespace Simemes.UI.Frene
             if (!_frensMap.TryGetValue(data, out PlayerData playerData))
             {
                 System.DateTime now = System.DateTime.Now;
-                playerData = new PlayerData() { ID = data.id, Name = 0, Titles = 0, Sprite = 0, LastUpdate = System.DateTime.Now };
+                playerData = new PlayerData() { ID = data.id, Name = 0, Titles = 0, Sprite = 0, LastUpdate = System.DateTime.Now, Background = data.background };
                 playerData.ChestDataList = new List<ChestData>(); 
                 int chestCount = data.items.Count;
                 for (int i = 0; i < chestCount; ++i)

@@ -14,5 +14,7 @@ namespace Simemes.Steal
 
         [JsonProperty("chestBoxes")]
         public List<ChestData> ChestDataList;
+
+        public string Background;
     }
 }

@@ -20,8 +20,7 @@ public class UIBackground : MonoBehaviour
 
     private void Awake()
     {
-        foreach (var sprite in _backgrounds)
-            _backgroundData[sprite.name] = sprite;
+        Init();
 
         if (_updateByPlayerProfile && GameManager.instanceExists)
             GameManager.instance.PlayerProfile.OnUpdateTierData += UpdateBackground;
@@ -33,6 +32,12 @@ public class UIBackground : MonoBehaviour
             GameManager.instance.PlayerProfile.OnUpdateTierData -= UpdateBackground;
     }
 
+    private void Init()
+    {
+        foreach (var sprite in _backgrounds)
+            _backgroundData[sprite.name] = sprite;
+    }
+
     private void UpdateBackground(Simemes.Tier.TierData tierData)
     {
         SetBackground(tierData.Background);
@@ -40,9 +45,12 @@ public class UIBackground : MonoBehaviour
 
     public void SetBackground(string background)
     {
-        _backgroundData.TryGetValue(name, out var sprite);
+        if (_backgroundData.Count < 1)
+            Init();
+
+        _backgroundData.TryGetValue(background, out var sprite);
         if (sprite == null)
-            sprite = _backgrounds[_backgrounds.Count - 1];
+            sprite = _backgrounds[0];
 
         _backgroundImage.sprite = sprite;
     }

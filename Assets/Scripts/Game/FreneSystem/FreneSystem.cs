@@ -4,6 +4,7 @@ using UnityEngine;
 using Core.Utilities;
 using System.Threading.Tasks;
 using Simemes.Request;
+using Simemes.Tier;
 
 namespace Simemes.Frene
 {
@@ -36,6 +37,7 @@ namespace Simemes.Frene
 #if LOCAL_TEST
             if (_data.Count == 0)
             {
+                TierSystem tierSystem = TierSystem.instance;
                 int count = Random.Range(10, 20);
 
                 for (int i = 0; i < count; ++i)
@@ -56,7 +58,8 @@ namespace Simemes.Frene
                         name = UI.UIStolenInfo.Names[i],
                         coinAmount = Random.Range(1000, 10000), 
                         screenName = name, 
-                        items = items
+                        items = items,
+                        background = tierSystem.GetTierData(Random.Range(1, tierSystem.TierCount)).Background
                     });
                 }
             }

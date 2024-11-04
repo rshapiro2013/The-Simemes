@@ -4,6 +4,7 @@ using UnityEngine;
 using Core.Utilities;
 using System.Threading.Tasks;
 using Simemes.Request;
+using Simemes.Tier;
 
 namespace Simemes.Steal
 {
@@ -31,10 +32,11 @@ namespace Simemes.Steal
         {
             _chests = list;
 #if LOCAL_TEST
-
+            TierSystem tierSystem = TierSystem.instance;
             System.DateTime now = System.DateTime.Now;
             foreach (ChestDatas data in list)
             {
+                data.Background = tierSystem.GetTierData(Random.Range(1, tierSystem.TierCount)).Background;
                 data.ChestDataList.Clear();
                 int count = Random.Range(3, 9);
 

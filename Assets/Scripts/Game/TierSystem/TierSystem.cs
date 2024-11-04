@@ -31,5 +31,7 @@ namespace Simemes.Tier
             _tierData.TryGetValue(_tierStart + level, out var data);
             return data;
         }
+
+        public int TierCount { get => _tierData.Count; }
     }
 }

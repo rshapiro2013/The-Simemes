@@ -15,5 +15,6 @@ namespace Simemes.Frene
         public string profileImageUrl { get; set; }
         public int coinAmount { get; set; }
         public List<string> items { get; set; }
+        public string background { get; set; }
     }
 }

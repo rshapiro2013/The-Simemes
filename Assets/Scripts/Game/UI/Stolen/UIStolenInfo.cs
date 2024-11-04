@@ -310,7 +310,7 @@ namespace Simemes.UI
                 }
             }
 
-            _playerData = new PlayerData() { ID = chestDatas.UserID, Name = nameIndex, Titles = nameIndex, Sprite = spriteIndex, LastUpdate = System.DateTime.Now };
+            _playerData = new PlayerData() { ID = chestDatas.UserID, Name = nameIndex, Titles = nameIndex, Sprite = spriteIndex, LastUpdate = System.DateTime.Now, Background = chestDatas.Background };
             _playerData.ChestDataList.AddRange(chestDatas.ChestDataList);
             _playerRecord.Add(_playerData);
         }
