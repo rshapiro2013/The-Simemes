@@ -6,6 +6,7 @@ using Core.Networking;
 using Core.Auth;
 using Simemes.Profile;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Simemes
 {
@@ -29,6 +30,8 @@ namespace Simemes
             else
                 await PlayerInfoRequest<SaveData>.LoadPlayerData(SaveData);
 
+            Debug.Log("SaveData: " + JsonConvert.SerializeObject(SaveData));
+
             SaveData.Init();
 
         }
@@ -41,7 +44,7 @@ namespace Simemes
 
         public async Task ChangeProfileImage(string url)
         {
-            SaveData.Profile.PhotoUrl = url;
+            SaveData.Profile.CustomPhotoUrl = url;
             SaveData.Profile.Update();
 
             await SavePlayerData();
@@ -55,7 +58,6 @@ namespace Simemes
             if (userInfo != null)
             {
                 SaveData.Profile.UserName = userInfo.Username;
-                SaveData.Profile.PhotoUrl = userInfo.PhotoUrl;
             }
         }
 
@@ -87,6 +89,12 @@ namespace Simemes
 
             if(Input.GetKeyUp(KeyCode.F3))
                 AirDrop.AirDropSystem.instance.SpawnRandomItem();
+
+            if (Input.GetKeyUp(KeyCode.F4))
+            {
+                SaveData.Profile.CustomPhotoUrl = string.Empty;
+                SavePlayerData();
+            }
         }
     }
 }

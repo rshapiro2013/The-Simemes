@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace Core.Networking
+namespace Core.Utilities
 {
     public class JSON : Dictionary<string, object>
     {
         public T Parse<T>(string key)
         {
-            var result = (T)this[key];
+            if (this[key] is T)
+                return (T)this[key];
+            else
+            {
+                string data = JsonConvert.SerializeObject(this[key]);
+                var result = JsonConvert.DeserializeObject<T>(data);
+                return result;
+            }
+        }
+
+        public JSON ToJSON(string key)
+        {
+            string data = JsonConvert.SerializeObject(this[key]);
+            var result = JsonConvert.DeserializeObject<JSON>(data);
             return result;
         }
 

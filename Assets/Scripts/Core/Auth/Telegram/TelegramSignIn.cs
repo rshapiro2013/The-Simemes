@@ -1,16 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.SimpleSignIn.Telegram.Scripts;
 
 namespace Core.Auth
 {
     public class TelegramSignIn : AuthMethod
     {
-        // Telegram Data
-        private TelegramAuth _telegramAuth;
-        private UserInfo _userInfo;
-
         public override string MethodName => "Telegram";
 
         public override string UserID => _authInfo.Id.ToString();
@@ -21,31 +16,40 @@ namespace Core.Auth
             //_telegramAuth.TryResume(OnSignIn);
         }
 
-        public override void SignIn()
+        public override async void SignIn()
         {
-            _telegramAuth.SignIn(OnSignIn, caching: true);
+            Debug.Log("Telegram SignIn");
+
+            var telegramAuth = TelegramController.instance;
+
+            if (telegramAuth == null || telegramAuth.User == null)
+            {
+                _isError = true;
+                return;
+            }
+
+            await telegramAuth.RequestPhoto();
+
+            var userInfo = telegramAuth.User;
+             _authInfo = new AuthInfo();
+            _authInfo.Id = userInfo.id.ToString();
+
+            _authInfo.Username = userInfo.username;
+            if (string.IsNullOrEmpty(_authInfo.Username))
+                _authInfo.Username = userInfo.first_name + " " + userInfo.last_name;
+
+            _authInfo.PhotoUrl = userInfo.photo_url;
+            _authInfo.Hash = userInfo.GetHashCode().ToString();
+
+            _isSignedIn = true;
+
+            Debug.Log("Telegram SignIn Success");
         }
 
         public override void SignOut()
         {
-            _telegramAuth.SignOut();
             _authInfo = null;
         }
 
-        private void OnSignIn(bool success, string error, UserInfo userInfo)
-        {
-            _isSignedIn = success;
-            _userInfo = userInfo;
-
-            _authInfo = new AuthInfo();
-            _authInfo.Id = userInfo.Id.ToString();
-
-            _authInfo.Username = userInfo.Username;
-            if (string.IsNullOrEmpty(_authInfo.Username))
-                _authInfo.Username = userInfo.FirstName + " " + userInfo.LastName;
-
-            _authInfo.PhotoUrl = userInfo.PhotoUrl;
-            _authInfo.Hash = userInfo.Hash;
-        }
     }
 }

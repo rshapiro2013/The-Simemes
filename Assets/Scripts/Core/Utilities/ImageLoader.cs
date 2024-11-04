@@ -50,8 +50,16 @@ namespace Core.Utilities
 
         private void LoadImage(string base64Image)
         {
+            string base64Data = string.Empty;
+            Debug.Log("ImageData:" + base64Image);
+
             // 移除Base64图片的前缀
-            string base64Data = base64Image.Split(',')[1];
+            var split = base64Image.Split(',');
+            if (split.Length <= 1)
+                base64Data = base64Image;
+            else
+                base64Data = base64Image.Split(',')[1];
+
             byte[] imageBytes = System.Convert.FromBase64String(base64Data);
 
             Texture2D texture = new Texture2D(1, 1);

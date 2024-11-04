@@ -35,6 +35,9 @@ namespace Core.Auth
 
         public async Task SignIn()
         {
+#if TELEGRAM_AUTH && !UNITY_EDITOR
+            _authMethodIndex = 0;
+#endif
             await SignIn(_authMethods[_authMethodIndex].MethodName);
         }
 
@@ -73,9 +76,6 @@ namespace Core.Auth
             if (!string.IsNullOrEmpty(name))
                 args["name"] = name;
 
-            if (!string.IsNullOrEmpty(_authMethod.AuthInfo.PhotoUrl))
-                args["profileImageUrl"] = _authMethod.AuthInfo.PhotoUrl;
-            
             await RequestSystem.instance.Post("api/login", args, OnSignedIn);
         }
 

@@ -409,6 +409,7 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
+    HIDE_FULL_SCREEN_BUTTON: 
     PRODUCT_DESCRIPTION: 
   mobileMTRendering:
     Android: 1
@@ -658,14 +659,14 @@ PlayerSettings:
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
   webGLMemorySize: 32
-  webGLExceptionSupport: 1
+  webGLExceptionSupport: 2
   webGLNameFilesAsHashes: 0
   webGLShowDiagnostics: 0
   webGLDataCaching: 1
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: PROJECT:TelegramApp
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
@@ -692,7 +693,7 @@ PlayerSettings:
     QNX: DOTWEEN
     Stadia: DOTWEEN
     Standalone: DOTWEEN
-    WebGL: DOTWEEN;REQUEST_LOG
+    WebGL: DOTWEEN;REQUEST_LOG;TELEGRAM_AUTH
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
     iPhone: DOTWEEN

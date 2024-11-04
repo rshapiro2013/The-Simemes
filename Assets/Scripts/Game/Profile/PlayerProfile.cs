@@ -11,7 +11,7 @@ namespace Simemes.Profile
     public class PlayerProfile
     {
         public string UserName;
-        public string PhotoUrl;
+        public string CustomPhotoUrl;
 
         public string Character;
 
@@ -31,6 +31,21 @@ namespace Simemes.Profile
 
         [JsonIgnore]
         public TierData TierData { get; private set; }
+
+        [JsonIgnore]
+        public string PhotoUrl
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(CustomPhotoUrl))
+                    return CustomPhotoUrl;
+
+                if (Core.Auth.AuthMgr.instanceExists && Core.Auth.AuthMgr.instance.UserInfo != null)
+                    return Core.Auth.AuthMgr.instance.UserInfo.PhotoUrl;
+
+                return string.Empty;
+            }
+        }
 
         public event System.Action<int> OnUpdateExp;
         public event System.Action<int> OnUpdateLevel;

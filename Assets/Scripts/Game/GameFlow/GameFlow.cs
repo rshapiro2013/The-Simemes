@@ -38,17 +38,31 @@ public class GameFlow : MonoSingleton<GameFlow>
             Input.multiTouchEnabled = false;
             await AuthMgr.instance.SignIn();
             await GameManager.instance.LoadPlayerData();
+
+            Debug.Log("Steal Init");
+
             await StealSystem.instance.Init();
+
+            Debug.Log("Treasure Init");
             await TreasureSystem.instance.Init();
+
+            Debug.Log("Rank Init");
             await RankSystem.instance.Init();
+
+            Debug.Log("Announce Init");
             await AnnouncementSystem.instance.Init();
+
+            Debug.Log("Frene Init");
             await FreneSystem.instance.Init();
+
+            Debug.Log("Chest Init");
             await StealRequest.GetChestDatas();
 
             var profile = GameManager.instance.PlayerProfile;
             await TaskMgr.instance.Init(profile.TaskProgress, profile.TaskEventProgress);
             await DailyCheckInSystem.instance.Init();
 
+            Debug.Log("Init Finished");
             SetBool("UserDataLoaded", true);
         }
         catch (System.Exception e)
