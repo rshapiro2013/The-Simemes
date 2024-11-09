@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Simemes.Inventory;
 
 namespace Simemes.Treasures
 {
-    public class TreasureBuffConfig : ScriptableObject, ITreasureBuff
+    public class TreasureBuffConfig : TreasureConfig, ITreasureBuff
     {
-        [SerializeField]
-        protected int _id;
-
-        [SerializeField]
-        protected Sprite _icon;
-
-        public int ID => _id;
-        public Sprite Icon => _icon;
+        public override void Obtain(int count = 1)
+        {
+            ItemMgr.instance.AddItem(_id, count);
+        }
 
         public virtual void Init(ITreasureBox treasureBox)
         {

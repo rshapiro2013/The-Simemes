@@ -9,6 +9,7 @@ using Simemes.Treasures;
 using Simemes.AirDrop;
 using Simemes.Landscape;
 using Simemes.Tasks;
+using Simemes.Inventory;
 
 namespace Simemes.UI
 {
@@ -54,6 +55,8 @@ namespace Simemes.UI
 
             TreasureSystem.instance.OnUpdateChests += RefreshSlots;
             GameManager.instance.PlayerProfile.OnUpdateTierData += RefreshSlotLocks;
+
+            ItemMgr.instance.RegisterHandler(ItemType.Buff, HandleBuff);
         }
 
         protected override void OnDestroy()
@@ -64,6 +67,9 @@ namespace Simemes.UI
                 TreasureSystem.instance.OnUpdateChests -= RefreshSlots;
             if (GameManager.instanceExists)
                 GameManager.instance.PlayerProfile.OnUpdateTierData -= RefreshSlotLocks;
+
+            ItemMgr.instance?.RemoveHandler(ItemType.Buff, HandleBuff);
+
         }
 
         public void Click(UIChestSlot slot)
@@ -203,6 +209,11 @@ namespace Simemes.UI
 
             slot = null;
             return false;
+        }
+
+        public void HandleBuff(TreasureConfig config)
+        {
+            Enchant(config.ID);
         }
 
         public void AddBuff(UIChestSlot slot)

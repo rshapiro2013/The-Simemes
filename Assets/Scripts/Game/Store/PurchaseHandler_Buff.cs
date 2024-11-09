@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Simemes.Inventory;
 
 namespace Simemes.Shop
 {
@@ -15,7 +16,10 @@ namespace Simemes.Shop
 
             var buff = item as ShopItem_Buff;
 
-            _chestPanel.Enchant(buff.BuffID, OnPurchaseSuccess);
+            //_chestPanel.Enchant(buff.BuffID, OnPurchaseSuccess);
+
+            // 改成先加入背包
+            ItemMgr.instance.AddItem(buff.BuffID, 1);
             return true;
         }
     }

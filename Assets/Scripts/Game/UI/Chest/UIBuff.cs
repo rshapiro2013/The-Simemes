@@ -16,7 +16,7 @@ public class UIBuff : MonoBehaviour
     {
         if (buff != null)
         {
-            _icon.sprite = buff.Icon;
+            _icon.sprite = buff.Image;
         }
 
         _icon.enabled = buff != null;

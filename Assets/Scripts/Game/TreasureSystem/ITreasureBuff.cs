@@ -7,7 +7,7 @@ namespace Simemes.Treasures
     public interface ITreasureBuff
     {
         int ID { get; }
-        Sprite Icon { get; }
+        Sprite Image { get; }
 
         void Init(ITreasureBox treasureBox);
         void TriggerObtain(ITreasureBox treasureBox);

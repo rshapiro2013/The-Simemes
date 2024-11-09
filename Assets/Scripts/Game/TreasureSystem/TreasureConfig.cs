@@ -23,6 +23,7 @@ namespace Simemes.Treasures
 
         public string Desc => _desc;
 
+        public int Type => (_id / 100) * 100;
         public virtual string GetEffect() => string.Empty;
     }
 }

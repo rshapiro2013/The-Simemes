@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Simemes.Shop;
 using Core.UI;
+using Simemes.Treasures;
 
 namespace Simemes.UI
 {
@@ -24,6 +25,16 @@ namespace Simemes.UI
             _name.text = config.Name;
 
             _icon.sprite = config.Icon;
+            _icon.SetNativeSize();
+
+            _description.text = config.Desc;
+        }
+
+        public void Set(TreasureConfig config)
+        {
+            _name.text = config.Name;
+
+            _icon.sprite = config.Image;
             _icon.SetNativeSize();
 
             _description.text = config.Desc;
