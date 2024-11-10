@@ -38,17 +38,13 @@ namespace Simemes.UI
         [SerializeField] private Image _photo;
         [SerializeField] private List<UIChestSlot> _slots;
 
-
         [SerializeField] private Button _stealBtn;
         [SerializeField] private GameObject _popupFrame;
         [SerializeField] private Text _popupText;
         [SerializeField] private UIStolenView _stolenView;
         [SerializeField] private TextMeshProUGUI _stealRemaining;
 
-        [SerializeField] private ScrollRect _scrollRect;
-        [SerializeField] private Transform _contentRoot;
-        [SerializeField] private UITreasureIcon _sourceIterm;
-        private List<UITreasureIcon> _pools = new List<UITreasureIcon>();
+        [SerializeField] private UIScrollItems  _scrollItems;
 
         private static readonly string _stealRemainingText = "Steals Remaining ({0}/{1})";
 
@@ -126,35 +122,20 @@ namespace Simemes.UI
             _stealRemaining.SetText(string.Format(_stealRemainingText, SystemSetting.Config.StealCount, 10));
         }
 
-        private void OnEnable()
-        {
-            _scrollRect.velocity = Vector2.zero;
-            _scrollRect.horizontalNormalizedPosition = 0f;
-        }
-
         private void Set(string name, string title, Sprite sprite)
         {
-            OnEnable();
             _name.text = name;
             _title.text = title;
             _photo.sprite = sprite;
             _stealBtn.interactable = true;
 
-            if (_pools.Count < _playerData.ChestDataList.Count)
-            {
-                int count = _playerData.ChestDataList.Count - _pools.Count;
-                for (int i = 0; i < count; ++i)
-                {
-                    UITreasureIcon item = Instantiate(_sourceIterm, _contentRoot);
-                    _pools.Add(item);
-                }
-            }
+            _scrollItems.Set(_playerData.ChestDataList.Count);
 
             TreasureSystem treasureSys = TreasureSystem.instance;
             List<ChestData> chestDatas = _playerData.ChestDataList;
             for (int i = 0; i < chestDatas.Count; ++i)
             {
-                UITreasureIcon item = _pools[i];
+                UITreasureIcon item = _scrollItems.Pool[i];
                 ChestData chestData = chestDatas[i];
                 int id = chestData.Treasures.Count > 0 ? chestData.Treasures[0] : 0;
                 if (id > 0)

@@ -46,6 +46,8 @@ namespace Simemes.UI
         [SerializeField] private Text _popupText;
         [SerializeField] private Image _character;
         [SerializeField] private UIBackground _uiBackground;
+        [SerializeField] private UIScrollItems _scrollItems;
+
         [SerializeField] private UnityEvent<Sprite> _onStealSusscee;
         [SerializeField] private UnityEvent _onStealFailed;
 
@@ -71,6 +73,25 @@ namespace Simemes.UI
             _title.text = title;
             _uiBackground.SetBackground(bg);
             _addBtn.gameObject.SetActive(!FreneSystem.instance.HasFrene(_playerData.ID));
+
+            _scrollItems.Set(_playerData.ChestDataList.Count);
+
+            TreasureSystem treasureSys = TreasureSystem.instance;
+            List<ChestData> chestDatas = _playerData.ChestDataList;
+            for (int i = 0; i < chestDatas.Count; ++i)
+            {
+                UITreasureIcon item = _scrollItems.Pool[i];
+                ChestData chestData = chestDatas[i];
+                int id = chestData.Treasures.Count > 0 ? chestData.Treasures[0] : 0;
+                if (id > 0)
+                {
+                    TreasureConfig treasure = treasureSys.GetTreasureConfig(id);
+                    item.Set(treasure.Image, treasure.Name);
+                    item.gameObject.SetActive(true);
+                }
+                else
+                    item.gameObject.SetActive(false);
+            }
         }
 
         public void Steal(int index)

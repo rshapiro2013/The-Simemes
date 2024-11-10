@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Treasure2
       objectReference: {fileID: 0}
+    - target: {fileID: 8994337547217797554, guid: 4688942b361c64d469265a685e32f1b5, type: 3}
+      propertyPath: _sourceItem
+      value: 
+      objectReference: {fileID: 4810724978589831095}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6778440403058750516, guid: 4688942b361c64d469265a685e32f1b5, type: 3}
@@ -282,3 +286,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7320471412132316395, guid: a7814e28a57554149b91bbd5a191e438, type: 3}
   m_PrefabInstance: {fileID: 8521637177264492418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4810724978589831095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3783533026146697269, guid: a7814e28a57554149b91bbd5a191e438, type: 3}
+  m_PrefabInstance: {fileID: 8521637177264492418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48161224939890c468fdd74f0caa71bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

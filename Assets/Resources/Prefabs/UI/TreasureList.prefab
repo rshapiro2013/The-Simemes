@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1789987229163888141}
   - component: {fileID: 919536400765566861}
   - component: {fileID: 3564420583775076035}
+  - component: {fileID: 8994337547217797554}
   m_Layer: 5
   m_Name: TreasureList
   m_TagString: Untagged
@@ -236,6 +237,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8994337547217797554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028457997842308816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4974c8c2dec829548a6da307c59defc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 6083960887311297414}
+  _contentRoot: {fileID: 2041048040769355333}
+  _sourceItem: {fileID: 1332359741176757187}
 --- !u!1001 &7656776268482923308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -345,6 +361,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a594e6c7b1e9d49a5caf326b8693f0, type: 3}
+--- !u!114 &1332359741176757187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8664691843470979311, guid: 27a594e6c7b1e9d49a5caf326b8693f0, type: 3}
+  m_PrefabInstance: {fileID: 7656776268482923308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48161224939890c468fdd74f0caa71bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4858039206665879325 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2966022335740359729, guid: 27a594e6c7b1e9d49a5caf326b8693f0, type: 3}

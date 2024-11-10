@@ -600,6 +600,7 @@ MonoBehaviour:
   _popupText: {fileID: 0}
   _character: {fileID: 78372092828761105}
   _uiBackground: {fileID: 4712366049009007975}
+  _scrollItems: {fileID: 560701564110240900}
   _onStealSusscee:
     m_PersistentCalls:
       m_Calls: []
@@ -1777,17 +1778,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5497311946262390891}
     m_Modifications:
+    - target: {fileID: 1429160788594019177, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429160788594019177, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429160788594019177, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429160788594019177, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747148390331586500, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4320682662830686661, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
       propertyPath: m_Name
       value: TreasureList
       objectReference: {fileID: 0}
     - target: {fileID: 4320682662830686661, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5057400355265110352, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1080
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057400355265110352, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8255832520321177456, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
       propertyPath: m_Pivot.x
@@ -1874,6 +1899,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+--- !u!114 &560701564110240900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2787291571873291943, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
+  m_PrefabInstance: {fileID: 2406736329354863139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4974c8c2dec829548a6da307c59defc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6049717619167458643 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8255832520321177456, guid: 536a0079d1b317f4ebf79af96d746901, type: 3}
