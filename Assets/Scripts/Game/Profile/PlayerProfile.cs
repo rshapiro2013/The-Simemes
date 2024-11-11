@@ -23,6 +23,8 @@ namespace Simemes.Profile
         public int Coin;
         public int Diamond;
 
+        public string DialogText;
+
         [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Replace)]
         public List<TaskProgress> TaskProgress;
 
