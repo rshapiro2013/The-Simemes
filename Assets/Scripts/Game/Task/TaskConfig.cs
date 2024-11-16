@@ -16,7 +16,6 @@ namespace Simemes.Tasks
 
         public enum TaskType
         {
-            New,
             Social,
             Meme,
             Event

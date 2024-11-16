@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbcac8c8d13c18543be53b5491e50385, type: 3}
-  m_Name: JoinDiscord 1
+  m_Name: JoinTGChannel
   m_EditorClassIdentifier: 
-  _id: 5011
-  _type: 2
+  _id: 4911
+  _type: 1
   _name: Join our discord group
   _reward:
     ID: 2401

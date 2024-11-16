@@ -10,4 +10,5 @@ public class TaskProgress
 
     public bool Claimed;
     public bool Started;
+    public bool IsNew = true;
 }

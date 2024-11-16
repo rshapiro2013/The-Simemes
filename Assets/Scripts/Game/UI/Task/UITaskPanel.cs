@@ -85,7 +85,7 @@ namespace Simemes.UI.Tasks
         {
             _taskList.Clear();
 
-            var tasks = TaskMgr.instance.GetTasks(idx);
+            var tasks = (idx == 0) ? TaskMgr.instance.GetNewTasks() : TaskMgr.instance.GetTasks(idx - 1);
 
             if (tasks == null || tasks.Count == 0)
                 return;

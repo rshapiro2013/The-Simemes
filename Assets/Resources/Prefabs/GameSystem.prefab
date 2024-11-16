@@ -476,14 +476,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _taskConfigs:
-  - {fileID: 11400000, guid: 32e80980cd910ee45a58c8bfe03ad8cb, type: 2}
-  - {fileID: 11400000, guid: 409651231ebaa8e46b8afebf8d0afe79, type: 2}
-  - {fileID: 11400000, guid: 421b89be96fcd8f45b2cd2de95014260, type: 2}
-  - {fileID: 11400000, guid: 37ebca154adafe54eba304b1a8448242, type: 2}
-  - {fileID: 11400000, guid: deae0624232a4884791f42e5cd956e2a, type: 2}
-  - {fileID: 11400000, guid: 15738115fa8837f4cbec868c7e7e3907, type: 2}
-  - {fileID: 11400000, guid: 4accd0aa81a364649888976644e51aef, type: 2}
-  - {fileID: 11400000, guid: 6c45f47c6d5ec394aa2479838161c245, type: 2}
   - {fileID: 11400000, guid: a34553d0e1e43244fa39f1c74467acfb, type: 2}
   - {fileID: 11400000, guid: 4e46ce696143d1b40a1453985526125f, type: 2}
   - {fileID: 11400000, guid: 078e86f21f256384dbac939e29ccf246, type: 2}

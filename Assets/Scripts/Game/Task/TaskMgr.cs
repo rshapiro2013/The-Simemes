@@ -23,6 +23,7 @@ namespace Simemes.Tasks
         private readonly Dictionary<int, TaskEventData> _taskEvents = new Dictionary<int, TaskEventData>();
         private readonly Dictionary<int, TaskEventConfig> _taskEventConfigDict = new Dictionary<int, TaskEventConfig>();
 
+        private readonly List<TaskData> _queryTasks = new List<TaskData>();
 
         public event System.Action OnFinishTask;
         public event System.Action OnUpdateTask;
@@ -59,6 +60,22 @@ namespace Simemes.Tasks
         {
             _tasks.TryGetValue(type, out var tasks);
             return tasks;
+        }
+
+        public List<TaskData> GetNewTasks()
+        {
+            _queryTasks.Clear();
+
+            foreach(var taskGroup in _tasks)
+            {
+                foreach(var task in taskGroup.Value)
+                {
+                    if (task.Progress.IsNew)
+                        _queryTasks.Add(task);
+                }
+            }
+
+            return _queryTasks;
         }
 
         public void UpdateTaskData()
@@ -110,7 +127,6 @@ namespace Simemes.Tasks
                 _taskProgress = new List<TaskProgress>();
 
 
-            InitTasks((int)TaskConfig.TaskType.New);
             InitTasks((int)TaskConfig.TaskType.Social);
             InitTasks((int)TaskConfig.TaskType.Meme);
 
