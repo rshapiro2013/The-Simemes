@@ -2,6 +2,7 @@ using UnityEngine;
 using Core.Utilities;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 public class TelegramController : MonoSingleton<TelegramController>
 {
@@ -9,14 +10,25 @@ public class TelegramController : MonoSingleton<TelegramController>
     private string _imgProxyServer;
 
     private WebAppUser _user;
+    private string _startParam;
+#if RELEASE
+    private const string _botId = "barrytestbotbot";
+#else
+    private const string _botId = "barrytestbotbot";
+#endif
 
     public WebAppUser User => _user;
-
+    public string StartParam => _startParam;
     
     public void SetWebAppUser(string data)
     {
         _user = JsonUtility.FromJson<WebAppUser>(data);
         Debug.Log("Telegram User:" + data);
+    }
+
+    public void SetStartParam(string startParam)
+    {
+        _startParam = startParam;
     }
 
     public async Task RequestPhoto()
@@ -42,4 +54,34 @@ public class TelegramController : MonoSingleton<TelegramController>
         if (_user != null)
             _user.photo_url = fileUrl;
     }
+
+    public void Share(string text)
+    {
+        string url = GetReferralLink();
+        string link = $"https://t.me/share/url?url={url}&text={text}";
+#if UNITY_EDITOR
+        Debug.Log("OpenTelegramLink: " + link);
+#else
+        OpenTelegramLink(link);
+#endif
+    }
+
+    public void CopyShareLink()
+    {
+        string url = GetReferralLink();
+        CopyToClipboard(url);
+    }
+
+    public string GetReferralLink()
+    {
+        string userId = _user != null ? _user.id.ToString() : "xxxxxx";
+        return $"https://t.me/{_botId}/start?startapp={userId}";
+    }
+
+    [DllImport("__Internal")]
+    public static extern void OpenTelegramLink(string link);
+
+    [DllImport("__Internal")]
+    public static extern void CopyToClipboard(string textToCopy);
+
 }

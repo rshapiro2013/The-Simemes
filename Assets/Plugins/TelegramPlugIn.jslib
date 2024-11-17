@@ -30,7 +30,12 @@ mergeInto(LibraryManager.library, {
     }
   },
 
-
+  OpenTelegramLink: function(link)
+  {
+     if (window && window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.openTelegramLink(UTF8ToString(link));
+    }
+  }
 
 
 

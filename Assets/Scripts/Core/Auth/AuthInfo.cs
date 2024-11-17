@@ -16,5 +16,6 @@ namespace Core.Auth
 
         public string Hash;
 
+        public string Referred;
     }
 }

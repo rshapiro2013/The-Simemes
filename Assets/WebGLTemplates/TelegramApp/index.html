@@ -150,6 +150,7 @@
 				console.log('Instance created',window.Telegram.WebApp);
                 window.unityInstance = unityInstance;
                 window.unityInstance.SendMessage("TelegramController", "SetWebAppUser", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
+				window.unityInstance.SendMessage("TelegramController", "SetStartParam", window.Telegram.WebApp.initDataUnsafe.start_param);
 				if(window.Telegram.WebApp)
 					window.Telegram.WebApp.expand();
               }).catch((message) => {

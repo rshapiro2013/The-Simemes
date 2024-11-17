@@ -17,6 +17,8 @@ namespace Simemes.UI
         [SerializeField]
         private TextMeshProUGUI _dailyText;
 
+        private Rewards.RewardData _receivedReward;
+
         protected override void Awake()
         {
             base.Awake();
@@ -46,9 +48,22 @@ namespace Simemes.UI
                     _rewardSlots[i].SetReceived();
             }
 
-            _todayReward.Set(dailyCheckInSys.GetReward(days - 1));
+            _receivedReward = dailyCheckInSys.GetReward(days - 1);
+            _todayReward.Set(_receivedReward);
 
             EnablePanel(true);
+        }
+
+        public void Share()
+        {
+            var reward = Rewards.RewardMgr.instance.GetRewardConfig(_receivedReward.ID);
+            string msg = $"I just claimed {_receivedReward.Count} {reward.Name}, meet me in SIMemes.";
+            TelegramController.instance.Share(msg);
+        }
+
+        public void CopyShareLink()
+        {
+            TelegramController.instance.CopyShareLink();
         }
     }
 }

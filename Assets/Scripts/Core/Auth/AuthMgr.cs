@@ -75,6 +75,8 @@ namespace Core.Auth
             args["id"] = playerID;
             if (!string.IsNullOrEmpty(name))
                 args["name"] = name;
+            if (!string.IsNullOrEmpty(_authMethod.AuthInfo.Referred))
+                args["Referred"] = _authMethod.AuthInfo.Referred;
 
             await RequestSystem.instance.Post("api/login", args, OnSignedIn);
         }

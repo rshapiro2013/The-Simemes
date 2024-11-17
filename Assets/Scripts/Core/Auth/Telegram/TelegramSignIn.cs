@@ -40,6 +40,7 @@ namespace Core.Auth
 
             _authInfo.PhotoUrl = userInfo.photo_url;
             _authInfo.Hash = userInfo.GetHashCode().ToString();
+            _authInfo.Referred = telegramAuth.StartParam;
 
             _isSignedIn = true;
 
